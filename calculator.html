@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#02070A">
+  <title>3D-Калькулятор и онлайн-расчёт · 3D KHUJAND</title>
+  <meta name="description" content="Интерактивный 3D-стол: загрузите модель STL, 3MF или OBJ, проверьте размеры и сразу узнайте точную цену печати в Худжанде.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <script type="module" src="/src/calculator.js"></script>
+</head>
+<body>
+  <a class="skip" href="#quote">К расчёту</a>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="nav-left">
+        <a class="back-link" href="/" aria-label="Вернуться на главную страницу">
+          <span aria-hidden="true">←</span> На главную
+        </a>
+        <a class="wordmark" href="/" aria-label="3D KHUJAND, на главную">3D<span>KHUJAND</span></a>
+      </div>
+      <div class="nav-right">
+        <span class="nav-badge">Интерактивный стол 256 × 256 × 256</span>
+        <a class="button button-ghost nav-cta" data-telegram href="https://t.me/khujand3d" target="_blank" rel="noopener">Мастер в Telegram</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero hero-calculator" id="quote" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero-head">
+          <div>
+            <h1 id="hero-title">Онлайн-расчёт 3D-печати</h1>
+            <p class="lead">Перетащите модель STL, 3MF или OBJ на стол принтера. Файл обрабатывается прямо в вашем браузере.</p>
+          </div>
+          <div class="hero-actions">
+            <label class="button button-primary upload-button">
+              <input id="file-input" type="file" accept=".stl,.3mf,.obj">
+              <span>Загрузить модель</span>
+            </label>
+            <a class="button button-ghost" href="/#photo">Нет файла (по фото)</a>
+          </div>
+        </div>
+
+        <noscript><p class="notice">Для работы 3D-просмотрщика включите JavaScript в браузере или отправьте файл напрямую в наш Telegram: @khujand3d</p></noscript>
+
+        <div class="workbench">
+          <div class="stage" id="stage">
+            <canvas id="viewer" aria-label="3D-просмотр модели на столе принтера" role="img"></canvas>
+            <div class="drop-hint" id="drop-hint" hidden>
+              <p>Отпустите файл, чтобы загрузить</p>
+            </div>
+            <div class="stage-top">
+              <p class="file-name" id="file-name">Пример: шестерня</p>
+              <div class="demo-list" role="group" aria-label="Попробовать на примере">
+                <button type="button" class="chip" data-demo="gear" aria-pressed="true">Шестерня</button>
+                <button type="button" class="chip" data-demo="vase" aria-pressed="false">Ваза</button>
+                <button type="button" class="chip" data-demo="stand" aria-pressed="false">Подставка</button>
+              </div>
+            </div>
+            <dl class="readout" aria-live="polite">
+              <div><dt>Размер, мм</dt><dd id="out-size">—</dd></div>
+              <div><dt>Объём</dt><dd id="out-volume">—</dd></div>
+              <div><dt>Стол принтера</dt><dd id="out-fit">—</dd></div>
+            </dl>
+            <p class="stage-help">Вращение: левая кнопка / жест. Приближение: колесо мыши.</p>
+          </div>
+
+          <form class="panel" id="quote-form" novalidate>
+            <p class="status" id="file-status" role="status" aria-live="polite"></p>
+
+            <fieldset class="group">
+              <legend>Размер и положение</legend>
+              <div class="row">
+                <label class="field field-inline" for="units">Единицы файла
+                  <select id="units" name="units">
+                    <option value="1">мм (стандарт)</option>
+                    <option value="10">см</option>
+                    <option value="25.4">дюймы</option>
+                  </select>
+                </label>
+                <label class="field field-inline" for="scale">Масштаб, %
+                  <input id="scale" name="scale" type="number" inputmode="numeric" min="5" max="1000" step="5" value="100">
+                </label>
+              </div>
+              <div class="row rotate-row" role="group" aria-label="Повернуть модель на 90 градусов">
+                <span class="field-label">Повернуть</span>
+                <button type="button" class="chip" data-rotate="x">По оси X</button>
+                <button type="button" class="chip" data-rotate="y">По оси Y</button>
+                <button type="button" class="chip" data-rotate="z">По оси Z</button>
+              </div>
+            </fieldset>
+
+            <fieldset class="group">
+              <legend>Материал</legend>
+              <div class="choices" id="materials-choice"></div>
+            </fieldset>
+
+            <fieldset class="group">
+              <legend>Цвет <span class="legend-value" id="color-name"></span></legend>
+              <div class="swatches" id="colors-choice"></div>
+            </fieldset>
+
+            <fieldset class="group">
+              <legend>Качество</legend>
+              <div class="segmented" id="quality-choice"></div>
+            </fieldset>
+
+            <div class="group">
+              <label class="field" for="infill">Заполнение <output id="infill-value" for="infill">20%</output></label>
+              <input id="infill" name="infill" type="range" min="10" max="100" step="5" value="20">
+              <p class="hint">10–20% для декора, 40% и выше для нагруженных шестерней и креплений.</p>
+            </div>
+
+            <div class="group row">
+              <label class="field field-inline" for="quantity">Количество, шт.
+                <input id="quantity" name="quantity" type="number" inputmode="numeric" min="1" max="100" value="1">
+              </label>
+            </div>
+
+            <div class="result" aria-live="polite">
+              <dl class="result-grid">
+                <div><dt>Вес</dt><dd id="out-weight">—</dd></div>
+                <div><dt>Время печати</dt><dd id="out-time">—</dd></div>
+              </dl>
+              <p class="price"><span id="out-price">—</span></p>
+              <p class="hint">Предварительный расчёт. Мастер проверит модель и подтвердит итог в Telegram.</p>
+              <button type="button" class="button button-primary button-wide" id="order-open">Оформить заказ в Telegram</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="calc-helper-card">
+          <div class="calc-helper-content">
+            <h3>Где взять готовую 3D-модель?</h3>
+            <p>Вы можете скачать миллионы готовых бесплатных моделей в каталогах <a href="https://makerworld.com/ru" target="_blank" rel="noopener">MakerWorld</a> и <a href="https://www.printables.com" target="_blank" rel="noopener">Printables</a>, сохранить файл <code>.stl</code> или <code>.3mf</code> и перетащить его в калькулятор выше.</p>
+          </div>
+          <a class="button button-ghost" href="/#model-help">Инструкция для новичков →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a class="wordmark" href="/">3D<span>KHUJAND</span></a>
+      <p>3D-печать и производство в Худжанде. Доставка по всему Таджикистану.</p>
+      <ul class="footer-links">
+        <li><a href="/">Главная</a></li>
+        <li><a href="https://t.me/khujand3d" target="_blank" rel="noopener">Telegram</a></li>
+        <li><a href="https://www.instagram.com/3d_khujand/" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <dialog class="dialog" id="order-dialog" aria-labelledby="order-title">
+    <form id="order-form" method="dialog" novalidate>
+      <h2 id="order-title">Оформить заказ</h2>
+      <pre class="summary" id="order-summary"></pre>
+      <label class="field" for="order-name">Ваше имя
+        <input id="order-name" name="name" type="text" autocomplete="name" maxlength="80">
+      </label>
+      <label class="field" for="order-contact">Телефон или Telegram
+        <input id="order-contact" name="contact" type="text" autocomplete="tel" maxlength="120" required placeholder="+992 … или @ник">
+      </label>
+      <fieldset class="group">
+        <legend>Способ получения</legend>
+        <div class="segmented">
+          <label><input type="radio" name="delivery" value="Самовывоз в Худжанде" checked><span>Самовывоз</span></label>
+          <label><input type="radio" name="delivery" value="Доставка по Таджикистану"><span>Доставка по РТ</span></label>
+        </div>
+      </fieldset>
+      <label class="field" for="order-comment">Комментарий к заказу
+        <textarea id="order-comment" name="comment" rows="2" maxlength="800" placeholder="Срок, пожелания по постобработке или доставке"></textarea>
+      </label>
+      <input class="trap" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <p class="status" id="order-status" role="status" aria-live="polite"></p>
+      <div class="dialog-actions">
+        <button type="button" class="button button-ghost" id="order-cancel">Отмена</button>
+        <button type="submit" class="button button-primary" id="order-submit">Отправить мастеру</button>
+      </div>
+    </form>
+  </dialog>
+</body>
+</html>
