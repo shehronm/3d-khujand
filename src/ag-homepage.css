@@ -72,13 +72,64 @@
 /* The grid pulse, which hero-grid.js builds: squares of an 80px dashed grid behind the
    phone, and the stage the squares runtime draws its pens in. */
 .hero__grid { position: absolute; z-index: 0; overflow: visible; pointer-events: none; }
-.hero__cell { /* 1px ag-gray-200, dashed 3 on 4 off with square caps */
+.hero__cell { /* 1px ag-gray-300, dashed 4 on 4 off with square caps */
   fill: none;
-  stroke: #d9d9de;
-  stroke-width: 1;
-  stroke-dasharray: 3 4;
+  stroke: #989dae;
+  stroke-width: 1.25;
+  stroke-dasharray: 4 4;
   stroke-linecap: square;
   opacity: 0;
+}
+
+/* Directional moving dashed grid edges: down, left, right, up */
+.hero__edge {
+  fill: none;
+  stroke: #989dae;
+  stroke-width: 1.25;
+  stroke-dasharray: 4 4;
+  stroke-linecap: square;
+  shape-rendering: crispEdges;
+  opacity: 0.85;
+  will-change: stroke-dashoffset;
+}
+
+.hero__edge--right {
+  animation: hero-flow-right var(--speed, 4s) linear infinite;
+}
+.hero__edge--left {
+  animation: hero-flow-left var(--speed, 4s) linear infinite;
+}
+.hero__edge--down {
+  animation: hero-flow-down var(--speed, 4s) linear infinite;
+}
+.hero__edge--up {
+  animation: hero-flow-up var(--speed, 4s) linear infinite;
+}
+
+@keyframes hero-flow-right {
+  from { stroke-dashoffset: 0; }
+  to   { stroke-dashoffset: -32px; }
+}
+@keyframes hero-flow-left {
+  from { stroke-dashoffset: 0; }
+  to   { stroke-dashoffset: 32px; }
+}
+@keyframes hero-flow-down {
+  from { stroke-dashoffset: 0; }
+  to   { stroke-dashoffset: -32px; }
+}
+@keyframes hero-flow-up {
+  from { stroke-dashoffset: 0; }
+  to   { stroke-dashoffset: 32px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__edge--right,
+  .hero__edge--left,
+  .hero__edge--down,
+  .hero__edge--up {
+    animation: none !important;
+  }
 }
 .hero__fill { fill: #000; opacity: 0; } /* the faint fill some squares flash in the pulse */
 .hero__grid--stacked [data-up] { display: none; }

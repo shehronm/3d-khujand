@@ -29,29 +29,29 @@
     // under the middle of the phone; −2…1 are behind it; rows count down).
     // Figma 5520:16705, its eight columns mapped to −4…3 and its six rows to −3…2
     keep: [
-      [-4, -3], [1, -3], [2, -3],
-      [-4, -2], [-3, -2], [-2, -2], [0, -2], [1, -2], [2, -2],
-      [-3, -1], [-2, -1], [-1, -1],
-      [-3, 0], [-2, 0], [0, 0], [1, 0], [2, 0], [3, 0],
-      [-4, 1], [-3, 1], [-2, 1], [-1, 1], [0, 1], [1, 1], [2, 1],
-      [-3, 2], [0, 2], [1, 2], [3, 2]
+      [-5, -3], [-4, -3], [-3, -3], [0, -3], [1, -3], [2, -3],
+      [-5, -2], [-4, -2], [-3, -2], [-2, -2], [-1, -2], [0, -2], [1, -2], [2, -2], [3, -2],
+      [-5, -1], [-4, -1], [-3, -1], [-2, -1], [-1, -1], [0, -1], [1, -1], [2, -1], [3, -1],
+      [-5, 0], [-4, 0], [-3, 0], [-2, 0], [-1, 0], [0, 0], [1, 0], [2, 0], [3, 0], [4, 0],
+      [-5, 1], [-4, 1], [-3, 1], [-2, 1], [-1, 1], [0, 1], [1, 1], [2, 1], [3, 1], [4, 1],
+      [-4, 2], [-3, 2], [-2, 2], [-1, 2], [0, 2], [1, 2], [2, 2], [3, 2]
     ],
     keepOpacity: 1,     // how strong the pattern's squares are
     // once the pens are running the pattern keeps changing: every so often a square is drawn
     // in beside it, from a corner that touches another square, or one is drawn back out
-    shift: true,
+    shift: false,
     shiftEvery: [2200, 3800], // ms between changes, a random wait in this range
     shiftDraw: 800,           // ms a square takes to draw in or out
     shiftSpan: 3,             // how many squares more or fewer than the Figma pattern it may drift
     pensDelay: 250,     // ms after the pulse has left before the pens start
     // the pens (squares runtime settings): dashed circle-and-bridge shapes in the grid grey
     pens: {
-      size: 80, lineWidth: 1, gridStyle: 'dashed', gridColor: 'transparent', // squares are drawn here, not by the runtime
-      dash: 3, gap: 4,  // the Figma stroke: 3 on, 4 off
-      circleSize: 40, circleWidth: 1, neck: 35, curve: 70,
-      strokeStyle: 'dashed', color: '#D9D9DE', colors: ['#D9D9DE'], colorMix: 'pen',
-      loop: true, pens: 2, length: 3, speed: 290, trail: 350, fullTrail: false, showDots: false,
-      mode: 'l',        // L shapes, in every rotation ('mix' adds Z, U and lines)
+      size: 80, lineWidth: 1.25, gridStyle: 'dashed', gridColor: 'transparent',
+      dash: 4, gap: 4,
+      circleSize: 40, circleWidth: 1.25, neck: 35, curve: 70,
+      strokeStyle: 'dashed', color: '#0060FF', colors: ['#0060FF', '#285DF5'], colorMix: 'pen',
+      loop: true, pens: 3, length: 3, speed: 340, trail: 380, fullTrail: false, showDots: true,
+      mode: 'l',
       hold: 800, pauseNext: 400, exit: 'wipe', exitDur: 900, next: 'anywhere',
       grow: false, hover: false, flicker: false, center: true, autoplay: false, frame: false
     }
@@ -73,9 +73,64 @@
   let live = [], base = 0, bounds = null, penCells = []; // the pattern as it stands, and what the pens may use
   const cellEls = new Map();
 
+  // Extract unique horizontal and vertical edges so dashes flow without overlapping duplicates
+  function getUniqueEdges(cells) {
+    const horiz = new Map();
+    const vert = new Map();
+    const S = GRID.size;
+
+    cells.forEach(([c, r]) => {
+      // Top horizontal edge
+      const hk1 = c + ',' + r;
+      if (!horiz.has(hk1)) horiz.set(hk1, { c, r, x1: c * S + 0.5, y1: r * S + 0.5, x2: (c + 1) * S + 0.5, y2: r * S + 0.5 });
+
+      // Bottom horizontal edge
+      const hk2 = c + ',' + (r + 1);
+      if (!horiz.has(hk2)) horiz.set(hk2, { c, r: r + 1, x1: c * S + 0.5, y1: (r + 1) * S + 0.5, x2: (c + 1) * S + 0.5, y2: (r + 1) * S + 0.5 });
+
+      // Left vertical edge
+      const vk1 = c + ',' + r;
+      if (!vert.has(vk1)) vert.set(vk1, { c, r, x1: c * S + 0.5, y1: r * S + 0.5, x2: c * S + 0.5, y2: (r + 1) * S + 0.5 });
+
+      // Right vertical edge
+      const vk2 = (c + 1) + ',' + r;
+      if (!vert.has(vk2)) vert.set(vk2, { c: c + 1, r, x1: (c + 1) * S + 0.5, y1: r * S + 0.5, x2: (c + 1) * S + 0.5, y2: (r + 1) * S + 0.5 });
+    });
+
+    return { horiz: Array.from(horiz.values()), vert: Array.from(vert.values()) };
+  }
+
+  // Each edge moves in its assigned direction: down, left, right, or up
+  function createEdge(edge, isVertical) {
+    const line = document.createElementNS(NS, 'line');
+    line.setAttribute('x1', edge.x1);
+    line.setAttribute('y1', edge.y1);
+    line.setAttribute('x2', edge.x2);
+    line.setAttribute('y2', edge.y2);
+
+    const speeds = ['3.2s', '3.8s', '4.4s', '5.2s', '6.0s'];
+    let dirClass = '';
+    let speed = '4s';
+
+    if (!isVertical) {
+      // Horizontal edge: right or left
+      const goRight = (edge.r + Math.abs(edge.c)) % 2 === 0;
+      dirClass = goRight ? 'hero__edge--right' : 'hero__edge--left';
+      speed = speeds[Math.abs(edge.c * 3 + edge.r * 7) % speeds.length];
+    } else {
+      // Vertical edge: down or up
+      const goDown = (edge.c + Math.abs(edge.r)) % 2 === 0;
+      dirClass = goDown ? 'hero__edge--down' : 'hero__edge--up';
+      speed = speeds[Math.abs(edge.c * 7 + edge.r * 3) % speeds.length];
+    }
+
+    line.setAttribute('class', 'hero__edge ' + dirClass);
+    line.style.setProperty('--speed', speed);
+    if (edge.r < 0) line.setAttribute('data-up', '');
+    return line;
+  }
+
   function cellPath(c, r) {
-    // four edges, each drawn left-to-right or top-to-bottom from the grid line, so the
-    // dashes of neighbouring squares land on top of each other along a shared edge
     const S = GRID.size, x = c * S + 0.5, y = r * S + 0.5;
     const cell = document.createElementNS(NS, 'path');
     cell.setAttribute('d', `M${x} ${y}h${S}M${x} ${y + S}h${S}M${x} ${y}v${S}M${x + S} ${y}v${S}`);
@@ -94,13 +149,28 @@
     if (r < 0) rect.setAttribute('data-up', '');
     return rect;
   }
-  // the pattern at rest: just its squares
-  function drawPattern(keep) {
-    svg.replaceChildren(); cellEls.clear();
-    live = keep.map(k => k.slice());
-    keep.forEach(([c, r]) => { const cell = cellPath(c, r); cell.style.opacity = GRID.keepOpacity; svg.appendChild(cell); cellEls.set(c + ',' + r, cell); });
-  }
 
+  // Draw the moving dashed edges across the kept cells
+  function drawPattern(keep) {
+    svg.querySelectorAll('.hero__edges-group, .hero__edge').forEach(el => el.remove());
+    cellEls.clear();
+    live = keep.map(k => k.slice());
+
+    const { horiz, vert } = getUniqueEdges(keep);
+    const gEdges = document.createElementNS(NS, 'g');
+    gEdges.setAttribute('class', 'hero__edges-group');
+
+    horiz.forEach(edge => {
+      const el = createEdge(edge, false);
+      gEdges.appendChild(el);
+    });
+    vert.forEach(edge => {
+      const el = createEdge(edge, true);
+      gEdges.appendChild(el);
+    });
+
+    svg.appendChild(gEdges);
+  }
   // ---- the pattern shifting: squares drawn in and out ----
   // a square shows if its middle is clear of the phone
   function shows(layout, c) {
@@ -197,8 +267,8 @@
   function kept(layout) {
     if (layout.stacked) return [];
     const S = GRID.size;
-    // …and not so high that they sit behind the nav's buttons (its controls end 52px down)
-    return GRID.keep.filter(([c, r]) => (c + 1) * S <= layout.edge && layout.x0 + c * S >= layout.copyRight + 8 && layout.y0 + r * S >= 40);
+    // Inside page rule edge and clear of upper nav bar
+    return GRID.keep.filter(([c, r]) => (c + 1) * S <= layout.edge && layout.y0 + r * S >= 40);
   }
 
   function stopPens() {
