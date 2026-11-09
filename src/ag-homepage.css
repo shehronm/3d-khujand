@@ -1,0 +1,502 @@
+/* ==========================================================================
+   AccessGrid — Homepage
+   Ported from the static build (Tools for AccessGrid/Website), Figma "Client -
+   AccessGrid" › Homepage. The sections are styled with Tailwind in their partials
+   (app/views/static/homepage/); this file holds only what Tailwind can't:
+   - the layout variables the partials' classes and the scripts read;
+   - the animation CSS: keyframes and transitions, the states the scripts toggle,
+     the elements the scripts create, and the masks on moving content.
+
+   Loaded only by static/home.html.erb, after tailwind.css and application.css. It lives
+   outside app/assets/stylesheets because application.css uses `require_tree .`.
+   ========================================================================== */
+
+/* --- Layout variables --------------------------------------------------------- */
+:root {
+  --page-max: 1440px;
+  --page-gutter: 112px;    /* 32 below 1280, 64 below 1024, 24 below 768 */
+  --header-h: 68px;        /* the nav's row */
+  --hero-total: 750px;     /* the hero's grey ground, nav row included (726 below 1280) */
+  --section-space: 160px;  /* a section's top to its content, and its content to its foot (80 / 64) */
+  --logo-cell: 130px;      /* the logo cloud's row height (120 / 96) */
+  --features-h: 600px;     /* the feature columns (the page rules' inner pair runs beside them) */
+  --rule-x: 88px;          /* the page rules, in from each side of the page box (16 / 8). hero-grid.js reads it */
+  /* The centred 1440 page box, measured from a full-width ancestor. --page-left is rounded
+     to a whole pixel so the 1px rules placed from it stay crisp. */
+  --page-left: max(0px, round(calc((100% - var(--page-max)) / 2), 1px));
+  --page-w: min(100%, var(--page-max));
+}
+@media (max-width: 1279px) { :root { --hero-total: 726px; --rule-x: 16px; --page-gutter: 32px; } }
+@media (max-width: 1023px) { :root { --page-gutter: 64px; --section-space: 80px; --logo-cell: 120px; } }
+@media (max-width: 767px)  { :root { --page-gutter: 24px; --section-space: 64px; --rule-x: 8px; } }
+@media (max-width: 639px)  { :root { --logo-cell: 96px; } }
+
+/* --- Hero (hero-copy.js, hero-phone.js, hero-grid.js) ------------------------- */
+/* held hidden from the first paint until hero-copy.js brings the copy in (_hero.html.erb adds the class) */
+.hero-intro .hero__title, .hero-intro .hero__lede, .hero-intro .hero__actions .btn { opacity: 0; }
+
+/* The phone fades out over the bottom 20% of what shows as it folds in. The mask is on
+   .hero__fade, a box round the phone wide enough for its shadow (_hero.html.erb), so nothing
+   has to show outside a masked box: a mask on the device box with mask-clip: no-clip, which
+   Safari doesn't support, cut the shadow off square at the box's sides and top there. */
+.hero__device { --device-fade: calc((var(--hero-total) - var(--header-h) - 124px) * 0.2); }
+.hero__fade {
+  -webkit-mask: linear-gradient(to bottom, #000 calc(100% - var(--device-fade)), transparent 100%);
+  mask: linear-gradient(to bottom, #000 calc(100% - var(--device-fade)), transparent 100%);
+}
+
+/* the shimmer hero-phone.js runs up the card: 299 × 199 at (19, 87) of the phone's body */
+.phone__shimmer {
+  position: absolute;
+  left: calc(var(--device-w) * 19 / 337);
+  top: calc(var(--device-w) * 87 / 337);
+  width: calc(var(--device-w) * 299 / 337);
+  height: calc(var(--device-w) * 199 / 337);
+  border-radius: calc(var(--device-w) * 16 / 337);
+  /* the card's drop shadow (not in phone.svg, for Safari) */
+  box-shadow: 0 calc(var(--device-w) * 2 / 337) calc(var(--device-w) * 5 / 337) rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  pointer-events: none;
+}
+.phone__shimmer i { /* a soft white band, a touch off level, that travels bottom to top */
+  position: absolute;
+  left: -20%;
+  right: -20%;
+  top: 0;
+  height: 70%;
+  background: linear-gradient(to top, transparent, #fff 50%, transparent);
+  opacity: 0;
+  transform: translateY(160%) rotate(-7deg);
+}
+
+/* The grid pulse, which hero-grid.js builds: squares of an 80px dashed grid behind the
+   phone, and the stage the squares runtime draws its pens in. */
+.hero__grid { position: absolute; z-index: 0; overflow: visible; pointer-events: none; }
+.hero__cell { /* 1px ag-gray-200, dashed 3 on 4 off with square caps */
+  fill: none;
+  stroke: #d9d9de;
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+  stroke-linecap: square;
+  opacity: 0;
+}
+.hero__fill { fill: #000; opacity: 0; } /* the faint fill some squares flash in the pulse */
+.hero__grid--stacked [data-up] { display: none; }
+.hero__pens { position: absolute; z-index: 0; pointer-events: none; }
+.hero__pens .sq-ring, .hero__pens .sq-neck { stroke-linecap: square; }
+@media (max-width: 1023px) { .hero__grid, .hero__pens { display: none; } } /* no phone below lg */
+
+/* --- Chevron → arrow (_arrow_icon.html.erb) ----------------------------------- */
+/* On hover the chevron slides 1.5px right and a stem grows from it (pathLength=1) */
+.icon-arrow path { stroke: #b8b9c1; transition: stroke 160ms ease; }
+/* (not the changelog's chevron, which only fades in: see Changelog) */
+a:hover > .icon-arrow:not(.changelog__chev) path, a:focus-visible > .icon-arrow:not(.changelog__chev) path { stroke: #747583; }
+.icon-arrow__head { transform: translateX(0); transition: transform 180ms cubic-bezier(0.2, 0.7, 0.2, 1); }
+.icon-arrow .icon-arrow__stem {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke 160ms ease, stroke-dashoffset 180ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+a:focus-visible > .icon-arrow:not(.changelog__chev) .icon-arrow__head { transform: translateX(1.5px); }
+a:focus-visible > .icon-arrow:not(.changelog__chev) .icon-arrow__stem { stroke-dashoffset: 0; }
+@media (hover: hover) and (pointer: fine) { /* for a mouse: a tap would leave it stuck */
+  a:hover > .icon-arrow:not(.changelog__chev) .icon-arrow__head { transform: translateX(1.5px); }
+  a:hover > .icon-arrow:not(.changelog__chev) .icon-arrow__stem { stroke-dashoffset: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .icon-arrow .icon-arrow__head { transition: none; }
+  .icon-arrow .icon-arrow__stem { transition: stroke 160ms ease; }
+}
+
+/* --- Logo cloud (logos.js) ----------------------------------------------------- */
+/* logos.js moves each logo into a masked slot and swaps in new ones (built here, so these
+   are plain CSS): the old logo slides up and out while the new one slides into the middle */
+.proof__slot {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, transparent calc(50% - var(--logo-clear, 40px)), #000 calc(50% - var(--logo-solid, 16px)), #000 calc(50% + var(--logo-solid, 16px)), transparent calc(50% + var(--logo-clear, 40px)));
+  mask-image: linear-gradient(to bottom, transparent calc(50% - var(--logo-clear, 40px)), #000 calc(50% - var(--logo-solid, 16px)), #000 calc(50% + var(--logo-solid, 16px)), transparent calc(50% + var(--logo-clear, 40px)));
+}
+.proof__logo-wrap { /* the old and new logos share the slot while they pass */
+  grid-area: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.proof__logo { display: block; max-width: 72%; height: auto; }
+@media (max-width: 767px) { .proof__logo { max-width: 40%; } }
+
+/* --- Hardware card: the reader list (readers.js) ------------------------------ */
+/* the readers drift slowly up; they're listed twice (readers.js), so a lap (--lap) brings the
+   list back to where it started. The partial sets --drift from the number of readers. */
+.readers__lines-window { /* rows fade in to full strength halfway down and out again */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, rgba(0, 0, 0, 0.3) 25%, #000 50%, rgba(0, 0, 0, 0.3) 75%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, rgba(0, 0, 0, 0.3) 25%, #000 50%, rgba(0, 0, 0, 0.3) 75%, transparent 100%);
+}
+.readers__lines { animation: readers-drift var(--drift, 24s) linear infinite; }
+@keyframes readers-drift {
+  from { transform: translateY(0); }
+  to { transform: translateY(calc(-1 * var(--lap, 300px))); }
+}
+.readers--paused .readers__lines { animation-play-state: paused; } /* scrolled away */
+/* searching: the drift stops and only the matches are left, from the top, under the field; if
+   there are more than fit they scroll, fading out under the field and at the foot */
+.readers--searching .readers__lines-window {
+  overflow-y: auto;
+  scrollbar-width: none;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 22px, #000 38px, #000 calc(100% - 40px), transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 22px, #000 38px, #000 calc(100% - 40px), transparent 100%);
+}
+.readers--searching .readers__lines-window::-webkit-scrollbar { display: none; }
+.readers--searching .readers__lines { animation: none; padding: 38px 0 32px; }
+.readers--searching .readers__line:not(.is-match) { display: none; }
+.readers--searching .readers__line.is-match { color: #26262b; cursor: pointer; }
+.readers--searching .readers__line.is-match.is-hovered { background: #eeeef0; }
+.readers--searching .readers__line.is-match .readers__tag { color: #5e5f6b; background: rgba(38, 38, 43, 0.06); }
+/* the hovered match's photo, in a card centred on the list; moving between matches, the photo fades across */
+.readers__card {
+  position: absolute;
+  left: 50%;
+  top: calc(50% + 3px);
+  z-index: 1;
+  width: 144px;
+  height: 168px;
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 1px 1px 0 rgba(38, 38, 43, 0.04), 0 0 0 1px rgba(38, 38, 43, 0.06), 0 2px 12px -4px rgba(38, 38, 43, 0.22);
+  overflow: hidden;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.96);
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 240ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+.readers__card.is-showing { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+.readers__card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+.readers__card img.is-on { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .readers__lines { animation: none; }
+  .readers__card, .readers__card img { transition: none; }
+}
+
+/* --- Hardware card on phones: the readers gallery (readers-mobile.js) -------------- */
+/* Figma 6050:18011. Under 768px it takes the list's place, 24px under the copy (the feature gets
+   data-rm once it's built, so without the script phones keep the list). A 344px gray-50 card:
+   at its top the maker (gray-600) over the model (gray-950), diatype 14/22, the protocol at the
+   right (12px, gray-600); the reader's photo in a 160px square, 87px down, multiplied into the
+   grey; along the foot, 16px in, six 40px white thumbnails 8px apart, the one showing ringed in
+   gray-950. Swiping the card moves on (touch-action: pan-y keeps the page's own scroll). The
+   search field (the desktop one, copied) is hidden for now. */
+.rdm { display: none; --inset: 0px; } /* (the field's used width: the column's) */
+@media (max-width: 767px) {
+  [data-rm] > .readers--v2 { display: none; }
+  [data-rm] > .rdm { display: block; margin-top: 24px; contain: inline-size; } /* the column's width: the thumbnails' strip doesn't widen it */
+}
+.rdm .readers__search { position: relative; left: auto; right: auto; top: auto; transform: none; margin: 0 auto 16px; }
+.rdm--gallery .readers__search { display: none; } /* hidden on phones for now: the card comes 24px under the copy */
+@supports (-webkit-touch-callout: none) { .rdm .readers__input { font-size: 16px; } } /* iOS zooms the page into a field under 16px */
+.rdm-photo { display: flex; align-items: center; justify-content: center; overflow: hidden; border: 0.5px solid #eeeef0; border-radius: 12px; background: #f7f7f8; }
+.rdm-photo img { display: block; width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; -webkit-user-select: none; user-select: none; }
+.rdm-gal { position: relative; height: 344px; overflow: hidden; border-radius: 16px; background: #f7f7f8; touch-action: pan-y; -webkit-user-select: none; user-select: none; }
+.rdm-gal__head { position: relative; z-index: 1; display: flex; justify-content: space-between; gap: 12px; padding: 16px 16px 0; font: 400 14px/22px "ABC Diatype", ui-sans-serif, system-ui, sans-serif; pointer-events: none; }
+.rdm-gal__head div { display: flex; flex-direction: column; }
+.rdm-gal__maker { color: #5e5f6b; }
+.rdm-gal__model { color: #26262b; }
+.rdm-gal__tag { flex: none; font-size: 12px; letter-spacing: 0.02em; color: #5e5f6b; }
+.rdm-gal__stage { position: absolute; left: 50%; top: 87px; width: 160px; height: 160px; margin-left: -80px; pointer-events: none; }
+.rdm-gal__shot { position: absolute; inset: 0; border: 0; background: none; opacity: 0; mix-blend-mode: multiply; } /* blended as a whole: its transform makes it a layer of its own */
+.rdm-gal__shot img { mix-blend-mode: normal; }
+.rdm-gal__shot.is-on { opacity: 1; transform: translateX(var(--drag, 0px)); }
+.rdm-gal__thumbs { position: absolute; left: 50%; bottom: 16px; width: 280px; height: 40px; margin-left: -140px; overflow: visible; clip-path: inset(-3px -3px -3px -3px); } /* six in view; the ring shows past the edge */
+.rdm-gal__strip { display: flex; gap: 8px; transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1); }
+.rdm-gal__thumb { flex: none; display: block; width: 40px; height: 40px; padding: 4px; border: 0; border-radius: 8px; background: #fff; cursor: pointer; transition: box-shadow 200ms ease; }
+.rdm-gal__thumb img { display: block; width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; pointer-events: none; }
+.rdm-gal__thumb.is-on { box-shadow: 0 0 0 1.5px #26262b; }
+.rdm-gal__live { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) { .rdm-gal__strip, .rdm-gal__thumb { transition: none; } }
+
+/* --- Integrations card (integration-logos.js) ---------------------------------- */
+/* two columns of logo cells, which the script builds, stepping past each other; the block
+   is softened over its first 12px (where logos step in) and fades out over its lower half */
+.intlogos {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 12px, #000 50%, rgba(0, 0, 0, 0.3) 78%, transparent 96%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 12px, #000 50%, rgba(0, 0, 0, 0.3) 78%, transparent 96%);
+}
+.intlogos__cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 88px;
+  margin-bottom: -1px; /* 87px apart: neighbours share one border line */
+  border-top: 1px solid #f7f7f8;
+  border-bottom: 1px solid #f7f7f8;
+}
+/* each logo in one grey (ag-gray/600), its own colours on hover: the colour image under a grey
+   copy of its shape (masked by the image itself), which fades away. Both held to 70% of the
+   cell, keeping their shape (contain) */
+.intlogos__logo { position: relative; display: block; max-width: 70%; }
+.intlogos__logo img { display: block; width: auto; max-width: 100%; object-fit: contain; opacity: 0; transition: opacity 240ms ease; }
+.intlogos__mono {
+  position: absolute;
+  inset: 0;
+  background: #5e5f6b; /* ag-gray-600 */
+  -webkit-mask: var(--logo) center / contain no-repeat;
+  mask: var(--logo) center / contain no-repeat;
+  transition: opacity 240ms ease;
+}
+.intlogos__cell:hover .intlogos__logo img { opacity: 1; }
+.intlogos__cell:hover .intlogos__mono { opacity: 0; }
+
+/* --- Support card (support.js) -------------------------------------------------- */
+/* a soft top edge, like a scrolling view: the thread fades as it flicks up past it */
+.chat {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 48px);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 48px);
+}
+/* rows still to come (and the typing bubble once it has gone) take no room */
+.chat--waiting .chat__row.is-later { display: none; }
+/* Nat typing: three dots bouncing in turn */
+.chat__typing i { animation: chat-dot 1.2s ease-in-out infinite; }
+.chat__typing i:nth-child(2) { animation-delay: 0.15s; }
+.chat__typing i:nth-child(3) { animation-delay: 0.3s; }
+@keyframes chat-dot {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.45; }
+  30% { transform: translateY(-3px); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chat__typing i { animation: none; opacity: 0.7; }
+}
+/* phones: the chat as a list, every row keeping its room (hidden rather than removed) */
+@media (max-width: 767px) {
+  .chat {
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 32px);
+    mask-image: linear-gradient(to bottom, transparent 0, #000 32px);
+  }
+  .chat--waiting .chat__row.is-later { display: flex; visibility: hidden; }
+}
+
+/* --- Stories (stories.js) ------------------------------------------------------- */
+/* while a mouse drags the row, snapping is off so it follows the pointer; it snaps on release */
+.stories__track.is-dragging { scroll-snap-type: none; cursor: grabbing; }
+
+/* --- API steps (api-tabs.js, cubes.js, apid-video.js) -------------------------- */
+/* the tabs: the open one in a blue pill (from 768px; under it each tab is just its icon) */
+.apid__tab svg { color: #92939e; transition: color 200ms cubic-bezier(0.23, 1, 0.32, 1); }
+.apid__fill { fill: #eeeef0; transition: fill 200ms cubic-bezier(0.23, 1, 0.32, 1); }
+.apid__step.is-open .apid__tab { border-color: #d9e8ff; background: #eef5ff; color: #285df5; cursor: default; }
+.apid__step.is-open .apid__tab svg { color: #285df5; }
+.apid__step.is-open .apid__fill { fill: #d9e8ff; }
+@media (hover: hover) { .apid__step:not(.is-open) .apid__tab:hover { color: #26262b; } }
+/* the open step's line unfolds under its tab, and fades in just after it starts to */
+.apid__more { grid-template-rows: 0fr; transition: grid-template-rows 360ms cubic-bezier(0.77, 0, 0.175, 1); }
+.apid__step.is-open .apid__more { grid-template-rows: 1fr; }
+.apid__more p { opacity: 0; transition: opacity 160ms cubic-bezier(0.23, 1, 0.32, 1); }
+.apid__step.is-open .apid__more p { opacity: 1; transition: opacity 200ms cubic-bezier(0.23, 1, 0.32, 1) 40ms; }
+/* the pictures: the open one rises into place once the old one has lifted out */
+.apid__shot { opacity: 0; transform: translateY(16px); pointer-events: none; }
+.apid__shot.is-on { opacity: 1; transform: none; transition: opacity 260ms cubic-bezier(0.23, 1, 0.32, 1) 140ms, transform 420ms cubic-bezier(0.23, 1, 0.32, 1) 140ms; }
+.apid__shot.is-off { opacity: 0; transform: translateY(-24px); transition: opacity 160ms cubic-bezier(0.4, 0, 1, 1), transform 160ms cubic-bezier(0.4, 0, 1, 1); }
+.apid__shot.is-on .apid__play { pointer-events: auto; }
+@media (prefers-reduced-motion: reduce) {
+  .apid__shot, .apid__shot.is-off { transform: none; } /* a plain crossfade */
+  .apid__more, .apid__more p { transition: none; }
+}
+/* the cubes cubes.js draws behind the open picture */
+.cube { position: absolute; left: 0; top: 0; overflow: visible; will-change: transform, opacity, filter; }
+.cube line { fill: none; stroke-width: 1; stroke-linecap: butt; }
+.apid__cubes .cube line { stroke-width: 0.5; stroke-linecap: square; }
+/* the pill api-tabs.js slides behind the tab row (where the steps are a row) */
+.apid__pill { display: none; }
+@media (min-width: 640px) and (max-width: 1023px) {
+  .apid__tab svg { width: 16px; transition: color 200ms cubic-bezier(0.23, 1, 0.32, 1), width 200ms cubic-bezier(0.77, 0, 0.175, 1), margin 200ms cubic-bezier(0.77, 0, 0.175, 1), opacity 160ms cubic-bezier(0.23, 1, 0.32, 1); }
+  .apid__step:not(.is-open) .apid__tab svg { width: 0; margin-right: -8px; opacity: 0; } /* closed tabs fold their icon away */
+  .apid__pill { display: block; position: absolute; left: 0; top: 0; z-index: 0; border: 1px solid #d9e8ff; border-radius: 40px; background: #eef5ff; pointer-events: none; }
+  .apid__step.is-open .apid__tab { border-color: transparent; background: none; }
+  .apid__more { grid-template-rows: 1fr; transition: none; } /* the lines crossfade in one place */
+  .apid__step:not(.is-open) .apid__more { pointer-events: none; }
+}
+/* phones: every step and picture shows, in the flow */
+@media (max-width: 767px) {
+  .apid__pill { display: none; }
+  .apid__step.is-open .apid__tab { border: 0; background: none; color: #26262b; }
+  /* each step's icon as the 24px set (Figma 6036:17814), in its open state: brand-600 lines at
+     1.5px, the shapes (apid__fill, apid__tint) filled brand-100. The 16px drawings, shown at 24px
+     and drawn 1.0933× bigger about their middle (1.64× in all), their lines kept at 1.5px */
+  .apid__tab svg, .apid__step.is-open .apid__tab svg, .apid__step:not(.is-open) .apid__tab svg { width: 24px; height: 24px; margin: 0; opacity: 1; overflow: visible; color: #285df5; }
+  .apid__tab svg > * { transform: scale(1.0933); transform-origin: 8px 8px; vector-effect: non-scaling-stroke; stroke-width: 1.5px; }
+  .apid__fill, .apid__step.is-open .apid__fill, .apid__tab .apid__tint { fill: #d9e8ff; }
+  .apid__more { grid-template-rows: 1fr; transition: none; }
+  .apid__more p { opacity: 1; transition: none; }
+  .apid__shot, .apid__shot.is-on, .apid__shot.is-off { opacity: 1; transform: none; transition: none; }
+  .apid__play { pointer-events: auto; }
+}
+/* step 4's film: the wash comes up behind the frame as it opens */
+.vid::backdrop { background: rgba(38, 38, 43, 0.6); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); opacity: 0; transition: opacity 240ms ease; }
+.vid.is-open::backdrop { opacity: 1; }
+.vid__close { opacity: 0; transition: opacity 200ms ease, background-color 160ms ease; }
+.vid.is-open .vid__close { opacity: 1; }
+
+/* --- Connect (connect.js) ------------------------------------------------------- */
+.connect__switch .is-on { color: #26262b; } /* the label under the thumb, at rest and with reduced motion */
+/* the meteors connect.js runs along the dashed lines: a tail of dashes and a rounder head */
+.connect__meteors { fill: none; stroke: #3275ff; stroke-width: 2; }
+.connect__meteors .is-head { stroke: #285df5; stroke-width: 2.5; stroke-linecap: round; }
+
+/* --- Reliability (globe.js) ----------------------------------------------------- */
+/* the spinning globe fades out toward the dashed line: radially from 1024px, down its height below */
+.reliability__globe {
+  -webkit-mask-image: radial-gradient(1081.27px 471.56px at 577px 98.45px, #000 35.76%, transparent 89.92%);
+  mask-image: radial-gradient(1081.27px 471.56px at 577px 98.45px, #000 35.76%, transparent 89.92%);
+}
+@media (max-width: 1023px) {
+  .reliability__globe {
+    -webkit-mask-image: linear-gradient(to bottom, #000 calc(56px + 78px), transparent);
+    mask-image: linear-gradient(to bottom, #000 calc(56px + 78px), transparent);
+  }
+}
+@media (max-width: 767px) {
+  .reliability__globe {
+    -webkit-mask-image: linear-gradient(to bottom, #000 calc(56px + 66px), transparent);
+    mask-image: linear-gradient(to bottom, #000 calc(56px + 66px), transparent);
+  }
+}
+
+/* --- Changelog (changelog-pattern.js) -------------------------------------------- */
+.changelog__pattern svg { overflow: visible; } /* the runtime draws on the half px: its right and bottom edges sit just past the box */
+.changelog__pattern .sq-ring, .changelog__pattern .sq-neck { stroke-linecap: square; } /* as the hero's */
+/* the newest marker pulses: a blue ring grows out from its dot and fades, every 2s */
+.changelog__entry.is-latest::after {
+  content: "";
+  position: absolute;
+  left: var(--dot-x);
+  top: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(50, 117, 255, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  animation: changelog-pulse 2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+@keyframes changelog-pulse {
+  0% { opacity: 0.9; transform: scale(0.3); }
+  100% { opacity: 0; transform: scale(1.8); }
+}
+/* on hover (or focus) the chevron fades in after the name, sliding the last 4px into place */
+.changelog__chev { opacity: 0; transform: translateX(-4px); transition: opacity 160ms ease, transform 220ms cubic-bezier(0.23, 1, 0.32, 1); }
+.changelog__link:focus-visible .changelog__chev { opacity: 1; transform: none; }
+@media (hover: hover) and (pointer: fine) { .changelog__entry:hover .changelog__chev { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .changelog__entry.is-latest::after { animation: none; }
+  .changelog__chev { transform: none; transition: opacity 160ms ease; }
+}
+
+/* --- Dark section (dark.js) ------------------------------------------------------- */
+/* the tabs: the current one white; mouse hover only (a tap would leave it stuck) */
+@media (hover: hover) and (pointer: fine) { .dark__tab:hover { color: #b8b9c1; } }
+.dark__tab.is-active { color: #ffffff; cursor: default; }
+.dark__tab:focus-visible { outline: 2px solid #ffffff; outline-offset: 4px; border-radius: 4px; }
+/* the open visual fades (and comes into focus) over the last, which stays until it's in */
+.dark__visual.is-active { z-index: 1; opacity: 1; filter: none; transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1), filter 300ms cubic-bezier(0.23, 1, 0.32, 1); }
+@media (prefers-reduced-motion: reduce) { .dark__visual.is-active { filter: none; transition: opacity 200ms cubic-bezier(0.23, 1, 0.32, 1); } }
+/* the current tab's features come in one after another (--i); the open one is lifted 8px */
+.dark__set.is-active { visibility: visible; pointer-events: auto; transition: visibility 0s; }
+.dark__item > :not(.dark__ring) { opacity: 0; filter: blur(4px); transform: translateY(6px); transition: opacity 200ms cubic-bezier(0.23, 1, 0.32, 1), filter 200ms cubic-bezier(0.23, 1, 0.32, 1), transform 200ms cubic-bezier(0.23, 1, 0.32, 1); }
+.dark__set.is-active .dark__item > :not(.dark__ring) { opacity: 1; filter: none; transform: none; transition: opacity 500ms cubic-bezier(0.23, 1, 0.32, 1), filter 500ms cubic-bezier(0.23, 1, 0.32, 1), transform 500ms cubic-bezier(0.23, 1, 0.32, 1); transition-delay: calc(180ms + var(--i, 0) * 70ms); }
+@media (hover: hover) and (pointer: fine) { .dark__item:hover { opacity: 0.85; } }
+.dark__item.is-active { opacity: 1; transform: translateY(-8px); }
+.dark__item.is-active .dark__item-title { cursor: default; }
+.dark__item-title:focus-visible { outline: none; }
+.dark__item:has(.dark__item-title:focus-visible) { outline: 2px solid #ffffff; outline-offset: 6px; border-radius: 4px; }
+/* the open feature's ring (dark.js fills it); hidden once someone has picked a feature */
+.dark__item.is-active .dark__ring { opacity: 1; }
+.dark__set:not(.is-active) .dark__item .dark__ring { opacity: 0; }
+.dark__set.is-entering .dark__item .dark__ring { transition-delay: calc(180ms + var(--i, 0) * 70ms); }
+.dark--manual .dark__item.is-active .dark__ring { opacity: 0; }
+.dark__ring .dark__pause { /* two rounded bars, 1.1px wide, 3.2px apart: shown in the open ring while the pointer holds the list (dark.js) */
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1.1;
+  stroke-linecap: round;
+  opacity: 0;
+  transform: scale(0.7);
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: opacity 200ms cubic-bezier(0.23, 1, 0.32, 1), transform 260ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+.dark--holding .dark__item.is-active .dark__pause { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .dark__item > :not(.dark__ring), .dark__set.is-active .dark__item > :not(.dark__ring) { filter: none; transform: none; }
+  .dark__item > :not(.dark__ring) { transition: opacity 150ms cubic-bezier(0.23, 1, 0.32, 1); }
+  .dark__set.is-active .dark__item > :not(.dark__ring) { transition: opacity 200ms cubic-bezier(0.23, 1, 0.32, 1); transition-delay: 0s; }
+}
+/* below 768px: only the current tab's features, each with its visual */
+@media (max-width: 767px) {
+  .dark__set.is-active { display: contents; }
+  .dark__set:not(.is-active), .dark__visual:not(.is-active) { display: none; }
+  .dark__item.is-active { margin-top: 40px; opacity: 1; transform: none; }
+}
+
+/* the card wall (dark-cards.js builds its cards; dark-ident.js's lit card is one of them) */
+.dcards { position: absolute; left: 50%; top: 50%; width: 1216px; height: 600px; margin: -300px 0 0 -608px; pointer-events: none; -webkit-mask-image: radial-gradient(684px 352px at 50% 50%, #000 45.45%, transparent 99%); mask-image: radial-gradient(684px 352px at 50% 50%, #000 45.45%, transparent 99%); }
+@media (min-width: 768px) and (max-width: 1023px) { .dcards { transform: scale(var(--dark-scale, 1)); } }
+@media (max-width: 767px) { .dcards { transform: scale(0.55); } }
+.dcards.is-waiting .dcard, .dcards.is-waiting .dcards__pick { opacity: 0; }
+.dcards.is-resetting * { transition: none !important; }
+.dcards__col { position: absolute; width: 300px; display: flex; flex-direction: column; gap: 40px; }
+.dcard { position: relative; flex: none; height: 199px; border: 0.75px solid #3a3a40; border-radius: 16px; background: rgba(58, 58, 64, 0.3); overflow: hidden; transition: border-color 400ms cubic-bezier(0.23, 1, 0.32, 1); }
+.dident__lit { position: absolute; } /* dark-ident.js's card sits in its scene, not in a column */
+.dcard__face { position: absolute; inset: 0; background: radial-gradient(456.68px 204px at 150px 204px, #444a50 0%, #585f67 50%, #6c757d 100%); box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1), inset 0 -1px 0 rgba(255, 255, 255, 0.1); opacity: 0; transition: opacity 400ms cubic-bezier(0.23, 1, 0.32, 1); }
+.dcard__art { position: absolute; left: -15.5px; top: -9px; width: 331px; height: 233px; -webkit-mask-image: linear-gradient(to bottom, #000 116.4px, transparent 203.4px); mask-image: linear-gradient(to bottom, #000 116.4px, transparent 203.4px); opacity: 0; transition: opacity 250ms cubic-bezier(0.23, 1, 0.32, 1); }
+.dcard__art img, .dcard__art svg { position: absolute; left: -93.66px; top: 33px; width: 517.82px; height: 391.75px; max-width: none; }
+.dcard.is-centre { border-color: #6c757d; }
+.dcards__reel .dcard { z-index: 1; }
+.dcards__glow { position: absolute; left: 0; top: 478px; z-index: 0; width: 300px; height: 199px; border-radius: 16px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2), 0 0 68px 5px rgba(104, 113, 121, 0.3); opacity: 0; transition: opacity 400ms cubic-bezier(0.23, 1, 0.32, 1); pointer-events: none; }
+.dcards.is-picked .dcards__glow, .dcards.is-picked .dcards__pick { opacity: 1; }
+.dcard.is-centre .dcard__face, .dcard.is-centre .dcard__art, .dcard.is-centre .dcard__on { opacity: 1; }
+.dcard__mark { position: absolute; left: 11.25px; top: 11.25px; width: 40px; height: 40px; }
+.dcard__nfc { position: absolute; left: 263.4px; top: 15.54px; width: 16.7px; height: 31.42px; transform: rotate(180deg); }
+.dcard__on { opacity: 0; transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1); }
+.dcard__name { position: absolute; left: 15.25px; top: 158.25px; z-index: 1; margin: 0; font-family: "ABC Diatype", ui-sans-serif, system-ui, sans-serif; font-weight: 500; font-size: 15px; line-height: 24px; white-space: nowrap; color: #ffffff; transition: color 400ms ease; }
+.dcard--dim .dcard__name, .dcard.is-centre:not(.is-named) .dcard__name { color: #92939e; }
+/* the name decodes letter by letter: monospace glyphs, then the letters glowing in */
+.dcard__name span { display: inline-block; text-align: center; }
+.dcard__name .is-glyph { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-weight: 500; font-size: 13px; color: #b8b9c1; text-shadow: 0 0 4px rgba(255, 255, 255, 0.3); }
+.dcard__name .is-jumble { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-weight: 500; font-size: 13px; }
+.dcard__name .is-letter { text-shadow: 0 0 calc(var(--glow, 0) * 5px) rgba(255, 255, 255, calc(var(--glow, 0) * 0.4)); }
+.dcard__dept { position: absolute; left: 15.25px; top: 138.25px; margin: 0; font-family: "ABC Diatype", ui-sans-serif, system-ui, sans-serif; font-weight: 400; font-size: 12px; line-height: 18px; color: #b8b9c1; opacity: 0; transform: translateY(14px); filter: blur(4px); transition: opacity 250ms cubic-bezier(0.23, 1, 0.32, 1), transform 250ms cubic-bezier(0.23, 1, 0.32, 1), filter 250ms cubic-bezier(0.23, 1, 0.32, 1); }
+.dcard.is-named .dcard__dept { opacity: 1; transform: none; filter: none; transition: opacity 450ms cubic-bezier(0.23, 1, 0.32, 1), transform 450ms cubic-bezier(0.23, 1, 0.32, 1), filter 450ms cubic-bezier(0.23, 1, 0.32, 1); }
+@media (prefers-reduced-motion: reduce) { .dcard__dept { transform: none; filter: none; } }
+.dcards__pick { position: absolute; left: 454px; top: 197px; width: 308px; height: 207px; overflow: visible; opacity: 0; filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.45)); transition: opacity 200ms cubic-bezier(0.23, 1, 0.32, 1); }
+.dcards__pick rect { fill: none; stroke: rgba(255, 255, 255, 0.6); stroke-width: 1; }
+
+/* the doors list: the door at the centre lit (dark-doors.js) */
+.ddoors__list li.is-on { opacity: 1; }
+
+/* Seamless integration (dark-sync.js): a resident's window lit, and their chip's state */
+.dsync__win.is-lit i { background: #b8b9c1; box-shadow: 0 0 16px rgba(184, 185, 193, 0.18); }
+.dsync__chip[data-state="soon"] { color: #92939e; }
+.dsync__chip[data-state="moving"], .dsync__chip[data-state="issued"] { background: #285df5; color: #ffffff; }
+/* as a chip turns to "Key issued", a glow travels through the resident's name and on across the
+   chip (dark-sync.js adds a .dsync__shine to each name and a .dsync__sheen to each chip): the
+   shine is a soft-edged window showing a glowing copy of the name */
+.dsync__shine { position: absolute; left: 0; top: -8px; width: 56px; height: 40px; overflow: hidden; opacity: 0; pointer-events: none; -webkit-mask-image: linear-gradient(90deg, transparent, #000 35%, #000 65%, transparent); mask-image: linear-gradient(90deg, transparent, #000 35%, #000 65%, transparent); }
+.dsync__shine > span { position: absolute; left: 0; top: 8px; white-space: nowrap; color: #ffffff; text-shadow: 0 0 4px #fff, 0 0 10px rgba(255, 255, 255, 0.8), 0 0 18px rgba(255, 255, 255, 0.45); }
+.dsync__sheen { position: absolute; top: 0; bottom: 0; left: 0; width: 24px; background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0)); opacity: 0; pointer-events: none; }
+
+/* Upgrade your keys: the key's, the ring's and the phone's light and shade masked to their shapes */
+.dkeys__key { display: none; }
+.dkeys__ring { display: none; }
+.dkeys__phone { display: none; }
+.dkeys__building { display: none; }

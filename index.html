@@ -3,518 +3,459 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="dark">
-  <meta name="theme-color" content="#02070A">
-  <title>3D KHUJAND — Студия 3D-печати и цифрового производства</title>
-  <meta name="description" content="Точная 3D-печать в Худжанде от 2 часов: настольные аксессуары, дизайнерские ночники по фото (литофания), запчасти и детали на заказ. Доставка по Таджикистану.">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#FBFBFC">
+  <title>3D KHUJAND — Студия точной 3D-печати и цифрового производства</title>
+  <meta name="description" content="Точная 3D-печать в Худжанде от 2 часов на промышленных принтерах Bambu Lab X1-Carbon. Ночники по фото (литофания), авто-детали, органайзеры и шестерни. Доставка по Таджикистану.">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <script>document.documentElement.classList.add('hero-intro'); setTimeout(function () { document.documentElement.classList.remove('hero-intro'); }, 3000);</script>
   <script type="module" src="/src/landing.js"></script>
 </head>
-<body>
-  <a class="skip" href="#content">К содержанию</a>
+<body class="bg-ag-gray-50 text-ag-gray-950 antialiased selection:bg-brand-500 selection:text-white">
 
-  <!-- Floating Capsule Navbar (Magic UI Dock Style) -->
-  <header class="floating-nav-wrap">
-    <div class="floating-nav-pill">
-      <a class="wordmark-pill" href="/" aria-label="3D KHUJAND, главная">
-        <span class="logo-symbol" aria-hidden="true">❖</span>
-        <span class="logo-text">3D<b>KHUJAND</b></span>
-        <span class="live-pill-dot" title="Онлайн в Худжанде" aria-hidden="true"></span>
-      </a>
-      <nav class="pill-nav-links" aria-label="Разделы сайта">
-        <a href="#bento-overview">Обзор</a>
-        <a href="#catalog">Каталог</a>
-        <a href="#model-help">Где взять 3D</a>
-        <a href="#materials">Материалы</a>
-        <a href="#photo-order">По фото</a>
-        <a href="#faq">FAQ</a>
-      </nav>
-      <div class="pill-nav-cta">
-        <a class="button button-primary button-pill-sm" href="/calculator.html">
-          <span>3D-Калькулятор</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
+  <!-- Page Scroll Rules (4 Vertical Guide Lines with 90° Turning Curves) -->
+  <div class="page-rules pointer-events-none absolute inset-0 z-[9] overflow-hidden [--rules-dash:calc(var(--hero-total)+285px)] [--rules-end:calc(var(--rules-dash)+480px+var(--features-h))] [--rules-r:8px] [--rules-turn:calc(var(--hero-total)+260px)]" aria-hidden="true">
+    <i class="absolute w-px bg-ag-gray-900/10 before:absolute before:size-[var(--rules-r)] before:border-solid before:border-ag-gray-900/10 before:content-[''] top-0 h-[calc(var(--rules-turn)-var(--rules-r)+1px)] before:top-full before:border-b after:absolute after:top-[calc(100%+var(--rules-r)-1px)] after:h-px after:w-screen after:bg-ag-gray-900/10 after:content-[''] left-[calc(var(--page-left)+var(--rule-x))] before:right-0 before:rounded-br-[var(--rules-r)] before:border-r after:right-[calc(var(--rules-r)-1px)]"></i>
+    <i class="absolute w-px bg-ag-gray-900/10 before:absolute before:size-[var(--rules-r)] before:border-solid before:border-ag-gray-900/10 before:content-[''] top-0 h-[calc(var(--rules-turn)-var(--rules-r)+1px)] before:top-full before:border-b after:absolute after:top-[calc(100%+var(--rules-r)-1px)] after:h-px after:w-screen after:bg-ag-gray-900/10 after:content-[''] left-[calc(var(--page-left)+var(--page-w)-var(--rule-x)-1px)] before:left-0 before:rounded-bl-[var(--rules-r)] before:border-l after:left-[calc(var(--rules-r)-1px)]"></i>
+    <i class="absolute w-px bg-ag-gray-900/10 before:absolute before:size-[var(--rules-r)] before:border-solid before:border-ag-gray-900/10 before:content-[''] top-[calc(var(--rules-dash)+var(--rules-r))] h-[calc(var(--rules-end)-var(--rules-dash)-2*var(--rules-r)+1px)] before:top-[calc(-1*var(--rules-r))] before:border-t after:absolute after:top-full after:h-[var(--rules-r)] after:w-screen after:border-b after:border-solid after:border-ag-gray-900/10 after:content-[''] left-[calc(var(--page-left)+var(--rule-x))] before:left-0 before:rounded-tl-[var(--rules-r)] before:border-l after:right-0 after:rounded-br-[var(--rules-r)] after:border-r"></i>
+    <i class="absolute w-px bg-ag-gray-900/10 before:absolute before:size-[var(--rules-r)] before:border-solid before:border-ag-gray-900/10 before:content-[''] top-[calc(var(--rules-dash)+var(--rules-r))] h-[calc(var(--rules-end)-var(--rules-dash)-2*var(--rules-r)+1px)] before:top-[calc(-1*var(--rules-r))] before:border-t after:absolute after:top-full after:h-[var(--rules-r)] after:w-screen after:border-b after:border-solid after:border-ag-gray-900/10 after:content-[''] left-[calc(var(--page-left)+var(--page-w)-var(--rule-x)-1px)] before:right-0 before:rounded-tr-[var(--rules-r)] before:border-r after:left-0 after:rounded-bl-[var(--rules-r)] after:border-l"></i>
+  </div>
+
+  <!-- Desktop Floating Capsule Navigation (Access Grid Squircle Capsule) -->
+  <header class="hidden md:block z-20 fixed top-4 inset-x-0 mx-auto w-max min-w-[560px]">
+    <nav class="pl-5 pr-2 py-1.5 bg-white/90 shadow-[0_1px_1px_0_rgba(38,38,43,0.10),0_0_0_1px_rgba(38,38,43,0.04),0_2px_12px_-4px_rgba(38,38,43,0.16)] backdrop-blur-sm rounded-[13px] border border-black/[0.04]">
+      <div class="flex justify-between items-center gap-x-10">
+        <div class="flex items-center gap-x-5">
+          <a href="/" class="flex items-center gap-2 group text-decoration-none">
+            <span class="live-dot" title="Студия открыта"></span>
+            <span class="font-display font-medium text-[15px] tracking-[-0.02em] text-ag-gray-950">
+              3D <span class="text-brand-600 font-semibold">KHUJAND</span>
+            </span>
+          </a>
+
+          <div class="flex items-center gap-x-1">
+            <a class="py-1.5 px-3 rounded-[5px] text-ag-gray-800 text-sm/6 tracking-[-0.14px] font-medium whitespace-nowrap hover:bg-ag-gray-100 transition-colors" href="#overview">Обзор</a>
+            <a class="py-1.5 px-3 rounded-[5px] text-ag-gray-800 text-sm/6 tracking-[-0.14px] font-medium whitespace-nowrap hover:bg-ag-gray-100 transition-colors" href="#catalog">Каталог</a>
+            <a class="py-1.5 px-3 rounded-[5px] text-ag-gray-800 text-sm/6 tracking-[-0.14px] font-medium whitespace-nowrap hover:bg-ag-gray-100 transition-colors" href="#materials">Материалы</a>
+            <a class="py-1.5 px-3 rounded-[5px] text-ag-gray-800 text-sm/6 tracking-[-0.14px] font-medium whitespace-nowrap hover:bg-ag-gray-100 transition-colors" href="#photo-order">По фото</a>
+            <a class="py-1.5 px-3 rounded-[5px] text-ag-gray-800 text-sm/6 tracking-[-0.14px] font-medium whitespace-nowrap hover:bg-ag-gray-100 transition-colors" href="#faq">FAQ</a>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-x-2">
+          <a class="py-1.5 px-3 rounded-[5px] text-ag-gray-700 text-sm/6 tracking-[-0.14px] font-medium whitespace-nowrap hover:bg-ag-gray-100 transition-colors" href="https://t.me/khujand3d" target="_blank" rel="noopener">Telegram</a>
+          <a class="button-accent" href="/calculator.html">3D-Калькулятор</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Header -->
+  <header class="md:hidden z-20 fixed top-2 inset-x-2">
+    <div class="p-1 rounded-2xl bg-white/95 backdrop-blur-md shadow-[0_1px_1px_0_rgba(38,38,43,0.10),0_0_0_1px_rgba(38,38,43,0.06),0_2px_12px_-4px_rgba(38,38,43,0.16)] flex items-center justify-between px-4 py-2.5">
+      <div class="flex items-center gap-2">
+        <span class="live-dot"></span>
+        <span class="font-display font-medium text-sm text-ag-gray-950">3D KHUJAND</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <a href="https://t.me/khujand3d" target="_blank" rel="noopener" class="text-xs font-medium text-ag-gray-600 px-2 py-1">Telegram</a>
+        <a href="/calculator.html" class="button-accent text-xs h-7 px-2.5 py-0.5">Калькулятор</a>
       </div>
     </div>
   </header>
 
   <main id="content">
-    <!-- Hero Bento Section -->
-    <section class="section-bento-hero" id="bento-overview" aria-labelledby="bento-hero-title">
-      <!-- Magic UI Grid Pattern Background with Radial Mask -->
-      <div class="magic-grid-pattern" aria-hidden="true"></div>
-      
-      <div class="container" style="position: relative; z-index: 1;">
-        <div class="bento-grid-hero">
+    <!-- Hero Section (Monumental Typography, 3D Phone with tap physics, circular pulse, and circuit pens) -->
+    <section class="hero relative h-[var(--hero-total)] overflow-hidden bg-ag-gray-50 [--device-inset:176px] [--device-w:337px] max-xl:[--device-inset:0px] max-lg:h-auto" id="overview">
+      <div class="hero__inner w-full max-w-[var(--page-max)] ml-[var(--page-left)] mr-auto px-[var(--page-gutter)] relative z-[1] h-full max-lg:h-auto">
+        <div class="pt-[calc(var(--header-h)+var(--section-space))] max-lg:pb-[var(--section-space)]">
+          <h1 class="hero__title max-w-[688px] text-balance font-display text-[64px]/[64px] font-medium tracking-[-0.035em] text-ag-gray-950 max-xl:text-[56px]/[56px] max-md:text-[length:clamp(36px,calc(28px+2.5vw),44px)] max-md:leading-[1.14] max-md:tracking-[-0.03em]">
+            Точная 3D-печать. <br class="max-lg:hidden" />Любая деталь <br class="max-md:hidden" />за 24 часа.
+          </h1>
+          <p class="hero__lede mt-6 max-w-[440px] text-[17px]/[26px] tracking-[-0.015em] text-ag-gray-700 max-md:text-base/6">
+            Студия цифрового производства в Худжанде на промышленных принтерах Bambu Lab X1-Carbon. <strong>Срочное изготовление от 2 часов</strong> с микронной точностью 0.12 мм. <br/><br/>
+            Создаём детали по фото, готовым 3D-моделям или чертежам с доставкой по Худжанду, Душанбе и всему Таджикистану.
+          </p>
+          <div class="hero__actions mt-8 flex flex-wrap gap-4">
+            <a class="button-accent btn" href="/calculator.html">Рассчитать стоимость онлайн</a>
+            <a href="#photo-order" class="btn-secondary btn">Заказ по фото или чертежу</a>
+          </div>
+        </div>
+
+        <!-- 3D Device Container: Phone, Tap Animation, Shimmer Card, and Circuit Grid -->
+        <div class="hero__device absolute bottom-0 right-[calc(var(--page-gutter)+var(--device-inset))] top-[calc(var(--header-h)+124px)] w-[var(--device-w)] lg:max-xl:right-[calc((100%-var(--page-gutter)-429px+var(--rule-x)-var(--device-w))/2)] max-lg:hidden" aria-hidden="true">
+          <div class="hero__fade absolute -left-[var(--shadow-x)] -right-[var(--shadow-x)] -top-[var(--shadow-y)] bottom-0 px-[var(--shadow-x)] pt-[var(--shadow-y)] [--shadow-x:calc(var(--device-w)*60/337)] [--shadow-y:calc(var(--device-w)*52/337)] [perspective:3800px] [perspective-origin:50%_calc(50%+var(--shadow-y)/2)]">
+            <div class="phone relative h-[calc(var(--device-w)*618.25/337)] w-[var(--device-w)] origin-[50%_77%] opacity-0 before:pointer-events-none before:absolute before:left-0 before:top-0 before:h-[calc(var(--device-w)*702/337)] before:w-full before:rounded-[calc(var(--device-w)*60/337)] before:[box-shadow:0_0_calc(var(--device-w)*12/337)_calc(var(--device-w)*-4/337)_rgba(38,38,43,0.12),0_calc(var(--device-w)*6/337)_calc(var(--device-w)*8/337)_rgba(0,0,0,0.06),0_calc(var(--device-w)*6/337)_calc(var(--device-w)*56/337)_rgba(0,0,0,0.05)] before:content-['']">
+              <img class="phone__art pointer-events-none absolute left-[calc(var(--device-w)*-58.75/337)] top-[calc(var(--device-w)*-50.75/337)] h-auto w-[calc(var(--device-w)*455/337)] max-w-none" width="455" height="669" alt="" src="/assets/phone.svg" />
+              <img class="phone__art pointer-events-none absolute left-[calc(var(--device-w)*-58.75/337)] top-[calc(var(--device-w)*-50.75/337)] h-auto w-[calc(var(--device-w)*455/337)] max-w-none phone__hold" width="455" height="669" alt="" src="/assets/phone-hold.svg" />
+              <div class="phone__shimmer after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] after:[box-shadow:inset_0_calc(var(--device-w)*-1/337)_0_rgba(0,0,0,0.4)] after:content-['']">
+                <img class="phone__card absolute inset-0 size-full" width="299" height="199" alt="" src="/assets/phone-card.svg" /><i></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proof Strip (Segmented Grid Row with Linear Gradient 1px Borders) -->
+    <section class="proof relative border-t border-ag-gray-100 bg-white pb-[25px] after:pointer-events-none after:absolute after:bottom-0 after:left-[calc(var(--page-left)+var(--rule-x)+8px)] after:h-px after:w-[calc(var(--page-w)-2*(var(--rule-x)+8px))] after:bg-[repeating-linear-gradient(to_right,rgba(38,38,43,0.1)_0_3px,transparent_3px_7px)] after:content-['']" aria-labelledby="proof-title">
+      <div class="w-full max-w-[var(--page-max)] ml-[var(--page-left)] mr-auto px-[var(--page-gutter)] flex h-[260px] items-start pr-[var(--rule-x)] max-lg:h-auto max-lg:flex-col max-lg:pr-[var(--page-gutter)]">
+        <div class="flex h-full w-[280px] flex-none flex-col justify-between pt-10 max-lg:h-auto max-lg:w-full max-lg:flex-row max-lg:items-center max-lg:gap-6 max-lg:pb-8 md:max-lg:pt-20 max-md:flex-col max-md:items-start max-md:gap-4 max-md:pb-6 max-md:pt-8">
+          <p class="max-w-[220px] text-[15px]/6 font-medium tracking-[-0.0015em] text-ag-gray-600 max-md:max-w-none max-md:text-balance" id="proof-title">
+            <strong class="font-medium text-ag-gray-950">Промышленный парк <br class="max-md:hidden" />и гарантия допусков</strong> для ваших задач.
+          </p>
+          <a class="btn-secondary flex-none gap-2 self-start pl-3 pr-2" href="#materials">
+            Параметры оборудования
+            <svg class="icon-arrow flex-none" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <g class="icon-arrow__head">
+                <path class="icon-arrow__stem" d="M8 8.5H2.5" pathLength="1" stroke="#B8B9C1" stroke-width="1.5" stroke-linecap="round" />
+                <path d="M6.5 11.5L9.5 8.5L6.5 5.5" stroke="#B8B9C1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </g>
+            </svg>
+          </a>
+        </div>
+
+        <ul class="proof__grid relative grid h-full min-w-0 flex-auto auto-rows-[var(--logo-cell)] grid-cols-[repeat(4,round(down,20%,1px))_1fr] before:pointer-events-none before:absolute before:inset-x-0 before:top-1/2 before:h-px before:bg-[repeating-linear-gradient(to_right,rgba(38,38,43,0.1)_0_3px,transparent_3px_7px)] before:content-[''] max-xl:grid-cols-[repeat(3,round(down,25%,1px))_1fr] max-lg:mx-[calc(var(--rule-x)-var(--page-gutter))] max-lg:h-auto max-lg:w-auto max-lg:self-stretch max-lg:after:pointer-events-none max-lg:after:absolute max-lg:after:inset-x-px max-lg:after:top-0 max-lg:after:h-px max-lg:after:bg-[repeating-linear-gradient(to_right,rgba(38,38,43,0.1)_0_3px,transparent_3px_7px)] max-lg:after:content-[''] max-md:grid-cols-2" aria-label="Технические стандарты">
+          <li class="proof__cell relative flex flex-col items-center justify-center p-4 text-center before:absolute before:left-0 before:top-0 before:h-[200%] before:w-px before:bg-[linear-gradient(to_bottom,rgba(38,38,43,0.1)_69%,transparent_100%)] before:content-[''] max-lg:before:hidden">
+            <span class="font-display font-medium text-base text-ag-gray-950">Bambu Lab X1C</span>
+            <span class="text-xs text-ag-gray-500 mt-1">Флагманский 3D-принтер</span>
+          </li>
+          <li class="proof__cell relative flex flex-col items-center justify-center p-4 text-center before:absolute before:left-0 before:top-0 before:h-[200%] before:w-px before:bg-[linear-gradient(to_bottom,rgba(38,38,43,0.1)_69%,transparent_100%)] before:content-['']">
+            <span class="font-display font-medium text-base text-ag-gray-950">0.12 – 0.28 мм</span>
+            <span class="text-xs text-ag-gray-500 mt-1">Точность высоты слоя</span>
+          </li>
+          <li class="proof__cell relative flex flex-col items-center justify-center p-4 text-center before:absolute before:left-0 before:top-0 before:h-[200%] before:w-px before:bg-[linear-gradient(to_bottom,rgba(38,38,43,0.1)_69%,transparent_100%)] before:content-[''] max-md:before:hidden">
+            <span class="font-display font-medium text-base text-ag-gray-950">256 × 256 × 256</span>
+            <span class="text-xs text-ag-gray-500 mt-1">Максимальный объём (мм)</span>
+          </li>
+          <li class="proof__cell relative flex flex-col items-center justify-center p-4 text-center before:absolute before:left-0 before:top-0 before:h-[200%] before:w-px before:bg-[linear-gradient(to_bottom,rgba(38,38,43,0.1)_69%,transparent_100%)] before:content-[''] max-md:before:hidden">
+            <span class="font-display font-medium text-base text-ag-gray-950">от 2 часов</span>
+            <span class="text-xs text-ag-gray-500 mt-1">Срочная печать в день заказа</span>
+          </li>
+          <li class="proof__cell relative flex flex-col items-center justify-center p-4 text-center before:absolute before:left-0 before:top-0 before:h-[200%] before:w-px before:bg-[linear-gradient(to_bottom,rgba(38,38,43,0.1)_69%,transparent_100%)] before:content-[''] max-xl:before:hidden max-md:hidden">
+            <span class="font-display font-medium text-base text-ag-gray-950">Bambu AMS 4x</span>
+            <span class="text-xs text-ag-gray-500 mt-1">Четырёхцветная печать</span>
+          </li>
+          <li class="proof__cell relative flex flex-col items-center justify-center p-4 text-center max-md:hidden">
+            <span class="font-display font-medium text-base text-ag-gray-950">PLA · PETG · TPU</span>
+            <span class="text-xs text-ag-gray-500 mt-1">Оригинальные полимеры</span>
+          </li>
+          <li class="proof__cell relative flex flex-col items-center justify-center p-4 text-center max-md:hidden">
+            <span class="font-display font-medium text-base text-ag-gray-950">Доставка по РТ</span>
+            <span class="text-xs text-ag-gray-500 mt-1">Худжанд, Душанбе, Бохтар</span>
+          </li>
+          <li class="proof__cell relative flex flex-col items-center justify-center p-4 text-center max-md:hidden">
+            <span class="font-display font-medium text-base text-ag-gray-950">100% Повторимость</span>
+            <span class="text-xs text-ag-gray-500 mt-1">Лазерная калибровка стола</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Statement & 3 Feature Columns (Access Grid Statement Section) -->
+    <section class="statement relative min-h-[480px] bg-white after:pointer-events-none after:absolute after:bottom-0 after:left-[calc(var(--page-left)+var(--rule-x)+8px)] after:h-px after:w-[calc(var(--page-w)-2*(var(--rule-x)+8px))] after:bg-[repeating-linear-gradient(to_right,rgba(38,38,43,0.1)_0_3px,transparent_3px_7px)] after:content-[''] md:max-lg:pb-[var(--section-space)] max-lg:after:hidden max-md:overflow-x-clip" aria-labelledby="statement-title" id="catalog">
+      <div class="w-full max-w-[var(--page-max)] ml-[var(--page-left)] mr-auto px-[var(--page-gutter)]">
+        <div class="relative py-[var(--section-space)] md:max-lg:mx-auto md:max-lg:max-w-[640px] max-md:pb-[calc(var(--section-space)-32px)]">
+          <h2 class="mx-auto w-[820px] max-w-full text-balance text-center font-display text-[36px]/[40px] tracking-[-0.9px] text-ag-gray-500 md:max-lg:w-auto md:max-lg:text-pretty md:max-lg:text-left md:max-lg:text-[30px]/[36px] md:max-lg:tracking-[-0.75px] max-md:text-left max-md:text-[24px]/[30px] max-md:tracking-[-0.48px]" id="statement-title">
+            <span class="font-medium text-[#0060ff]">Мы взяли на себя всё сложное 3D-производство</span>, настройку слайсера, выбор температур и калибровку принтеров, <span class="font-medium text-[#0060ff]">чтобы вы просто получали готовую деталь.</span>
+          </h2>
+        </div>
+
+        <ul class="features relative grid grid-cols-[repeat(2,round(down,33.333%,1px))_1fr] mx-[calc(var(--rule-x)-var(--page-gutter))] lg:max-[1439px]:[--feature-pad:clamp(24px,calc(15vw-168px),48px)] md:max-lg:mx-auto md:max-lg:max-w-[640px] md:max-lg:grid-cols-[minmax(0,1fr)] md:max-lg:gap-y-16 max-md:mx-0 max-md:grid-cols-1">
           
-          <!-- Bento 1: Hero Lead Card (span 8) -->
-          <article class="bento-card bento-card-main">
-            <div class="bento-card-glow" aria-hidden="true"></div>
-            <div class="card-crosshair ch-tl" aria-hidden="true">+</div>
-            <div class="card-crosshair ch-tr" aria-hidden="true">+</div>
-            <div class="card-crosshair ch-bl" aria-hidden="true">+</div>
-            <div class="card-crosshair ch-br" aria-hidden="true">+</div>
-            <div class="badge-pill">
-              <span class="pulse-dot" aria-hidden="true"></span>
-              Студия 3D-печати · Худжанд · Доставка по Таджикистану
+          <!-- Column 1: Каталог решений с живым поиском -->
+          <li class="relative h-[var(--features-h)] overflow-hidden px-12 pt-3 lg:max-[1439px]:px-[var(--feature-pad)] max-lg:h-auto max-lg:overflow-visible md:max-lg:p-0 max-md:px-0 max-md:pb-10 max-md:pt-8">
+            <div class="size-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-brand-600 mb-6">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
             </div>
-            <h1 id="bento-hero-title">Точная 3D-печать и производство на заказ</h1>
-            <p class="lead">Печатаем от 2 часов на промышленных принтерах Bambu Lab. Создаём подарки с подсветкой, настольные органайзеры, авто-крепления и шестерни по фото.</p>
-            
-            <div class="hero-actions-bento">
-              <a class="button button-primary button-lg" href="/calculator.html">
-                <span>Рассчитать 3D-модель онлайн →</span>
-              </a>
-              <a class="button button-ghost button-lg" href="https://t.me/khujand3d" target="_blank" rel="noopener">
-                <span>Написать в Telegram @khujand3d</span>
-              </a>
+            <h3 class="font-display text-[15px]/6 font-medium text-ag-gray-950">Каталог готовых решений</h3>
+            <p class="feature__copy mt-2 max-w-[352px] text-sm/6 tracking-[-0.14px] text-ag-gray-700">
+              Популярные категории и готовые детали с проверенными допусками.
+            </p>
+
+            <!-- Search input with Access Grid styling -->
+            <div class="mt-6 relative flex items-center gap-2 px-3 py-2 rounded-lg bg-ag-gray-100/80 border border-ag-gray-200 focus-within:border-brand-600 focus-within:bg-white transition-all">
+              <svg class="size-4 text-ag-gray-400 flex-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+              </svg>
+              <input id="catalog-search" class="readers__input w-full bg-transparent border-0 p-0 text-sm text-ag-gray-900 outline-none placeholder:text-ag-gray-400" type="text" placeholder="Поиск деталей и изделий..." autocomplete="off" />
             </div>
 
-            <div class="hero-specs-bar">
-              <div class="spec-item">
-                <span class="spec-label">Точность слоя</span>
-                <span class="spec-value">0.12 – 0.28 мм</span>
-              </div>
-              <div class="spec-divider" aria-hidden="true"></div>
-              <div class="spec-item">
-                <span class="spec-label">Рабочий стол</span>
-                <span class="spec-value">256 × 256 × 256 мм</span>
-              </div>
-              <div class="spec-divider" aria-hidden="true"></div>
-              <div class="spec-item">
-                <span class="spec-label">Срок печати</span>
-                <span class="spec-value">от 2 часов</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Bento 2: 3D Calculator Trigger Card (span 4) -->
-          <article class="bento-card bento-card-calc">
-            <div class="card-crosshair ch-tl" aria-hidden="true">+</div>
-            <div class="card-crosshair ch-tr" aria-hidden="true">+</div>
-            <div class="bento-header">
-              <span class="section-tag section-tag-accent">Интерактивный стол</span>
-              <span class="badge-mono">256 × 256 × 256</span>
-            </div>
-            <h3>Онлайн 3D-Калькулятор</h3>
-            <p class="hint">Перетащите модель STL, 3MF или OBJ. Калькулятор за секунду посчитает точный вес, время печати и цену в сомони.</p>
-            
-            <div class="calc-drop-simulator" id="calc-preview-drop">
-              <div class="drop-circle-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
-              </div>
-              <span class="drop-text">Перетащите 3D-файл сюда</span>
-              <span class="drop-subtext">STL, 3MF, OBJ до 50 МБ</span>
-            </div>
-
-            <a class="button button-primary button-wide" href="/calculator.html" style="margin-top: auto;">
-              Открыть 3D-стол принтера →
-            </a>
-          </article>
-
-          <!-- Bento 3: Interactive Lithophane Lamp with Magic UI Ripple (span 4) -->
-          <article class="bento-card bento-card-litho" id="litho-card">
-            <div class="bento-header">
-              <span class="section-tag section-tag-accent">Хит подарков</span>
-              <button type="button" class="switch-btn" id="litho-toggle" aria-pressed="false">
-                <span class="switch-slider" aria-hidden="true"></span>
-                <span id="litho-btn-text">Включить свет</span>
-              </button>
-            </div>
-            <h3>Литофания: Ночник по фото</h3>
-            <p class="hint">Днём это стильный белый барельеф. При включении подсветки свет проявляет чёткую фотографию вашей семьи или близких.</p>
-            
-            <div class="litho-lamp-stage" id="lamp-stage" title="Кликните, чтобы включить/выключить свет">
-              <!-- Magic UI Ripple Effect -->
-              <div class="magic-ripple" id="lamp-ripple" aria-hidden="true">
-                <span class="ripple-ring"></span>
-                <span class="ripple-ring"></span>
-                <span class="ripple-ring"></span>
-              </div>
-              <div class="lamp-glow-effect" aria-hidden="true"></div>
-              <div class="lamp-frame">
-                <div class="lamp-photo-layer" aria-hidden="true"></div>
-                <div class="lamp-relief-layer">
-                  <span class="lamp-label">Семейный портрет</span>
-                  <span class="lamp-sub">(кликните для включения)</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="bento-footer-action">
-              <a class="button button-ghost button-sm button-wide" href="#photo-order">Заказать ночник по фото ↓</a>
-            </div>
-          </article>
-
-          <!-- Bento 4: Interactive Material Lab (span 4) -->
-          <article class="bento-card bento-card-materials">
-            <div class="bento-header">
-              <span class="section-tag">Палитра полимеров</span>
-              <span class="badge-mono" id="active-mat-spec">PLA · 55 °C</span>
-            </div>
-            <h3>4 проверенных материала</h3>
-            
-            <div class="mat-tabs" role="tablist" aria-label="Выбор полимера">
-              <button type="button" class="mat-tab active" data-mat="PLA" role="tab" aria-selected="true">PLA</button>
-              <button type="button" class="mat-tab" data-mat="PETG" role="tab" aria-selected="false">PETG</button>
-              <button type="button" class="mat-tab" data-mat="TPU" role="tab" aria-selected="false">TPU</button>
-              <button type="button" class="mat-tab" data-mat="SILK" role="tab" aria-selected="false">Silk Gold</button>
-            </div>
-
-            <div class="mat-desc-box" id="mat-desc-box">
-              <p id="mat-info-text"><b>PLA:</b> Точный и жесткий пластик для домашнего декора, органайзеров и точных макетов.</p>
-              <div class="mat-colors-preview" id="mat-colors-preview">
-                <span class="color-dot" style="background:#2B2F36;" title="Графит"></span>
-                <span class="color-dot" style="background:#E9ECEF;" title="Белый"></span>
-                <span class="color-dot" style="background:#FC7343;" title="Оранжевый"></span>
-                <span class="color-dot" style="background:#0287DE;" title="Синий"></span>
-              </div>
-            </div>
-
-            <div class="bento-footer-action">
-              <a class="external-link" href="#materials">Подробная таблица свойств →</a>
-            </div>
-          </article>
-
-          <!-- Bento 5: Studio Status & Speed (span 4) -->
-          <article class="bento-card bento-card-status">
-            <div class="bento-header">
-              <span class="section-tag">Мастерская в Худжанде</span>
-              <span class="status-live-badge"><span class="live-blink"></span>Приём заказов</span>
-            </div>
-            <h3>Скорость и сервис</h3>
-            <ul class="studio-status-list">
-              <li>
-                <span class="status-icon">⚡</span>
-                <div>
-                  <b>Печать от 2 часов</b>
-                  <p>Срочные детали выдаём в день обращения.</p>
-                </div>
+            <!-- Filterable Solutions List -->
+            <ul id="catalog-list" class="mt-4 space-y-1.5 overflow-y-auto max-h-[300px] pr-1">
+              <li class="readers__line flex items-center justify-between p-2 rounded-md hover:bg-ag-gray-100 transition-colors text-sm text-ag-gray-800" data-name="шестерни втулки редуктор зубчатые">
+                <span class="font-medium text-ag-gray-900">Шестерни и втулки редукторов</span>
+                <span class="text-xs bg-ag-gray-200/70 text-ag-gray-700 px-2 py-0.5 rounded">PETG / Nylon</span>
               </li>
-              <li>
-                <span class="status-icon">📦</span>
-                <div>
-                  <b>Доставка по Таджикистану</b>
-                  <p>Худжанд, Душанбе, Бохтар и все регионы.</p>
-                </div>
+              <li class="readers__line flex items-center justify-between p-2 rounded-md hover:bg-ag-gray-100 transition-colors text-sm text-ag-gray-800" data-name="литофания ночник фото подарок свет">
+                <span class="font-medium text-ag-gray-900">Литофания: ночник с фото</span>
+                <span class="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded">PLA White</span>
               </li>
-              <li>
-                <span class="status-icon">💬</span>
-                <div>
-                  <b>Быстрый ответ мастера</b>
-                  <p>Отвечаем и согласуем деталь за 10–15 минут.</p>
-                </div>
+              <li class="readers__line flex items-center justify-between p-2 rounded-md hover:bg-ag-gray-100 transition-colors text-sm text-ag-gray-800" data-name="авто автокрепления клипсы держатели заглушки">
+                <span class="font-medium text-ag-gray-900">Авто-крепления и клипсы</span>
+                <span class="text-xs bg-ag-gray-200/70 text-ag-gray-700 px-2 py-0.5 rounded">Термо-PETG</span>
+              </li>
+              <li class="readers__line flex items-center justify-between p-2 rounded-md hover:bg-ag-gray-100 transition-colors text-sm text-ag-gray-800" data-name="органайзеры подставки холдеры кабель стол">
+                <span class="font-medium text-ag-gray-900">Настольные органайзеры и холдеры</span>
+                <span class="text-xs bg-ag-gray-200/70 text-ag-gray-700 px-2 py-0.5 rounded">PLA Tough</span>
+              </li>
+              <li class="readers__line flex items-center justify-between p-2 rounded-md hover:bg-ag-gray-100 transition-colors text-sm text-ag-gray-800" data-name="макеты архитектура диорамы фигурки">
+                <span class="font-medium text-ag-gray-900">Архитектурные макеты и диорамы</span>
+                <span class="text-xs bg-ag-gray-200/70 text-ag-gray-700 px-2 py-0.5 rounded">0.12 мм</span>
+              </li>
+              <li class="readers__line flex items-center justify-between p-2 rounded-md hover:bg-ag-gray-100 transition-colors text-sm text-ag-gray-800" data-name="бамперы ножки приборов амортизаторы резина гибкий">
+                <span class="font-medium text-ag-gray-900">Защитные бамперы и ножки</span>
+                <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">TPU Flex</span>
               </li>
             </ul>
+          </li>
 
-            <div class="bento-footer-action">
-              <a class="button button-ghost button-sm button-wide" href="https://t.me/khujand3d" target="_blank" rel="noopener">
-                Чат с мастером в Telegram →
+          <!-- Column 2: Лаборатория полимеров -->
+          <li class="relative h-[var(--features-h)] overflow-hidden px-12 pt-3 lg:max-[1439px]:px-[var(--feature-pad)] max-lg:h-auto max-lg:overflow-visible md:max-lg:p-0 max-md:px-0 max-md:pb-10 max-md:pt-8 border-l border-ag-gray-100 max-lg:border-l-0" id="materials">
+            <div class="size-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-brand-600 mb-6">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+              </svg>
+            </div>
+            <h3 class="font-display text-[15px]/6 font-medium text-ag-gray-950">Лаборатория полимеров</h3>
+            <p class="feature__copy mt-2 max-w-[352px] text-sm/6 tracking-[-0.14px] text-ag-gray-700">
+              Выбирайте пластик под температурные нагрузки и механические свойства.
+            </p>
+
+            <!-- Material Tabs -->
+            <div class="mt-6 flex flex-wrap gap-2">
+              <button class="mat-tab mat-pill active" data-mat="PLA">PLA</button>
+              <button class="mat-tab mat-pill" data-mat="PETG">PETG</button>
+              <button class="mat-tab mat-pill" data-mat="TPU">TPU (Flex)</button>
+              <button class="mat-tab mat-pill" data-mat="Silk">Silk Gold</button>
+            </div>
+
+            <!-- Material Card Info -->
+            <div class="mt-6 p-4 rounded-xl bg-ag-gray-50 border border-ag-gray-200">
+              <div class="flex justify-between items-center mb-2">
+                <span id="active-mat-title" class="font-display font-medium text-sm text-ag-gray-950">PLA</span>
+                <span id="active-mat-temp" class="text-xs font-mono text-brand-600 font-semibold bg-blue-50 px-2 py-0.5 rounded">до 55 °C</span>
+              </div>
+              <p id="active-mat-desc" class="text-xs/5 text-ag-gray-600">
+                Жёсткий и экологичный полимер. Идеален для органайзеров, подставок, ночников-литофаний и точных макетов.
+              </p>
+              <div class="mt-4 pt-3 border-t border-ag-gray-200/80 flex items-center justify-between">
+                <span class="text-xs text-ag-gray-500">Доступные цвета:</span>
+                <div id="active-mat-colors" class="flex gap-1.5">
+                  <span class="color-dot" style="background:#26262B;" title="Чёрный"></span>
+                  <span class="color-dot" style="background:#FFFFFF;" title="Белый"></span>
+                  <span class="color-dot" style="background:#3275FF;" title="Синий"></span>
+                  <span class="color-dot" style="background:#FC7343;" title="Оранжевый"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6">
+              <a href="/calculator.html" class="inline-flex items-center text-sm font-medium text-brand-600 hover:text-brand-700">
+                Открыть формулу плотности в калькуляторе →
               </a>
             </div>
-          </article>
+          </li>
 
-        </div>
+          <!-- Column 3: Прямая связь и консультация инженера -->
+          <li class="relative h-[var(--features-h)] overflow-hidden px-12 pt-3 lg:max-[1439px]:px-[var(--feature-pad)] max-lg:h-auto max-lg:overflow-visible md:max-lg:p-0 max-md:px-0 max-md:pb-10 max-md:pt-8 border-l border-ag-gray-100 max-lg:border-l-0">
+            <div class="size-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-brand-600 mb-6">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+              </svg>
+            </div>
+            <h3 class="font-display text-[15px]/6 font-medium text-ag-gray-950">Прямой чат с мастером</h3>
+            <p class="feature__copy mt-2 max-w-[352px] text-sm/6 tracking-[-0.14px] text-ag-gray-700">
+              Отвечаем за 10–15 минут. Проверим вашу модель, толщину стенок и свесы перед печатью.
+            </p>
+
+            <div class="mt-6 space-y-3">
+              <div class="chat-bubble text-ag-gray-700">
+                «Здравствуйте! У меня сломалась шестерня в блендере, остался только обломок. Сможете напечатать?»
+              </div>
+              <div class="chat-bubble chat-bubble-reply">
+                «Добрый день! Да, пришлите фото с приложенной линейкой или передайте обломок в мастерскую в Худжанде — снимем размеры и изготовим из прочного PETG за 3 часа.»
+              </div>
+            </div>
+
+            <div class="mt-6">
+              <a href="https://t.me/khujand3d" target="_blank" rel="noopener" class="button-accent w-full text-center">
+                Написать мастеру в Telegram
+              </a>
+            </div>
+          </li>
+        </ul>
       </div>
     </section>
 
-    <!-- Segmented Proof Grid Bar (Access Grid Style) -->
-    <section class="section-segmented-bar" aria-label="Параметры и гарантии">
-      <div class="container">
-        <div class="segmented-grid-strip">
-          <div class="seg-item seg-item-lead">
-            <span class="seg-label">ПРОИЗВОДСТВО В ХУДЖАНДЕ</span>
-            <span class="seg-title">Bambu Lab X1-Carbon</span>
-          </div>
-          <div class="seg-item">
-            <span class="seg-num">0.12 мм</span>
-            <span class="seg-sub">Точность слоя</span>
-          </div>
-          <div class="seg-item">
-            <span class="seg-num">256³ мм</span>
-            <span class="seg-sub">Рабочий стол</span>
-          </div>
-          <div class="seg-item">
-            <span class="seg-num">от 2 часов</span>
-            <span class="seg-sub">Экспресс-выдача</span>
-          </div>
-          <div class="seg-item">
-            <span class="seg-num">4 полимера</span>
-            <span class="seg-sub">PLA · PETG · TPU · Silk</span>
-          </div>
-          <div class="seg-item">
-            <span class="seg-num">100%</span>
-            <span class="seg-sub">Гарантия качества</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Catalog Section with Interactive Filter Bar -->
-    <section class="section" id="catalog" aria-labelledby="catalog-title">
-      <div class="container">
-        <div class="section-head">
-          <span class="section-tag">Каталог решений</span>
-          <h2 id="catalog-title">Что мы создаём в студии 3D KHUJAND</h2>
-          <p class="lead">От единичных авторских подарков до функциональных деталей для техники и авто.</p>
-        </div>
-
-        <!-- Interactive Search & Chips Filter Bar (Access Grid Style) -->
-        <div class="catalog-filter-bar">
-          <div class="catalog-search-wrap">
-            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-            <input type="text" id="catalog-search-input" placeholder="Быстрый поиск деталей: шестерня, ночник, подставка, клипса..." aria-label="Поиск по каталогу">
-            <button type="button" id="catalog-search-clear" class="search-clear-btn" aria-label="Очистить поиск" hidden>×</button>
-          </div>
-          <div class="catalog-tags-strip" role="group" aria-label="Фильтр по категориям">
-            <button type="button" class="tag-chip active" data-filter="all">Все решения</button>
-            <button type="button" class="tag-chip" data-filter="desk">Для сетапов</button>
-            <button type="button" class="tag-chip" data-filter="litho">Ночники и подарки</button>
-            <button type="button" class="tag-chip" data-filter="repair">Запчасти и ремонт</button>
-            <button type="button" class="tag-chip" data-filter="art">Арт и сувениры</button>
-          </div>
-        </div>
-
-        <div class="feature-grid" id="catalog-grid">
-          <article class="feature-card" data-category="desk" data-keywords="подставка телефон смартфон планшет наушники органайзер кабель сетап nurwink стол подставки">
-            <div class="card-crosshair ch-tl" aria-hidden="true">+</div>
-            <div class="card-crosshair ch-tr" aria-hidden="true">+</div>
-            <div class="feature-icon" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-            </div>
-            <h3>Для рабочего стола и сетапов</h3>
-            <p>Подставки под смартфоны и планшеты, подвесы для наушников, кабель-менеджмент, док-станции и модульные органайзеры.</p>
-            <span class="feature-meta">Идеальная кросс-пара для NURWINK</span>
-          </article>
-
-          <article class="feature-card highlight-card" data-category="litho" data-keywords="ночник лампа литофания подарок фото портрет светильник ваза кашпо семья декор подсветка">
-            <div class="card-crosshair ch-tl" aria-hidden="true">+</div>
-            <div class="card-crosshair ch-tr" aria-hidden="true">+</div>
-            <div class="feature-icon feature-icon-accent" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-            </div>
-            <div class="card-badge">Хит подарков</div>
-            <h3>Световой декор и Литофания</h3>
-            <p>Светильники-ночники по вашим семейным фотографиям: при включении лампы рельеф оживает в чёткий портрет. Геометрические вазы и кашпо.</p>
-            <span class="feature-meta">Эффектный подарок на день рождения и свадьбу</span>
-          </article>
-
-          <article class="feature-card" data-category="repair" data-keywords="запчасть ремонт шестерня авто крепление мясорубка блендер клипса заглушка petg ручка адаптер кухонный комбайн автомобиль">
-            <div class="card-crosshair ch-tl" aria-hidden="true">+</div>
-            <div class="card-crosshair ch-tr" aria-hidden="true">+</div>
-            <div class="feature-icon" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-            </div>
-            <h3>Запчасти и крепления (Ремонт)</h3>
-            <p>Сломалась пластиковая деталь от авто, бытовой техники или инструмента? Восстанавливаем по сломанному образцу или чертежу из прочного PETG.</p>
-            <span class="feature-meta">Шестерни, клипсы, заглушки, ручки, адаптеры</span>
-          </article>
-
-          <article class="feature-card" data-category="art" data-keywords="арт сувенир дракон брелок макет золото серебро silk pla логотип статуэтка фигурка интерьер">
-            <div class="card-crosshair ch-tl" aria-hidden="true">+</div>
-            <div class="card-crosshair ch-tr" aria-hidden="true">+</div>
-            <div class="feature-icon" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-            </div>
-            <h3>Арт, сувениры и макеты</h3>
-            <p>Шарнирные подвижные драконы-антистресс, объёмные логотипы компаний, архитектурные макеты зданий и кастомные брелоки с именами.</p>
-            <span class="feature-meta">Шёлковый пластик Silk PLA под золото и серебро</span>
-          </article>
-        </div>
-        <p id="catalog-no-results" class="catalog-empty-msg" hidden>Ничего не найдено по вашему запросу. Напишите мастеру в Telegram — напечатаем любую модель!</p>
-      </div>
-    </section>
-
-    <!-- Model Helper Section (Crucial user problem solver) -->
-    <section class="section section-highlight" id="model-help" aria-labelledby="model-help-title">
-      <div class="container">
-        <div class="section-head">
-          <span class="section-tag section-tag-accent">Инструкция для каждого</span>
-          <h2 id="model-help-title">У вас нет 3D-модели? 4 простых способа</h2>
-          <p class="lead">Не нужно учиться моделированию в сложных программах. Выберите удобный для вас вариант:</p>
-        </div>
-
-        <div class="helpers-grid">
-          <div class="helper-card">
-            <span class="helper-step">Способ 1</span>
-            <h3>Скачать готовую модель бесплатно</h3>
-            <p>Зайдите в крупнейшие мировые базы моделей. Вбейте в поиск нужное слово (например: <i>phone stand</i>, <i>keychain</i>, <i>vase</i>), нажмите <b>Скачать STL</b> и загрузите к нам в калькулятор.</p>
-            <div class="helper-links">
-              <a class="external-link" href="https://makerworld.com/ru" target="_blank" rel="noopener">MakerWorld (на русском) ↗</a>
-              <a class="external-link" href="https://www.printables.com" target="_blank" rel="noopener">Printables ↗</a>
-              <a class="external-link" href="https://www.thingiverse.com" target="_blank" rel="noopener">Thingiverse ↗</a>
+    <!-- Photo Order Section (Clean Form with Instant Telegram Generation) -->
+    <section id="photo-order" class="section-light">
+      <div class="w-full max-w-[var(--page-max)] ml-[var(--page-left)] mr-auto px-[var(--page-gutter)]">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          <div class="lg:col-span-5">
+            <span class="text-xs font-mono uppercase tracking-wider text-brand-600 font-semibold">Быстрый заказ</span>
+            <h2 class="section-light-title mt-2">Печать по фото, чертежу или образцу</h2>
+            <p class="section-light-desc">
+              Нет готового 3D-файла? Сфотографируйте сломанную деталь с приложенной линейкой или опишите задумку — инженер студии построит точную 3D-модель и рассчитает стоимость.
+            </p>
+            <div class="mt-8 space-y-4 text-sm text-ag-gray-700">
+              <div class="flex items-start gap-3">
+                <span class="size-6 rounded-full bg-blue-50 text-brand-600 font-semibold flex items-center justify-center flex-none text-xs">1</span>
+                <span>Заполните форму или прикрепите фото изделия</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="size-6 rounded-full bg-blue-50 text-brand-600 font-semibold flex items-center justify-center flex-none text-xs">2</span>
+                <span>Мы согласуем размеры и материал в Telegram за 10 минут</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="size-6 rounded-full bg-blue-50 text-brand-600 font-semibold flex items-center justify-center flex-none text-xs">3</span>
+                <span>Заберите заказ в Худжанде или получите доставкой по РТ</span>
+              </div>
             </div>
           </div>
 
-          <div class="helper-card">
-            <span class="helper-step">Способ 2</span>
-            <h3>Собрать модель за 3 минуты в Tinkercad</h3>
-            <p>Бесплатный детский конструктор от Autodesk прямо в браузере (работает даже с планшета). Собирайте модель из кубиков или напишите объёмный текст со своим именем, нажмите «Экспорт STL».</p>
-            <div class="helper-links">
-              <a class="external-link" href="https://www.tinkercad.com" target="_blank" rel="noopener">Открыть Tinkercad ↗</a>
-            </div>
-          </div>
+          <div class="lg:col-span-7">
+            <div class="order-card">
+              <form id="landing-order-form" class="space-y-5">
+                <div>
+                  <label for="order-desc" class="block text-sm font-medium text-ag-gray-900 mb-1">Что требуется напечатать?</label>
+                  <textarea id="order-desc" rows="3" class="form-textarea" placeholder="Например: шестерня привода d=45 мм, ночник с фото семьи, авто-крепление для телефона..." required></textarea>
+                </div>
 
-          <div class="helper-card">
-            <span class="helper-step">Способ 3</span>
-            <h3>Сделать подарок по фото (Литофания)</h3>
-            <p>Загрузите любое семейное фото на сайт генератора. За 5 секунд фото превращается в объёмную 3D-панель для ночника, которая светится портретом.</p>
-            <div class="helper-links">
-              <a class="external-link" href="https://itslitho.com" target="_blank" rel="noopener">Генератор ItsLitho ↗</a>
-            </div>
-          </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label for="order-material" class="block text-sm font-medium text-ag-gray-900 mb-1">Желаемый материал</label>
+                    <select id="order-material" class="form-select">
+                      <option value="PLA">PLA — Декор, макеты, органайзеры</option>
+                      <option value="PETG" selected>PETG — Прочный конструкционный</option>
+                      <option value="TPU">TPU — Гибкий резиноподобный</option>
+                      <option value="Silk">Silk Gold — Шелковистый блеск</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="order-quantity" class="block text-sm font-medium text-ag-gray-900 mb-1">Количество (шт)</label>
+                    <input type="number" id="order-quantity" class="form-input" min="1" value="1" required />
+                  </div>
+                </div>
 
-          <div class="helper-card helper-card-active">
-            <span class="helper-step helper-step-accent">Способ 4</span>
-            <h3>Мы сделаем всё сами по вашему фото!</h3>
-            <p>Нет времени разбираться в сайтах? Просто сфотографируйте нужную вещь или сломанную деталь с линейкой и отправьте нашему мастеру в Telegram.</p>
-            <div class="helper-links">
-              <a class="button button-primary button-sm" href="https://t.me/khujand3d" target="_blank" rel="noopener">Отправить фото в Telegram</a>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label for="order-phone" class="block text-sm font-medium text-ag-gray-900 mb-1">Номер телефона / Telegram</label>
+                    <input type="tel" id="order-phone" class="form-input" placeholder="+992 92 000 0000" required />
+                  </div>
+                  <div>
+                    <label for="order-city" class="block text-sm font-medium text-ag-gray-900 mb-1">Город получения</label>
+                    <select id="order-city" class="form-select">
+                      <option value="Худжанд" selected>Худжанд (Самовывоз / Курьер)</option>
+                      <option value="Душанбе">Душанбе (Экспресс-доставка)</option>
+                      <option value="Бохтар">Бохтар / Другие регионы РТ</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="pt-2">
+                  <button type="submit" class="button-accent w-full justify-center text-base h-11">
+                    Сформировать заказ и открыть в Telegram →
+                  </button>
+                  <p class="text-xs text-ag-gray-500 text-center mt-2">
+                    После нажатия откроется диалог с мастером студии с уже заполненными параметрами
+                  </p>
+                </div>
+              </form>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Materials Section -->
-    <section class="section" id="materials" aria-labelledby="materials-title">
-      <div class="container">
-        <div class="section-head">
-          <span class="section-tag">Палитра и материалы</span>
-          <h2 id="materials-title">Качественные полимеры для любых задач</h2>
-          <p class="lead">Используем сертифицированные филаменты. Подберём оптимальный материал под вашу задачу.</p>
-        </div>
+    <!-- FAQ Accordion Section -->
+    <section id="faq" class="section-light border-t border-ag-gray-200">
+      <div class="w-full max-w-[var(--page-max)] ml-[var(--page-left)] mr-auto px-[var(--page-gutter)]">
+        <div class="max-w-3xl mx-auto">
+          <div class="text-center mb-12">
+            <span class="text-xs font-mono uppercase tracking-wider text-brand-600 font-semibold">Вопросы и ответы</span>
+            <h2 class="section-light-title mt-2">Частые вопросы о 3D-печати</h2>
+          </div>
 
-        <div class="table-wrap">
-          <table class="materials">
-            <thead>
-              <tr>
-                <th scope="col">Материал</th>
-                <th scope="col">Назначение</th>
-                <th scope="col">Ключевые свойства</th>
-                <th scope="col">Стойкость к теплу</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">PLA</th>
-                <td>Настольные органайзеры, декор, подарки, макеты</td>
-                <td>Высочайшая точность, богатая палитра цветов</td>
-                <td>до 55 °C</td>
-              </tr>
-              <tr>
-                <th scope="row">PETG</th>
-                <td>Механические детали, авто-крепления, уличные изделия</td>
-                <td>Ударопрочный, влагостойкий, долговечный</td>
-                <td>до 75 °C</td>
-              </tr>
-              <tr>
-                <th scope="row">TPU</th>
-                <td>Амортизаторы, защитные чехлы, ножки, гибкие прокладки</td>
-                <td>Эластичный, как резина, гнётся без излома</td>
-                <td>до 60 °C</td>
-              </tr>
-              <tr>
-                <th scope="row">Silk PLA</th>
-                <td>Вазы, интерьерные арт-объекты, наградные статуэтки</td>
-                <td>Глубокий шёлковый блеск под золото и серебро</td>
-                <td>до 55 °C</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
+          <div class="divide-y divide-ag-gray-200 border-t border-b border-ag-gray-200">
+            <div class="faq-item">
+              <button class="faq-trigger" aria-expanded="false">
+                <span>Сколько времени занимает печать детали?</span>
+                <span class="faq-icon text-ag-gray-400 font-normal text-xl">+</span>
+              </button>
+              <div class="faq-content hidden">
+                Небольшие технические детали, клипсы и шестерни печатаются от 2 часов. Крупные корпуса, органайзеры и ночники — от 6 до 18 часов. При срочном заказе запускаем печать в день обращения.
+              </div>
+            </div>
 
-    <!-- Photo Order Section -->
-    <section class="section section-photo" id="photo-order" aria-labelledby="photo-title">
-      <div class="container photo-grid">
-        <div>
-          <span class="section-tag">Быстрый заказ</span>
-          <h2 id="photo-title">Сломалась деталь? Закажите по фото</h2>
-          <p class="lead">Сфотографируйте сломанный элемент рядом с обычной линейкой или монеткой. Мы снимем размеры, построим точную 3D-модель и назовём цену.</p>
-          <ul class="check-list">
-            <li>Шестерни для блендеров, мясорубок и кухонной техники</li>
-            <li>Автомобильные клипсы, заглушки и элементы салона</li>
-            <li>Кронштейны, ручки и крепления для мебели</li>
-          </ul>
-        </div>
+            <div class="faq-item">
+              <button class="faq-trigger" aria-expanded="false">
+                <span>Где найти готовую 3D-модель для печати?</span>
+                <span class="faq-icon text-ag-gray-400 font-normal text-xl">+</span>
+              </button>
+              <div class="faq-content hidden">
+                Вы можете бесплатно скачать миллионы проверенных моделей на крупнейших каталогах: Printables.com, MakerWorld.com, Thingiverse.com и Thangs.com. Просто скачайте файл в формате .STL, .3MF или .STEP и загрузите в наш 3D-Калькулятор.
+              </div>
+            </div>
 
-        <form class="panel photo-form" id="landing-photo-form" novalidate>
-          <label class="upload-drop" for="landing-photo-input">
-            <input id="landing-photo-input" name="photos" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif" multiple>
-            <span class="upload-title">Прикрепите до 5 фото</span>
-            <span class="hint">JPG, PNG, WebP или HEIC, до 10 МБ каждое</span>
-          </label>
-          <ul class="thumbs" id="landing-photo-thumbs" aria-label="Выбранные фото"></ul>
-          <label class="field" for="landing-photo-comment">Что требуется сделать?
-            <textarea id="landing-photo-comment" name="comment" rows="3" maxlength="800" placeholder="Например: шестерня от мясорубки, диаметр 35 мм, 2 шт."></textarea>
-          </label>
-          <label class="field" for="landing-photo-contact">Ваш телефон или Telegram
-            <input id="landing-photo-contact" name="contact" type="text" autocomplete="tel" maxlength="120" required placeholder="+992 … или @ник">
-          </label>
-          <input class="trap" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <p class="status" id="landing-photo-status" role="status" aria-live="polite"></p>
-          <button type="submit" class="button button-primary button-wide">Отправить фото мастеру</button>
-        </form>
-      </div>
-    </section>
+            <div class="faq-item">
+              <button class="faq-trigger" aria-expanded="false">
+                <span>Как заказать ночник-литофанию по своей фотографии?</span>
+                <span class="faq-icon text-ag-gray-400 font-normal text-xl">+</span>
+              </button>
+              <div class="faq-content hidden">
+                Просто отправьте чёткую контрастную фотографию нам в Telegram @khujand3d. Мы преобразуем светлые и тёмные участки снимка в микрослои разной толщины: при включении подсветки проявится объёмная живая фотография.
+              </div>
+            </div>
 
-    <!-- FAQ Section -->
-    <section class="section" id="faq" aria-labelledby="faq-title">
-      <div class="container faq-grid">
-        <div>
-          <span class="section-tag">Полезно знать</span>
-          <h2 id="faq-title">Частые вопросы</h2>
-        </div>
-        <div class="faq">
-          <details>
-            <summary>Сколько стоит печать детали?</summary>
-            <p>Стоимость зависит от веса пластика и времени работы принтера. Мелкие детали и шестерни обычно стоят от 20 до 50 сомони. Точную цену можно сразу увидеть в нашем <a href="/calculator.html">3D-калькуляторе</a>.</p>
-          </details>
-          <details>
-            <summary>Насколько прочны напечатанные детали?</summary>
-            <p>Мы используем конструкционный пластик PETG и настраиваем монолитные стенки с усиленным заполнением. Такие детали отлично выдерживают трение, удары и перепады температур.</p>
-          </details>
-          <details>
-            <summary>Как быстро будет готов заказ?</summary>
-            <p>Небольшие изделия печатаются за 2–4 часа и могут быть готовы в день обращения. Крупные партии и сложные проекты обычно отдаём за 1–2 дня.</p>
-          </details>
-          <details>
-            <summary>Как осуществляется доставка по Таджикистану?</summary>
-            <p>В Худжанде доступен самовывоз или доставка по городу. В Душанбе и другие города отправляем проверенными экспресс-службами или такси.</p>
-          </details>
-        </div>
-      </div>
-    </section>
+            <div class="faq-item">
+              <button class="faq-trigger" aria-expanded="false">
+                <span>Как происходит оплата и доставка по Таджикистану?</span>
+                <span class="faq-icon text-ag-gray-400 font-normal text-xl">+</span>
+              </button>
+              <div class="faq-content hidden">
+                Принимаем оплату через Корти Милли, Alif Моби (QR-код) или наличными при получении. В Худжанде доступен самовывоз из студии и курьерская доставка. В Душанбе, Бохтар и другие города отправляем проверенными экспресс-службами (1–2 дня).
+              </div>
+            </div>
 
-    <!-- Final CTA Banner -->
-    <section class="section-cta">
-      <div class="container">
-        <div class="cta-banner">
-          <h2>Готовы напечатать своё первое изделие?</h2>
-          <p>Рассчитайте параметры своей модели онлайн за 1 минуту или напишите мастеру в Telegram для бесплатной консультации.</p>
-          <div class="cta-actions">
-            <a class="button button-primary button-lg" href="/calculator.html">Открыть 3D-Калькулятор →</a>
-            <a class="button button-ghost button-lg" href="https://t.me/khujand3d" target="_blank" rel="noopener">Чат в Telegram @khujand3d</a>
+            <div class="faq-item">
+              <button class="faq-trigger" aria-expanded="false">
+                <span>Даёте ли вы гарантию на напечатанные детали?</span>
+                <span class="faq-icon text-ag-gray-400 font-normal text-xl">+</span>
+              </button>
+              <div class="faq-content hidden">
+                Да. Все технические изделия и шестерни проходят строгий контроль размеров штангенциркулем с допуском ±0.15 мм. Если деталь не подошла по размеру из-за технологического отклонения — мы перепечатаем её бесплатно.
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div>
-        <a class="wordmark" href="/">3D<span>KHUJAND</span></a>
-        <p>Студия 3D-печати и цифрового производства. Худжанд, Таджикистан.</p>
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="w-full max-w-[var(--page-max)] ml-[var(--page-left)] mr-auto px-[var(--page-gutter)]">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <div>
+          <span class="font-display font-medium text-base text-ag-gray-950">3D KHUJAND</span>
+          <p class="text-xs text-ag-gray-500 mt-1">Студия точной 3D-печати и цифрового производства · Худжанд, Таджикистан</p>
+        </div>
+        <div class="flex items-center gap-6 text-sm">
+          <a href="/calculator.html" class="text-ag-gray-700 hover:text-brand-600 transition-colors">3D-Калькулятор</a>
+          <a href="https://t.me/khujand3d" target="_blank" rel="noopener" class="text-ag-gray-700 hover:text-brand-600 transition-colors">Telegram @khujand3d</a>
+          <a href="https://instagram.com/3d_khujand" target="_blank" rel="noopener" class="text-ag-gray-700 hover:text-brand-600 transition-colors">Instagram @3d_khujand</a>
+        </div>
       </div>
-      <ul class="footer-links">
-        <li><a href="/calculator.html">3D-Калькулятор</a></li>
-        <li><a href="https://t.me/khujand3d" target="_blank" rel="noopener">Telegram @khujand3d</a></li>
-        <li><a href="https://www.instagram.com/3d_khujand/" target="_blank" rel="noopener">Instagram @3d_khujand</a></li>
-      </ul>
+      <div class="mt-8 pt-6 border-t border-ag-gray-200/80 flex flex-col md:flex-row justify-between items-center text-xs text-ag-gray-400">
+        <span>© 2026 3D KHUJAND. Все права защищены.</span>
+        <span>Точное аддитивное производство на принтерах Bambu Lab.</span>
+      </div>
     </div>
   </footer>
+
 </body>
 </html>
