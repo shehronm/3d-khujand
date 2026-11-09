@@ -2,7 +2,7 @@ import './style.css';
 import './bp.js';
 import './squares-runtime.js';
 import './hero-copy.js';
-import './hero-phone.js';
+import './hero-plate.js';
 import './hero-grid.js';
 import './logos.js';
 import './readers.js';

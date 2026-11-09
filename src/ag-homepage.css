@@ -39,7 +39,24 @@
    .hero__fade, a box round the phone wide enough for its shadow (_hero.html.erb), so nothing
    has to show outside a masked box: a mask on the device box with mask-clip: no-clip, which
    Safari doesn't support, cut the shadow off square at the box's sides and top there. */
-.hero__device { --device-fade: calc((var(--hero-total) - var(--header-h) - 124px) * 0.2); }
+.hero__device {
+  position: absolute;
+  top: calc(var(--header-h) + 72px);
+  right: calc(var(--page-gutter) + 80px);
+  width: 420px;
+  z-index: 10;
+}
+@media (max-width: 1279px) {
+  .hero__device {
+    right: var(--page-gutter);
+    width: 380px;
+  }
+}
+@media (max-width: 1023px) {
+  .hero__device {
+    display: none;
+  }
+}
 .hero__fade {
   -webkit-mask: linear-gradient(to bottom, #000 calc(100% - var(--device-fade)), transparent 100%);
   mask: linear-gradient(to bottom, #000 calc(100% - var(--device-fade)), transparent 100%);

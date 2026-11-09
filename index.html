@@ -66,7 +66,7 @@
 
   <main id="content">
     <!-- Hero Section (Monumental Typography, 3D Phone with tap physics, circular pulse, and circuit pens) -->
-    <section class="hero relative h-[var(--hero-total)] overflow-hidden bg-ag-gray-50 [--device-inset:176px] [--device-w:337px] max-xl:[--device-inset:0px] max-lg:h-auto" id="overview">
+    <section class="hero relative h-[var(--hero-total)] overflow-hidden bg-ag-gray-50 [--device-inset:110px] [--device-w:410px] max-xl:[--device-inset:0px] max-lg:h-auto" id="overview">
       <div class="hero__inner w-full max-w-[var(--page-max)] ml-[var(--page-left)] mr-auto px-[var(--page-gutter)] relative z-[1] h-full max-lg:h-auto">
         <div class="pt-[calc(var(--header-h)+var(--section-space))] max-lg:pb-[var(--section-space)]">
           <h1 class="hero__title max-w-[688px] text-balance font-display text-[64px]/[64px] font-medium tracking-[-0.035em] text-ag-gray-950 max-xl:text-[56px]/[56px] max-md:text-[length:clamp(36px,calc(28px+2.5vw),44px)] max-md:leading-[1.14] max-md:tracking-[-0.03em]">
@@ -82,16 +82,83 @@
           </div>
         </div>
 
-        <!-- 3D Device Container: Phone, Tap Animation, Shimmer Card, and Circuit Grid -->
-        <div class="hero__device absolute bottom-0 right-[calc(var(--page-gutter)+var(--device-inset))] top-[calc(var(--header-h)+124px)] w-[var(--device-w)] lg:max-xl:right-[calc((100%-var(--page-gutter)-429px+var(--rule-x)-var(--device-w))/2)] max-lg:hidden" aria-hidden="true">
-          <div class="hero__fade absolute -left-[var(--shadow-x)] -right-[var(--shadow-x)] -top-[var(--shadow-y)] bottom-0 px-[var(--shadow-x)] pt-[var(--shadow-y)] [--shadow-x:calc(var(--device-w)*60/337)] [--shadow-y:calc(var(--device-w)*52/337)] [perspective:3800px] [perspective-origin:50%_calc(50%+var(--shadow-y)/2)]">
-            <div class="phone relative h-[calc(var(--device-w)*618.25/337)] w-[var(--device-w)] origin-[50%_77%] opacity-0 before:pointer-events-none before:absolute before:left-0 before:top-0 before:h-[calc(var(--device-w)*702/337)] before:w-full before:rounded-[calc(var(--device-w)*60/337)] before:[box-shadow:0_0_calc(var(--device-w)*12/337)_calc(var(--device-w)*-4/337)_rgba(38,38,43,0.12),0_calc(var(--device-w)*6/337)_calc(var(--device-w)*8/337)_rgba(0,0,0,0.06),0_calc(var(--device-w)*6/337)_calc(var(--device-w)*56/337)_rgba(0,0,0,0.05)] before:content-['']">
-              <img class="phone__art pointer-events-none absolute left-[calc(var(--device-w)*-58.75/337)] top-[calc(var(--device-w)*-50.75/337)] h-auto w-[calc(var(--device-w)*455/337)] max-w-none" width="455" height="669" alt="" src="/assets/phone.svg" />
-              <img class="phone__art pointer-events-none absolute left-[calc(var(--device-w)*-58.75/337)] top-[calc(var(--device-w)*-50.75/337)] h-auto w-[calc(var(--device-w)*455/337)] max-w-none phone__hold" width="455" height="669" alt="" src="/assets/phone-hold.svg" />
-              <div class="phone__shimmer after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] after:[box-shadow:inset_0_calc(var(--device-w)*-1/337)_0_rgba(0,0,0,0.4)] after:content-['']">
-                <img class="phone__card absolute inset-0 size-full" width="299" height="199" alt="" src="/assets/phone-card.svg" /><i></i>
+        <!-- 3D Device Container: Interactive Bambu Lab 3D Build Plate -->
+        <div class="hero__device">
+          <div class="plate-card relative w-full rounded-[24px] bg-white/95 backdrop-blur-md border border-ag-gray-200/90 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_8px_24px_-4px_rgba(38,38,43,0.12),0_20px_48px_-12px_rgba(38,38,43,0.08)] overflow-hidden transition-shadow hover:shadow-[0_1px_2px_rgba(0,0,0,0.04),0_12px_32px_-4px_rgba(38,38,43,0.16),0_24px_56px_-12px_rgba(38,38,43,0.12)]">
+            
+            <!-- Card Top Bar: Status HUD & Model Switcher -->
+            <div class="px-3.5 py-2.5 border-b border-ag-gray-100 flex items-center justify-between gap-2 bg-ag-gray-50/50">
+              <div class="flex items-center gap-2">
+                <span class="live-dot" title="3D-принтер онлайн"></span>
+                <div class="font-display font-medium text-[13px] tracking-[-0.01em] text-ag-gray-950 flex items-center gap-1.5">
+                  <span>Bambu Lab X1</span>
+                  <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-brand-50 text-brand-600 border border-brand-200/50 font-semibold">256³</span>
+                </div>
+              </div>
+
+              <!-- Model Switcher Tabs -->
+              <div class="flex items-center gap-0.5 p-0.5 rounded-lg bg-ag-gray-100 border border-ag-gray-200/50" id="hero-model-tabs">
+                <button type="button" data-model="gear" class="hero-model-btn active px-2.5 py-1 rounded-md text-[11px] font-medium text-ag-gray-950 bg-white shadow-sm transition-all">Шестерня</button>
+                <button type="button" data-model="vase" class="hero-model-btn px-2.5 py-1 rounded-md text-[11px] font-medium text-ag-gray-600 hover:text-ag-gray-950 transition-all">Ваза</button>
+                <button type="button" data-model="stand" class="hero-model-btn px-2.5 py-1 rounded-md text-[11px] font-medium text-ag-gray-600 hover:text-ag-gray-950 transition-all">Подставка</button>
               </div>
             </div>
+
+            <!-- 3D Canvas Viewport -->
+            <div class="relative w-full h-[340px] bg-gradient-to-b from-[#0e141b] to-[#141c26] overflow-hidden group cursor-grab active:cursor-grabbing">
+              <canvas id="hero-3d-canvas" class="size-full block"></canvas>
+
+              <!-- Floating Interaction Hint -->
+              <div class="pointer-events-none absolute bottom-3 left-3 px-2 py-1 rounded-md bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-mono text-white/80 shadow-sm flex items-center gap-1.5 transition-opacity group-hover:opacity-40">
+                <svg class="size-3 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+                </svg>
+                <span>Зажмите и вращайте деталь</span>
+              </div>
+
+              <!-- Telemetry HUD Badges -->
+              <div class="pointer-events-none absolute top-3 right-3 flex flex-col gap-1 items-end">
+                <span class="px-2 py-0.5 rounded bg-black/50 backdrop-blur-md border border-white/10 text-[10px] font-mono text-emerald-400 flex items-center gap-1">
+                  <span class="size-1 rounded-full bg-emerald-400 animate-pulse"></span> Сопло: 220°C
+                </span>
+                <span class="px-2 py-0.5 rounded bg-black/50 backdrop-blur-md border border-white/10 text-[10px] font-mono text-ag-gray-300">
+                  Стол: 60°C • 500 мм/с
+                </span>
+              </div>
+            </div>
+
+            <!-- Card Bottom: Color Selector, Specs & Quick Action -->
+            <div class="p-3.5 bg-white flex flex-col gap-2.5">
+              <div class="flex items-center justify-between">
+                <!-- Color Selector -->
+                <div class="flex items-center gap-1.5" id="hero-color-picker">
+                  <span class="text-[11px] text-ag-gray-500 font-medium mr-1">Цвет:</span>
+                  <button type="button" data-color="#2B2F36" style="background-color: #2B2F36;" class="hero-color-btn active size-5 rounded-full border-2 border-white ring-2 ring-brand-500 shadow-sm transition-transform hover:scale-110" title="Carbon Black"></button>
+                  <button type="button" data-color="#FC7343" style="background-color: #FC7343;" class="hero-color-btn size-5 rounded-full border-2 border-white ring-1 ring-black/10 shadow-sm transition-transform hover:scale-110" title="Studio Orange"></button>
+                  <button type="button" data-color="#0060FF" style="background-color: #0060FF;" class="hero-color-btn size-5 rounded-full border-2 border-white ring-1 ring-black/10 shadow-sm transition-transform hover:scale-110" title="Electric Blue"></button>
+                  <button type="button" data-color="#F0F1F5" style="background-color: #E8EAED;" class="hero-color-btn size-5 rounded-full border-2 border-white ring-1 ring-black/10 shadow-sm transition-transform hover:scale-110" title="Pure White"></button>
+                  <button type="button" data-color="#8E929E" style="background-color: #8E929E;" class="hero-color-btn size-5 rounded-full border-2 border-white ring-1 ring-black/10 shadow-sm transition-transform hover:scale-110" title="Silver Metal"></button>
+                </div>
+
+                <span class="text-[11px] font-mono text-ag-gray-700 bg-ag-gray-100 px-2 py-0.5 rounded font-medium" id="hero-model-specs">
+                  38 г • ~1ч 45м • PLA
+                </span>
+              </div>
+
+              <!-- Quick Action Button -->
+              <a href="/calculator.html" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-ag-gray-950 text-white text-xs font-medium hover:bg-brand-600 transition-colors shadow-sm group">
+                <span class="flex items-center gap-2">
+                  <svg class="size-3.5 text-brand-400 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                  </svg>
+                  Загрузить свой STL в 3D-стол
+                </span>
+                <span class="text-white/60 group-hover:text-white transition-colors flex items-center gap-1">
+                  Рассчитать онлайн <span class="font-mono">→</span>
+                </span>
+              </a>
+            </div>
+
           </div>
         </div>
       </div>
