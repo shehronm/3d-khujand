@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>3D KHUJAND — 3 Дизайн-концепции на выбор</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/src/style.css">
+  <style>
+    .concept-nav-wrap {
+      background: var(--color-bg-surface);
+      border-bottom: 1px solid var(--color-border);
+      padding: 16px 24px;
+      position: sticky;
+      top: 64px;
+      z-index: 90;
+    }
+    .concept-tabs {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .concept-btn {
+      background: var(--color-bg-elevated);
+      border: 1px solid var(--color-border);
+      color: var(--color-text-secondary);
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .concept-btn:hover {
+      color: var(--color-text-primary);
+      border-color: var(--color-secondary);
+    }
+    .concept-btn.active {
+      background: var(--color-accent-offguard);
+      border-color: var(--color-accent-offguard);
+      color: #FFFFFF;
+      box-shadow: 0 4px 16px -2px var(--color-accent-glow);
+    }
+    .concept-view {
+      display: none;
+      padding-block: 40px 80px;
+    }
+    .concept-view.active {
+      display: block;
+    }
+    .concept-banner {
+      background: var(--color-bg-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 24px 32px;
+      margin-bottom: 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .ref-link-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-family: var(--font-mono);
+      background: var(--color-bg-elevated);
+      border: 1px solid var(--color-border);
+      padding: 6px 12px;
+      border-radius: 9999px;
+      color: var(--color-secondary);
+      text-decoration: none;
+    }
+    .ref-link-pill:hover {
+      border-color: var(--color-secondary);
+      text-decoration: underline;
+    }
+
+    /* CONCEPT 1: BENTO GRID */
+    .bento-showcase {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+    }
+    .bento-box {
+      background: var(--color-bg-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .bento-hero {
+      grid-column: span 8;
+      background: radial-gradient(circle at 100% 0%, rgba(2, 135, 222, 0.15) 0%, var(--color-bg-surface) 70%);
+    }
+    .bento-calc {
+      grid-column: span 4;
+      background: linear-gradient(135deg, rgba(252, 115, 67, 0.1) 0%, var(--color-bg-surface) 100%);
+      border-color: rgba(252, 115, 67, 0.3);
+    }
+    .bento-litho {
+      grid-column: span 4;
+    }
+    .bento-materials {
+      grid-column: span 4;
+    }
+    .bento-status {
+      grid-column: span 4;
+    }
+
+    /* Litho Interactive Lamp simulator */
+    .litho-simulator {
+      margin-top: 16px;
+      height: 140px;
+      border-radius: var(--radius-md);
+      background: #10151c;
+      border: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      cursor: pointer;
+      user-select: none;
+    }
+    .litho-plate {
+      width: 100px;
+      height: 110px;
+      border-radius: 6px;
+      background: #252e3d;
+      border: 2px solid #334155;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 11px;
+      color: #94A3B8;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+    .litho-simulator.light-on {
+      background: radial-gradient(circle at 50% 50%, rgba(255, 214, 153, 0.25) 0%, #10151c 70%);
+    }
+    .litho-simulator.light-on .litho-plate {
+      background: linear-gradient(135deg, #FFF3D6 0%, #FFD699 100%);
+      color: #78350F;
+      font-weight: 700;
+      border-color: #FBBF24;
+      box-shadow: 0 0 28px rgba(251, 191, 36, 0.6);
+    }
+
+    /* CONCEPT 2: PHYSICAL TEXTURE */
+    .texture-hero {
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 60px 48px;
+      background: 
+        radial-gradient(circle at 80% 30%, rgba(252, 115, 67, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 20% 80%, rgba(2, 135, 222, 0.1) 0%, transparent 50%),
+        #06090e;
+      margin-bottom: 24px;
+    }
+    .texture-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+    .texture-card {
+      background: #0B1117;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .texture-sample {
+      height: 180px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .texture-gold {
+      background: radial-gradient(circle at 50% 40%, #E8B952 0%, #7C5512 80%);
+    }
+    .texture-carbon {
+      background: repeating-linear-gradient(45deg, #1A1F26, #1A1F26 4px, #0F1318 4px, #0F1318 8px);
+    }
+    .texture-neon {
+      background: radial-gradient(circle at 50% 50%, #00F0FF 0%, #024675 80%);
+    }
+
+    /* CONCEPT 3: INDUSTRIAL LAB */
+    .lab-frame {
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      background: #030609;
+      position: relative;
+    }
+    .lab-header-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 32px;
+      align-items: center;
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 32px;
+      margin-bottom: 32px;
+    }
+    .lab-meta-box {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      background: var(--color-bg-elevated);
+      border: 1px solid var(--color-border);
+      padding: 16px;
+      border-radius: var(--radius-md);
+      line-height: 1.8;
+      color: var(--color-text-secondary);
+    }
+    .lab-meta-box b {
+      color: var(--color-secondary);
+    }
+
+    @media (max-width: 900px) {
+      .bento-hero, .bento-calc, .bento-litho, .bento-materials, .bento-status {
+        grid-column: span 12;
+      }
+      .texture-cards-grid, .lab-header-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="nav-left">
+        <a class="wordmark" href="/">3D<span>KHUJAND</span></a>
+        <span class="nav-badge">Визуальная примерка дизайна</span>
+      </div>
+      <div class="nav-right">
+        <a class="button button-ghost button-sm" href="/">← Главная</a>
+        <a class="button button-primary button-sm" href="/calculator.html">3D-Калькулятор</a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="concept-nav-wrap" aria-label="Выбор концепции">
+    <div class="container">
+      <div class="concept-tabs">
+        <button type="button" class="concept-btn active" data-tab="concept-1">Вариант 1: Bento Grid (Рекомендуемый ⭐)</button>
+        <button type="button" class="concept-btn" data-tab="concept-2">Вариант 2: Physical Texture (Эстетика и тактильность)</button>
+        <button type="button" class="concept-btn" data-tab="concept-3">Вариант 3: Индустриальная лаборатория (High-Tech)</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- CONCEPT 1 -->
+    <section class="concept-view active" id="concept-1" aria-labelledby="c1-title">
+      <div class="concept-banner">
+        <div>
+          <h2 id="c1-title">Вариант 1: Интерактивный Bento Grid</h2>
+          <p class="lead">Плотная модульная сетка в стиле топовых IT-продуктов. Всё главное сразу на экране: включение света ночника, калькулятор и статус.</p>
+        </div>
+        <div class="ref-links">
+          <span style="font-size: 11px; color: var(--color-text-muted); display: block; margin-bottom: 4px;">Аналоги на Recent.design:</span>
+          <a class="ref-link-pill" href="https://recent.design/i/j5yd5l1-access-grid-homepage" target="_blank" rel="noopener">Access Grid Homepage ↗</a>
+          <a class="ref-link-pill" href="https://recent.design/i/iw18rhk-doze-feature-section" target="_blank" rel="noopener">Doze Feature Section ↗</a>
+        </div>
+      </div>
+
+      <div class="bento-showcase">
+        <!-- Bento 1: Hero -->
+        <article class="bento-box bento-hero">
+          <div class="badge-pill">
+            <span class="pulse-dot"></span> Студия 3D-печати · Худжанд
+          </div>
+          <h1>Точная 3D-печать и производство на заказ</h1>
+          <p class="lead" style="max-width: 580px; margin-top: 12px;">Создаём дизайнерский декор, настольные органайзеры, подарки с подсветкой и ремонтные детали. Печать от 2 часов на принтерах Bambu Lab.</p>
+          <div style="display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap;">
+            <a class="button button-primary" href="/calculator.html">Рассчитать 3D-модель →</a>
+            <a class="button button-ghost" href="https://t.me/khujand3d" target="_blank" rel="noopener">Telegram @khujand3d</a>
+          </div>
+        </article>
+
+        <!-- Bento 2: Quick Calc Trigger -->
+        <article class="bento-box bento-calc">
+          <span class="section-tag section-tag-accent">Интерактивный стол</span>
+          <h3>Онлайн 3D-Калькулятор</h3>
+          <p class="hint" style="margin-block: 8px 16px;">Перетащите файл .STL или .3MF на виртуальный стол 256×256 мм и сразу узнайте вес, время и цену.</p>
+          <div style="background: var(--color-bg-elevated); padding: 14px; border-radius: var(--radius-sm); border: 1px dashed var(--color-accent-offguard); text-align: center; margin-top: auto;">
+            <span style="font-size: 12px; font-weight: 600; color: var(--color-accent-offguard);">Drop STL / 3MF file</span>
+          </div>
+          <a class="button button-primary button-sm" href="/calculator.html" style="margin-top: 12px;">Открыть стол 256×256 →</a>
+        </article>
+
+        <!-- Bento 3: Interactive Lithophane -->
+        <article class="bento-box bento-litho">
+          <span class="section-tag">Хит подарков</span>
+          <h3>Литофания: Ночник по фото</h3>
+          <p class="hint">Нажмите на плитку, чтобы включить свет:</p>
+          <div class="litho-simulator" id="demo-lamp" title="Кликните, чтобы включить/выключить лампу">
+            <div class="litho-plate">
+              <span>Семейное фото<br><small style="font-size:9px;opacity:0.7">(кликните)</small></span>
+            </div>
+          </div>
+          <span style="font-size: 11px; color: var(--color-text-muted); margin-top: 10px;">При свете рельеф оживает в чёткую фотографию</span>
+        </article>
+
+        <!-- Bento 4: Material Palette -->
+        <article class="bento-box bento-materials">
+          <span class="section-tag">Материалы</span>
+          <h3>4 вида полимеров</h3>
+          <div style="display: flex; gap: 8px; margin-top: 12px;">
+            <div style="flex:1; background:var(--color-bg-elevated); padding:10px; border-radius:6px; border:1px solid var(--color-border); text-align:center;">
+              <b style="color:var(--color-secondary); font-size:12px;">PLA</b>
+              <span style="display:block; font-size:10px; color:var(--color-text-muted);">Декор</span>
+            </div>
+            <div style="flex:1; background:var(--color-bg-elevated); padding:10px; border-radius:6px; border:1px solid var(--color-border); text-align:center;">
+              <b style="color:var(--color-secondary); font-size:12px;">PETG</b>
+              <span style="display:block; font-size:10px; color:var(--color-text-muted);">Прочный</span>
+            </div>
+            <div style="flex:1; background:var(--color-bg-elevated); padding:10px; border-radius:6px; border:1px solid var(--color-border); text-align:center;">
+              <b style="color:var(--color-secondary); font-size:12px;">TPU</b>
+              <span style="display:block; font-size:10px; color:var(--color-text-muted);">Резина</span>
+            </div>
+            <div style="flex:1; background:var(--color-bg-elevated); padding:10px; border-radius:6px; border:1px solid var(--color-border); text-align:center;">
+              <b style="color:var(--color-accent-offguard); font-size:12px;">Silk</b>
+              <span style="display:block; font-size:10px; color:var(--color-text-muted);">Шёлк</span>
+            </div>
+          </div>
+          <p class="hint" style="margin-top: auto; padding-top: 12px;">Точность слоя от 0.12 мм</p>
+        </article>
+
+        <!-- Bento 5: Studio Status -->
+        <article class="bento-box bento-status">
+          <span class="section-tag">Статус производства</span>
+          <h3>Мастерская в Худжанде</h3>
+          <ul style="list-style: none; margin-top: 10px; font-size: 13px; color: var(--color-text-secondary); line-height: 1.8;">
+            <li>🟢 <b>Принтеры:</b> Онлайн и готовы</li>
+            <li>⏱️ <b>Срок:</b> Мелкие детали от 2 часов</li>
+            <li>📦 <b>Доставка:</b> Худжанд, Душанбе и весь РТ</li>
+          </ul>
+          <a class="external-link" href="https://t.me/khujand3d" target="_blank" rel="noopener" style="margin-top: auto; padding-top: 10px;">Задать вопрос в Telegram →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONCEPT 2 -->
+    <section class="concept-view" id="concept-2" aria-labelledby="c2-title">
+      <div class="concept-banner">
+        <div>
+          <h2 id="c2-title">Вариант 2: Physical Texture & Craft</h2>
+          <p class="lead">Премиальный акцент на осязаемости пластика: макро-текстуры слоёв, шелковистый блеск Silk Gold, благородный графит.</p>
+        </div>
+        <div class="ref-links">
+          <span style="font-size: 11px; color: var(--color-text-muted); display: block; margin-bottom: 4px;">Аналоги на Recent.design:</span>
+          <a class="ref-link-pill" href="https://recent.design/i/o5w1k5q-physical-texture-web-experiments" target="_blank" rel="noopener">Physical Texture Web ↗</a>
+          <a class="ref-link-pill" href="https://recent.design/i/fquutvp-hours-plans-page-hero" target="_blank" rel="noopener">Plans Hero ↗</a>
+        </div>
+      </div>
+
+      <div class="texture-hero">
+        <span class="section-tag section-tag-accent">Эстетика и тактильность</span>
+        <h1 style="font-size: clamp(36px, 5vw, 56px); margin-block: 12px 16px;">Пластик, который приятно держать в руках</h1>
+        <p class="lead" style="max-width: 640px;">Мы не просто печатаем 3D-модели — мы подбираем шёлковые переливы для ваз, матовый графит для органайзеров и упругий TPU для защитных бамперов.</p>
+      </div>
+
+      <div class="texture-cards-grid">
+        <article class="texture-card">
+          <div class="texture-sample texture-gold">
+            <span style="background: rgba(0,0,0,0.6); padding: 4px 10px; border-radius: 4px; font-size: 12px; color: #FFF;">Silk Gold PLA</span>
+          </div>
+          <div style="padding: 24px;">
+            <h3>Шёлковый металлик</h3>
+            <p class="hint" style="margin-top: 6px;">Глубокий отблеск золота, бронзы и серебра. Идеально для ваз, статуэток и памятных подарков.</p>
+          </div>
+        </article>
+
+        <article class="texture-card">
+          <div class="texture-sample texture-carbon">
+            <span style="background: rgba(0,0,0,0.6); padding: 4px 10px; border-radius: 4px; font-size: 12px; color: #FFF;">Matte Carbon PETG</span>
+          </div>
+          <div style="padding: 24px;">
+            <h3>Матовый графит</h3>
+            <p class="hint" style="margin-top: 6px;">Бархатистая антибликовая текстура. Создаёт премиальный вид настольных аксессуаров для сетапа NURWINK.</p>
+          </div>
+        </article>
+
+        <article class="texture-card">
+          <div class="texture-sample texture-neon">
+            <span style="background: rgba(0,0,0,0.6); padding: 4px 10px; border-radius: 4px; font-size: 12px; color: #FFF;">High-Impact TPU</span>
+          </div>
+          <div style="padding: 24px;">
+            <h3>Эластичный TPU</h3>
+            <p class="hint" style="margin-top: 6px;">Упругий резиноподобный полимер: чехлы, ножки приборов, уплотнители и амортизаторы.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONCEPT 3 -->
+    <section class="concept-view" id="concept-3" aria-labelledby="c3-title">
+      <div class="concept-banner">
+        <div>
+          <h2 id="c3-title">Вариант 3: Индустриальная лаборатория (High-Tech)</h2>
+          <p class="lead">Строгий инженерный стиль с акцентом на точность: координатная сетка, допуски в миллиметрах и параметры оборудования.</p>
+        </div>
+        <div class="ref-links">
+          <span style="font-size: 11px; color: var(--color-text-muted); display: block; margin-bottom: 4px;">Аналоги на Recent.design:</span>
+          <a class="ref-link-pill" href="https://recent.design/i/0l89gp5-shopify-expo-mode" target="_blank" rel="noopener">Shopify Expo Mode ↗</a>
+          <a class="ref-link-pill" href="https://recent.design/i/1u0n947-halden-app-website" target="_blank" rel="noopener">Halden App Website ↗</a>
+        </div>
+      </div>
+
+      <div class="lab-frame">
+        <div class="lab-header-grid">
+          <div>
+            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--color-secondary); margin-bottom: 8px;">[ ADDITIVE MANUFACTURING STUDIO // KHUJAND ]</div>
+            <h1 style="font-family: var(--font-mono); letter-spacing: -0.04em;">ЦЕМЕНТИРУЕМ ТОЧНОСТЬ: 0.12 MM</h1>
+            <p class="lead" style="font-size: 15px;">Производство мелкосерийных партий и штучных компонентов. Шестерни, корпусы РЭА, переходники и автокрепления.</p>
+          </div>
+          <div class="lab-meta-box">
+            <div>HARDWARE: <b>BAMBU LAB HIGH-SPEED</b></div>
+            <div>BUILD VOLUME: <b>256 × 256 × 256 MM</b></div>
+            <div>NOZZLE: <b>0.4 MM HARDENED STEEL</b></div>
+            <div>ACCURACY: <b>±0.05 MM</b></div>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px;">
+          <div style="background: var(--color-bg-surface); padding: 20px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-family: var(--font-mono);">
+            <span style="color: var(--color-secondary); font-size: 11px;">01 // REPAIR_PARTS</span>
+            <h3 style="margin-top: 6px; font-size: 16px;">Шестерни и узлы</h3>
+            <p style="font-size: 12px; color: var(--color-text-secondary); margin-top: 6px;">Восстановление сломанных деталей бытовой техники и авто.</p>
+          </div>
+          <div style="background: var(--color-bg-surface); padding: 20px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-family: var(--font-mono);">
+            <span style="color: var(--color-secondary); font-size: 11px;">02 // RAPID_PROTOTYPE</span>
+            <h3 style="margin-top: 6px; font-size: 16px;">Прототипирование</h3>
+            <p style="font-size: 12px; color: var(--color-text-secondary); margin-top: 6px;">Проверка геометрии и сборки перед запуском в серию.</p>
+          </div>
+          <div style="background: var(--color-bg-surface); padding: 20px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-family: var(--font-mono);">
+            <span style="color: var(--color-accent-offguard); font-size: 11px;">03 // INSTANT_QUOTE</span>
+            <h3 style="margin-top: 6px; font-size: 16px;">Онлайн расчёт</h3>
+            <p style="font-size: 12px; color: var(--color-text-secondary); margin-top: 6px;">Загрузка STL/3MF и автоматический подсчёт стоимости.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Tab switching
+    const buttons = document.querySelectorAll('.concept-btn');
+    const views = document.querySelectorAll('.concept-view');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        views.forEach(v => v.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    // Demo Lamp toggle in Bento
+    const lamp = document.getElementById('demo-lamp');
+    if (lamp) {
+      lamp.addEventListener('click', () => {
+        lamp.classList.toggle('light-on');
+      });
+    }
+  </script>
+</body>
+</html>

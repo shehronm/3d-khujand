@@ -5,23 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#02070A">
-  <title>3D KHUJAND — Студия 3D-печати и моделирования в Худжанде</title>
-  <meta name="description" content="3D-печать в Худжанде от 2 часов: настольные аксессуары, дизайнерские светильники по фото, запчасти и детали на заказ. Доставка по всему Таджикистану.">
+  <title>3D KHUJAND — Студия 3D-печати и цифрового производства</title>
+  <meta name="description" content="Точная 3D-печать в Худжанде от 2 часов: настольные аксессуары, дизайнерские ночники по фото (литофания), запчасти и детали на заказ. Доставка по Таджикистану.">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <script type="module" src="/src/landing.js"></script>
 </head>
 <body>
   <a class="skip" href="#content">К содержанию</a>
 
+  <!-- Header -->
   <header class="nav">
     <div class="container nav-inner">
       <a class="wordmark" href="/" aria-label="3D KHUJAND, главная">3D<span>KHUJAND</span></a>
       <nav aria-label="Разделы сайта">
         <ul class="nav-links">
+          <li><a href="#bento-overview">Обзор</a></li>
           <li><a href="#catalog">Что печатаем</a></li>
-          <li><a href="#model-help">Где взять 3D-модель</a></li>
+          <li><a href="#model-help">Где взять 3D</a></li>
           <li><a href="#materials">Материалы</a></li>
-          <li><a href="#workflow">Как заказать</a></li>
           <li><a href="#photo-order">Заказ по фото</a></li>
           <li><a href="#faq">Вопросы</a></li>
         </ul>
@@ -33,68 +34,166 @@
   </header>
 
   <main id="content">
-    <!-- Hero Section -->
-    <section class="landing-hero" aria-labelledby="hero-title">
-      <div class="container landing-hero-grid">
-        <div class="landing-hero-content">
-          <div class="badge-pill">
-            <span class="pulse-dot" aria-hidden="true"></span>
-            Студия 3D-печати в Худжанде · Доставка по РТ
-          </div>
-          <h1 id="hero-title">Создаём точные детали, декор и подарки на 3D-принтере</h1>
-          <p class="lead">Печатаем от 2 часов на промышленных принтерах. Закажите готовую вещь, пришлите фото сломанной детали или рассчитайте стоимость своей 3D-модели онлайн.</p>
-          <div class="landing-hero-actions">
-            <a class="button button-primary button-lg" href="/calculator.html">
-              <span>Рассчитать 3D-модель онлайн →</span>
-            </a>
-            <a class="button button-ghost button-lg" href="https://t.me/khujand3d" target="_blank" rel="noopener">
-              <span>Написать в Telegram @khujand3d</span>
-            </a>
-          </div>
-          <dl class="hero-stats">
-            <div>
-              <dt>Слой</dt>
-              <dd>от 0.12 мм</dd>
+    <!-- Hero Bento Section -->
+    <section class="section-bento-hero" id="bento-overview" aria-labelledby="bento-hero-title">
+      <div class="container">
+        <div class="bento-grid-hero">
+          
+          <!-- Bento 1: Hero Lead Card (span 8) -->
+          <article class="bento-card bento-card-main">
+            <div class="bento-card-glow" aria-hidden="true"></div>
+            <div class="badge-pill">
+              <span class="pulse-dot" aria-hidden="true"></span>
+              Студия 3D-печати · Худжанд · Доставка по Таджикистану
             </div>
-            <div>
-              <dt>Материалы</dt>
-              <dd>4 вида полимеров</dd>
+            <h1 id="bento-hero-title">Точная 3D-печать и производство на заказ</h1>
+            <p class="lead">Печатаем от 2 часов на промышленных принтерах Bambu Lab. Создаём подарки с подсветкой, настольные органайзеры, авто-крепления и шестерни по фото.</p>
+            
+            <div class="hero-actions-bento">
+              <a class="button button-primary button-lg" href="/calculator.html">
+                <span>Рассчитать 3D-модель онлайн →</span>
+              </a>
+              <a class="button button-ghost button-lg" href="https://t.me/khujand3d" target="_blank" rel="noopener">
+                <span>Написать в Telegram @khujand3d</span>
+              </a>
             </div>
-            <div>
-              <dt>Срок</dt>
-              <dd>от 2 часов</dd>
-            </div>
-            <div>
-              <dt>География</dt>
-              <dd>Худжанд и весь Таджикистан</dd>
-            </div>
-          </dl>
-        </div>
 
-        <div class="landing-hero-visual" aria-hidden="true">
-          <div class="preview-mockup-card">
-            <div class="mockup-header">
-              <span class="mockup-dot"></span>
-              <span class="mockup-dot"></span>
-              <span class="mockup-dot"></span>
-              <span class="mockup-title">Онлайн 3D-стол · Bambu Lab</span>
+            <div class="hero-specs-bar">
+              <div class="spec-item">
+                <span class="spec-label">Точность слоя</span>
+                <span class="spec-value">0.12 – 0.28 мм</span>
+              </div>
+              <div class="spec-divider" aria-hidden="true"></div>
+              <div class="spec-item">
+                <span class="spec-label">Рабочий стол</span>
+                <span class="spec-value">256 × 256 × 256 мм</span>
+              </div>
+              <div class="spec-divider" aria-hidden="true"></div>
+              <div class="spec-item">
+                <span class="spec-label">Срок печати</span>
+                <span class="spec-value">от 2 часов</span>
+              </div>
             </div>
-            <div class="mockup-stage">
-              <div class="mockup-plate">
-                <div class="mockup-grid"></div>
-                <div class="mockup-model-art">
-                  <div class="gear-art"></div>
+          </article>
+
+          <!-- Bento 2: 3D Calculator Trigger Card (span 4) -->
+          <article class="bento-card bento-card-calc">
+            <div class="bento-header">
+              <span class="section-tag section-tag-accent">Интерактивный стол</span>
+              <span class="badge-mono">256 × 256 × 256</span>
+            </div>
+            <h3>Онлайн 3D-Калькулятор</h3>
+            <p class="hint">Перетащите модель STL, 3MF или OBJ. Калькулятор за секунду посчитает точный вес, время печати и цену в сомони.</p>
+            
+            <div class="calc-drop-simulator" id="calc-preview-drop">
+              <div class="drop-circle-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+              </div>
+              <span class="drop-text">Перетащите 3D-файл сюда</span>
+              <span class="drop-subtext">STL, 3MF, OBJ до 50 МБ</span>
+            </div>
+
+            <a class="button button-primary button-wide" href="/calculator.html" style="margin-top: auto;">
+              Открыть 3D-стол принтера →
+            </a>
+          </article>
+
+          <!-- Bento 3: Interactive Lithophane Lamp (span 4) -->
+          <article class="bento-card bento-card-litho" id="litho-card">
+            <div class="bento-header">
+              <span class="section-tag section-tag-accent">Хит подарков</span>
+              <button type="button" class="switch-btn" id="litho-toggle" aria-pressed="false">
+                <span class="switch-slider" aria-hidden="true"></span>
+                <span id="litho-btn-text">Включить свет</span>
+              </button>
+            </div>
+            <h3>Литофания: Ночник по фото</h3>
+            <p class="hint">Днём это стильный белый барельеф. При включении подсветки свет проявляет чёткую фотографию вашей семьи или близких.</p>
+            
+            <div class="litho-lamp-stage" id="lamp-stage" title="Кликните, чтобы включить/выключить свет">
+              <div class="lamp-glow-effect" aria-hidden="true"></div>
+              <div class="lamp-frame">
+                <div class="lamp-photo-layer" aria-hidden="true"></div>
+                <div class="lamp-relief-layer">
+                  <span class="lamp-label">Семейный портрет</span>
+                  <span class="lamp-sub">(кликните для включения)</span>
                 </div>
               </div>
             </div>
-            <div class="mockup-footer">
-              <div class="mockup-info">
-                <span>Шестерня (демо)</span>
-                <b>35 сом. · 45 мин</b>
-              </div>
-              <a class="button button-primary button-sm" href="/calculator.html">Открыть калькулятор</a>
+
+            <div class="bento-footer-action">
+              <a class="button button-ghost button-sm button-wide" href="#photo-order">Заказать ночник по фото ↓</a>
             </div>
-          </div>
+          </article>
+
+          <!-- Bento 4: Interactive Material Lab (span 4) -->
+          <article class="bento-card bento-card-materials">
+            <div class="bento-header">
+              <span class="section-tag">Палитра полимеров</span>
+              <span class="badge-mono" id="active-mat-spec">PLA · 55 °C</span>
+            </div>
+            <h3>4 проверенных материала</h3>
+            
+            <div class="mat-tabs" role="tablist" aria-label="Выбор полимера">
+              <button type="button" class="mat-tab active" data-mat="PLA" role="tab" aria-selected="true">PLA</button>
+              <button type="button" class="mat-tab" data-mat="PETG" role="tab" aria-selected="false">PETG</button>
+              <button type="button" class="mat-tab" data-mat="TPU" role="tab" aria-selected="false">TPU</button>
+              <button type="button" class="mat-tab" data-mat="SILK" role="tab" aria-selected="false">Silk Gold</button>
+            </div>
+
+            <div class="mat-desc-box" id="mat-desc-box">
+              <p id="mat-info-text"><b>PLA:</b> Точный и жесткий пластик для домашнего декора, органайзеров и точных макетов.</p>
+              <div class="mat-colors-preview" id="mat-colors-preview">
+                <span class="color-dot" style="background:#2B2F36;" title="Графит"></span>
+                <span class="color-dot" style="background:#E9ECEF;" title="Белый"></span>
+                <span class="color-dot" style="background:#FC7343;" title="Оранжевый"></span>
+                <span class="color-dot" style="background:#0287DE;" title="Синий"></span>
+              </div>
+            </div>
+
+            <div class="bento-footer-action">
+              <a class="external-link" href="#materials">Подробная таблица свойств →</a>
+            </div>
+          </article>
+
+          <!-- Bento 5: Studio Status & Speed (span 4) -->
+          <article class="bento-card bento-card-status">
+            <div class="bento-header">
+              <span class="section-tag">Мастерская в Худжанде</span>
+              <span class="status-live-badge"><span class="live-blink"></span>Приём заказов</span>
+            </div>
+            <h3>Скорость и сервис</h3>
+            <ul class="studio-status-list">
+              <li>
+                <span class="status-icon">⚡</span>
+                <div>
+                  <b>Печать от 2 часов</b>
+                  <p>Срочные детали выдаём в день обращения.</p>
+                </div>
+              </li>
+              <li>
+                <span class="status-icon">📦</span>
+                <div>
+                  <b>Доставка по Таджикистану</b>
+                  <p>Худжанд, Душанбе, Бохтар и все регионы.</p>
+                </div>
+              </li>
+              <li>
+                <span class="status-icon">💬</span>
+                <div>
+                  <b>Быстрый ответ мастера</b>
+                  <p>Отвечаем и согласуем деталь за 10–15 минут.</p>
+                </div>
+              </li>
+            </ul>
+
+            <div class="bento-footer-action">
+              <a class="button button-ghost button-sm button-wide" href="https://t.me/khujand3d" target="_blank" rel="noopener">
+                Чат с мастером в Telegram →
+              </a>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>
@@ -103,7 +202,7 @@
     <section class="section" id="catalog" aria-labelledby="catalog-title">
       <div class="container">
         <div class="section-head">
-          <span class="section-tag">Направления производства</span>
+          <span class="section-tag">Каталог решений</span>
           <h2 id="catalog-title">Что мы создаём в студии 3D KHUJAND</h2>
           <p class="lead">От единичных авторских подарков до функциональных деталей для техники и авто.</p>
         </div>
@@ -246,39 +345,6 @@
               </tr>
             </tbody>
           </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- Workflow Section -->
-    <section class="section" id="workflow" aria-labelledby="workflow-title">
-      <div class="container">
-        <div class="section-head">
-          <span class="section-tag">Прозрачный процесс</span>
-          <h2 id="workflow-title">Как получить готовое изделие</h2>
-        </div>
-
-        <div class="steps-grid">
-          <div class="step-card">
-            <span class="step-num">01</span>
-            <h3>Заявка или модель</h3>
-            <p>Загрузите свой файл в онлайн-калькулятор или пришлите фото нужной вещи мастеру в Telegram.</p>
-          </div>
-          <div class="step-card">
-            <span class="step-num">02</span>
-            <h3>Точный расчёт</h3>
-            <p>Согласовываем цвет, плотность заполнения, точную стоимость в сомони и сроки готовности.</p>
-          </div>
-          <div class="step-card">
-            <span class="step-num">03</span>
-            <h3>Печать в мастерской</h3>
-            <p>Запускаем печать на современных принтерах Bambu Lab с контролем первого слоя и геометрии.</p>
-          </div>
-          <div class="step-card">
-            <span class="step-num">04</span>
-            <h3>Получение заказа</h3>
-            <p>Самовывоз в Худжанде или быстрая доставка курьерской службой по всему Таджикистану.</p>
-          </div>
         </div>
       </div>
     </section>
