@@ -433,6 +433,32 @@ if (orderForm && orderDialog) {
   });
 }
 
+// Photo Order Form
+const calcPhotoForm = document.getElementById('calc-photo-form');
+if (calcPhotoForm) {
+  calcPhotoForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const desc = document.getElementById('photo-desc')?.value.trim() || '';
+    const mat = document.getElementById('photo-material')?.value || '';
+    const qty = document.getElementById('photo-qty')?.value || '1';
+    const contact = document.getElementById('photo-contact')?.value.trim() || '';
+
+    const text = [
+      `Здравствуйте, 3D KHUJAND!`,
+      `Хочу заказать 3D-печать по фото / сломанной детали:`,
+      `— Деталь: ${desc}`,
+      `— Требуемый пластик: ${mat}`,
+      `— Количество: ${qty} шт.`,
+      `— Контакт: ${contact}`,
+      ``,
+      `(Сейчас прикреплю фото детали рядом с линейкой)`
+    ].join('\n');
+
+    const tgUrl = `https://t.me/khujand3d?text=${encodeURIComponent(text)}`;
+    window.open(tgUrl, '_blank', 'noopener,noreferrer');
+  });
+}
+
 // Init
 renderMaterials();
 renderColors();

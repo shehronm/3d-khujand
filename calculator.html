@@ -12,6 +12,16 @@
   <script type="module" src="/src/calculator.js"></script>
 </head>
 <body class="bg-ag-gray-50 text-ag-gray-950 antialiased selection:bg-brand-500 selection:text-white">
+  <!-- Fixed Dashed Blueprint Grid Pattern -->
+  <svg class="calc-bg-grid" aria-hidden="true" width="100%" height="100%">
+    <defs>
+      <pattern id="calc-grid-pattern" width="80" height="80" patternUnits="userSpaceOnUse">
+        <path d="M 0 0.5 H 80 M 0.5 0 V 80" fill="none" stroke="#c4c8d4" stroke-width="1" stroke-dasharray="4 4" opacity="0.8" shape-rendering="crispEdges"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#calc-grid-pattern)" />
+  </svg>
+
   <a class="skip" href="#quote">К расчёту</a>
 
   <header class="nav">
@@ -141,13 +151,173 @@
           </form>
         </div>
 
-        <div class="calc-helper-card">
-          <div class="calc-helper-content">
-            <h3>Где взять готовую 3D-модель?</h3>
-            <p>Вы можете скачать миллионы готовых бесплатных моделей в каталогах <a href="https://makerworld.com/ru" target="_blank" rel="noopener">MakerWorld</a> и <a href="https://www.printables.com" target="_blank" rel="noopener">Printables</a>, сохранить файл <code>.stl</code> или <code>.3mf</code> и перетащить его в калькулятор выше.</p>
+        <!-- Section: Detailed Step-by-Step Instructions -->
+        <section class="guide-section" id="instructions" aria-labelledby="guide-title">
+          <div class="section-head">
+            <span class="section-badge">Пошаговое руководство для новичков</span>
+            <h2 id="guide-title">Как заказать 3D-печать: 4 простых шага</h2>
+            <p class="lead">От поиска готового бесплатного файла до получения готовой детали у вас в руках.</p>
           </div>
-          <a class="button button-ghost" href="/#model-help">Инструкция для новичков →</a>
-        </div>
+
+          <div class="guide-grid">
+            <!-- Step 1 -->
+            <div class="guide-card">
+              <div>
+                <div class="guide-card-top">
+                  <span class="step-num">ШАГ 01</span>
+                  <span class="guide-pill">Каталоги</span>
+                </div>
+                <h3>Где найти готовую 3D-модель?</h3>
+                <p>Для 90% бытовых задач, ремонта, авто или хобби нужная деталь уже смоделирована. Скачивайте бесплатные файлы <code>.STL</code> или <code>.3MF</code>:</p>
+              </div>
+              <div class="guide-links">
+                <a class="guide-link-btn" href="https://makerworld.com/ru" target="_blank" rel="noopener">
+                  MakerWorld <span>Bambu Lab база ↗</span>
+                </a>
+                <a class="guide-link-btn" href="https://www.printables.com" target="_blank" rel="noopener">
+                  Printables <span>Инженерная база ↗</span>
+                </a>
+                <a class="guide-link-btn" href="https://www.thingiverse.com" target="_blank" rel="noopener">
+                  Thingiverse <span>Миллионы моделей ↗</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="guide-card">
+              <div>
+                <div class="guide-card-top">
+                  <span class="step-num">ШАГ 02</span>
+                  <span class="guide-pill">Загрузка</span>
+                </div>
+                <h3>Загрузите модель в калькулятор</h3>
+                <p>Перетащите файл прямо на 3D-стол вверху страницы или нажмите кнопку «Загрузить модель».</p>
+                <p>Браузер моментально построит трёхмерную модель, проверит реальные размеры (мм) и массу пластика.</p>
+              </div>
+              <div class="photo-trust-banner" style="margin-top: 12px; padding: 10px 12px;">
+                <span>✓ Стол: <strong>256 × 256 × 256 мм</strong></span>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="guide-card">
+              <div>
+                <div class="guide-card-top">
+                  <span class="step-num">ШАГ 03</span>
+                  <span class="guide-pill">Материалы</span>
+                </div>
+                <h3>Выберите пластик и прочность</h3>
+                <p>Подберите материал под вашу задачу:</p>
+                <p><strong>PLA</strong> — декор, корпуса, макеты.<br>
+                <strong>PETG</strong> — шестерни, клипсы, детали авто.<br>
+                <strong>TPU Flex</strong> — гибкие прокладки, втулки.</p>
+              </div>
+              <p class="hint" style="margin-top: auto;">Заполнение 20% стандартно для декора; для нагрузок ставьте 40–60%.</p>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="guide-card">
+              <div>
+                <div class="guide-card-top">
+                  <span class="step-num">ШАГ 04</span>
+                  <span class="guide-pill">Печать</span>
+                </div>
+                <h3>Подтверждение и запуск за 15 мин</h3>
+                <p>Нажмите «Оформить заказ в Telegram». Мастер сразу проверит геометрию и запустит печать.</p>
+                <p>Срочное изготовление от 2 часов на скоростном принтере Bambu Lab X1-Carbon. Доставка по Худжанду и Таджикистану.</p>
+              </div>
+              <a class="button button-primary" href="#stage" style="margin-top: auto; font-size: 13px; padding: 8px 14px;">
+                ↑ Рассчитать модель сейчас
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section: Order by Photo / Broken Part -->
+        <section class="photo-order-section" id="photo-order" aria-labelledby="photo-title">
+          <div class="section-head">
+            <span class="section-badge" style="color: #FC7343; background: rgba(252, 115, 67, 0.08); border-color: rgba(252, 115, 67, 0.25);">
+              Нет 3D-файла? Заказ по образцу
+            </span>
+            <h2 id="photo-title">Заказ по фото, чертежу или сломанной детали</h2>
+            <p class="lead">Сломалась шестерня блендера, ручка, клипса авто или редкая деталь? Сфотографируйте её — наш инженер бесплатно оценит моделирование за 15 минут.</p>
+          </div>
+
+          <div class="photo-order-grid">
+            <!-- Left: Tips for photography -->
+            <div class="photo-tips-card">
+              <div>
+                <h3 style="font-size: 19px; font-weight: 700; color: var(--ag-gray-950);">Как сфотографировать деталь для точного расчёта:</h3>
+                <div class="photo-tips-list">
+                  <div class="photo-tip-item">
+                    <span class="tip-badge">01</span>
+                    <div class="tip-content">
+                      <h4>Положите рядом линейку или монету</h4>
+                      <p>Положите деталь на белый лист бумаги рядом с обычной линейкой или монетой, чтобы мы сразу сняли точные пропорции и масштаб.</p>
+                    </div>
+                  </div>
+                  <div class="photo-tip-item">
+                    <span class="tip-badge">02</span>
+                    <div class="tip-content">
+                      <h4>Сделайте 2–3 чётких фото с разных сторон</h4>
+                      <p>Сфотографируйте деталь сверху, сбоку и отдельно снимите место излома, внутренние пазы, резьбу или посадочные шлицы.</p>
+                    </div>
+                  </div>
+                  <div class="photo-tip-item">
+                    <span class="tip-badge">03</span>
+                    <div class="tip-content">
+                      <h4>Укажите, где работала деталь</h4>
+                      <p>Напишите марку устройства и нагрузки (температура, контакт с водой, трение), чтобы инженер подобрал правильный полимер.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="photo-trust-banner">
+                <span>⚡ <strong>Бесплатный чертёж:</strong> при заказе партии от 5 шт. моделирование детали бесплатно.</span>
+              </div>
+            </div>
+
+            <!-- Right: Interactive Photo Order Form to Telegram -->
+            <div class="photo-form-card">
+              <div>
+                <h3 style="font-size: 19px; font-weight: 700; color: var(--ag-gray-950);">Быстрая заявка мастеру:</h3>
+                <p style="font-size: 13.5px; color: var(--ag-gray-600); margin-top: 4px;">Заполните кратко — откроется чат с инженером в Telegram @khujand3d с готовым описанием:</p>
+
+                <form id="calc-photo-form">
+                  <div class="field">
+                    <label for="photo-desc">Что за деталь?</label>
+                    <input id="photo-desc" type="text" placeholder="Например: шестерня мясорубки Bosch, отломились 3 зуба" required>
+                  </div>
+                  <div class="row">
+                    <div class="field field-inline">
+                      <label for="photo-material">Требуемая прочность</label>
+                      <select id="photo-material">
+                        <option value="PETG (ударопрочный)">PETG — ударопрочный (шестерни, авто)</option>
+                        <option value="PLA (стандартный)">PLA — стандартный (корпуса, декор)</option>
+                        <option value="TPU (гибкий резиновый)">TPU — гибкий (прокладки, ножки)</option>
+                        <option value="Посоветоваться с инженером">Посоветоваться с инженером</option>
+                      </select>
+                    </div>
+                    <div class="field field-inline">
+                      <label for="photo-qty">Количество, шт.</label>
+                      <input id="photo-qty" type="number" min="1" max="1000" value="1">
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label for="photo-contact">Ваш контакт (телефон или Telegram)</label>
+                    <input id="photo-contact" type="text" placeholder="+992 ... или @username" required>
+                  </div>
+
+                  <button type="submit" class="photo-submit-btn">
+                    <span>Отправить фото мастеру в Telegram →</span>
+                  </button>
+                  <p class="form-subtext">Откроется диалог в Telegram. Прикрепите ваши фото — мастер назовёт стоимость и срок за 15 минут.</p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </section>
   </main>
