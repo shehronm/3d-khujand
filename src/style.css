@@ -3,6 +3,7 @@
 @import '@fontsource-variable/jetbrains-mono';
 @import './ag-tailwind.css';
 @import './ag-homepage.css';
+@import './calculator.css';
 
 /* --- Design Tokens & Variables --- */
 :root {

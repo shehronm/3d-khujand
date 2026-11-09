@@ -3,14 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="dark">
-  <meta name="theme-color" content="#02070A">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#FBFBFC">
   <title>3D-Калькулятор и онлайн-расчёт · 3D KHUJAND</title>
   <meta name="description" content="Интерактивный 3D-стол: загрузите модель STL, 3MF или OBJ, проверьте размеры и сразу узнайте точную цену печати в Худжанде.">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/src/style.css">
   <script type="module" src="/src/calculator.js"></script>
 </head>
-<body>
+<body class="bg-ag-gray-50 text-ag-gray-950 antialiased selection:bg-brand-500 selection:text-white">
   <a class="skip" href="#quote">К расчёту</a>
 
   <header class="nav">
@@ -19,7 +20,10 @@
         <a class="back-link" href="/" aria-label="Вернуться на главную страницу">
           <span aria-hidden="true">←</span> На главную
         </a>
-        <a class="wordmark" href="/" aria-label="3D KHUJAND, на главную">3D<span>KHUJAND</span></a>
+        <a class="wordmark" href="/" aria-label="3D KHUJAND, на главную">
+          <span class="live-dot" title="Студия открыта"></span>
+          3D<span>KHUJAND</span>
+        </a>
       </div>
       <div class="nav-right">
         <span class="nav-badge">Интерактивный стол 256 × 256 × 256</span>
@@ -100,23 +104,27 @@
             </fieldset>
 
             <fieldset class="group">
-              <legend>Цвет <span class="legend-value" id="color-name"></span></legend>
+              <legend class="legend-row"><span>Цвет</span> <span class="legend-value" id="color-name"></span></legend>
               <div class="swatches" id="colors-choice"></div>
             </fieldset>
 
             <fieldset class="group">
-              <legend>Качество</legend>
+              <legend>Качество слоя</legend>
               <div class="segmented" id="quality-choice"></div>
             </fieldset>
 
             <div class="group">
-              <label class="field" for="infill">Заполнение <output id="infill-value" for="infill">20%</output></label>
+              <div class="field-label-row">
+                <label class="field-label" for="infill">Заполнение</label>
+                <output class="legend-value" id="infill-value" for="infill">20%</output>
+              </div>
               <input id="infill" name="infill" type="range" min="10" max="100" step="5" value="20">
               <p class="hint">10–20% для декора, 40% и выше для нагруженных шестерней и креплений.</p>
             </div>
 
-            <div class="group row">
-              <label class="field field-inline" for="quantity">Количество, шт.
+            <div class="group">
+              <label class="field" for="quantity">
+                <span class="field-label">Количество деталей</span>
                 <input id="quantity" name="quantity" type="number" inputmode="numeric" min="1" max="100" value="1">
               </label>
             </div>
