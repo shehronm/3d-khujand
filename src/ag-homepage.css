@@ -88,7 +88,7 @@
 
 /* The grid pulse, which hero-grid.js builds: squares of an 80px dashed grid behind the
    phone, and the stage the squares runtime draws its pens in. */
-/* --- Awakening 3D Dashed Grid (Hero Background) --- */
+/* --- Static Dashed Blueprint Grid (Hero Background) --- */
 .hero__grid {
   position: absolute;
   inset: 0;
@@ -97,7 +97,6 @@
   overflow: hidden;
   pointer-events: none;
   z-index: 0;
-  perspective: 1200px;
 }
 
 /* Base static dashed blueprint grid */
@@ -108,52 +107,12 @@
   stroke-dasharray: 4 4;
   stroke-linecap: square;
   shape-rendering: crispEdges;
-  opacity: 0.55;
-}
-
-/* Waking cell: dark cavity underneath */
-.hero__cell-shadow {
-  fill: #0c0e16;
-  rx: 2;
-  ry: 2;
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* Waking cell: 3D lifted perimeter */
-.hero__cell-lift {
-  fill: rgba(255, 255, 255, 0.5);
-  stroke: #1e2029;
-  stroke-width: 1.5;
-  stroke-dasharray: 4 4;
-  stroke-linecap: square;
-  rx: 2;
-  ry: 2;
-  transform-origin: center;
-  filter: drop-shadow(0 6px 12px rgba(12, 14, 22, 0.16));
-}
-
-/* Traveling dashed line */
-.hero__flow-line {
-  fill: none;
-  stroke: #0060FF;
-  stroke-width: 1.5;
-  stroke-dasharray: 5 4;
-  stroke-linecap: square;
-  shape-rendering: crispEdges;
-  filter: drop-shadow(0 2px 5px rgba(0, 96, 255, 0.25));
-}
-
-/* Dot head on traveling line */
-.hero__flow-head {
-  fill: #0060FF;
-  filter: drop-shadow(0 0 6px rgba(0, 96, 255, 0.85));
-  transition: opacity 0.2s ease;
+  opacity: 0.65;
 }
 
 @media (max-width: 1023px) {
   .hero__grid { display: none; }
-} /* no phone below lg */
+} /* no grid below lg */
 
 /* --- Chevron → arrow (_arrow_icon.html.erb) ----------------------------------- */
 /* On hover the chevron slides 1.5px right and a stem grows from it (pathLength=1) */
