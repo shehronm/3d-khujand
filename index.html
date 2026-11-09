@@ -8,6 +8,33 @@
   <title>3D KHUJAND — Студия точной 3D-печати и цифрового производства</title>
   <meta name="description" content="Точная 3D-печать в Худжанде от 2 часов на промышленных принтерах Bambu Lab X1-Carbon. Ночники по фото (литофания), авто-детали, органайзеры и шестерни. Доставка по Таджикистану.">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <style>
+    /* Critical Anti-FOUC: parsed synchronously before first paint */
+    html {
+      scroll-behavior: smooth;
+    }
+    .skip {
+      position: absolute !important;
+      top: -9999px !important;
+      left: -9999px !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+    html, body {
+      background-color: #FBFBFC !important;
+      color: #17171A !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      font-family: 'Inter Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
   <link rel="stylesheet" href="/src/style.css">
   <script>document.documentElement.classList.add('hero-intro'); setTimeout(function () { document.documentElement.classList.remove('hero-intro'); }, 3000);</script>
   <script type="module" src="/src/landing.js"></script>

@@ -8,6 +8,66 @@
   <title>3D-Калькулятор и онлайн-расчёт · 3D KHUJAND</title>
   <meta name="description" content="Интерактивный 3D-стол: загрузите модель STL, 3MF или OBJ, проверьте размеры и сразу узнайте точную цену печати в Худжанде.">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <style>
+    /* Critical Anti-FOUC & Skip Link: parsed synchronously before first paint */
+    html {
+      scroll-behavior: smooth;
+    }
+    .skip {
+      position: absolute !important;
+      top: -9999px !important;
+      left: -9999px !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+    .skip:focus {
+      top: 12px !important;
+      left: 12px !important;
+      width: auto !important;
+      height: auto !important;
+      clip: auto !important;
+      padding: 10px 18px !important;
+      background: #285DF5 !important;
+      color: #FFFFFF !important;
+      z-index: 10000 !important;
+      border-radius: 8px !important;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+      font-size: 14px !important;
+      font-weight: 600 !important;
+      text-decoration: none !important;
+      box-shadow: 0 4px 14px rgba(40, 93, 245, 0.35) !important;
+    }
+    html, body {
+      background-color: #FBFBFC !important;
+      color: #17171A !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      font-family: 'Inter Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .upload-button input[type="file"] {
+      position: absolute !important;
+      width: 0.1px !important;
+      height: 0.1px !important;
+      opacity: 0 !important;
+      overflow: hidden !important;
+      z-index: -1 !important;
+      pointer-events: none !important;
+    }
+    .choice-card input[type="radio"],
+    .choice-card input[type="checkbox"] {
+      position: absolute !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+  </style>
+  <link rel="stylesheet" href="/src/calculator.css">
   <link rel="stylesheet" href="/src/style.css">
   <script type="module" src="/src/calculator.js"></script>
 </head>
@@ -54,7 +114,7 @@
               <input id="file-input" type="file" accept=".stl,.3mf,.obj">
               <span>Загрузить модель</span>
             </label>
-            <a class="button button-ghost" href="/#photo">Нет файла (по фото)</a>
+            <a class="button button-ghost" href="#photo-order">Нет файла (по фото)</a>
           </div>
         </div>
 
@@ -148,6 +208,15 @@
               <button type="button" class="button button-primary button-wide" id="order-open">Оформить заказ в Telegram</button>
             </div>
           </form>
+        </div>
+
+        <!-- Helper Card: Where to find 3D models -->
+        <div class="calc-helper-card">
+          <div class="calc-helper-content">
+            <h3>Где взять готовую 3D-модель?</h3>
+            <p>Вы можете скачать миллионы готовых бесплатных моделей в каталогах <a href="https://makerworld.com/ru" target="_blank" rel="noopener">MakerWorld</a> и <a href="https://www.printables.com" target="_blank" rel="noopener">Printables</a>, сохранить файл <code>.stl</code> или <code>.3mf</code> и перетащить его в калькулятор выше.</p>
+          </div>
+          <a class="button button-ghost" href="#instructions">Инструкция для новичков →</a>
         </div>
 
         <!-- Section: Detailed Step-by-Step Instructions -->
