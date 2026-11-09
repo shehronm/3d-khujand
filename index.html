@@ -13,22 +13,27 @@
 <body>
   <a class="skip" href="#content">К содержанию</a>
 
-  <!-- Header -->
-  <header class="nav">
-    <div class="container nav-inner">
-      <a class="wordmark" href="/" aria-label="3D KHUJAND, главная">3D<span>KHUJAND</span></a>
-      <nav aria-label="Разделы сайта">
-        <ul class="nav-links">
-          <li><a href="#bento-overview">Обзор</a></li>
-          <li><a href="#catalog">Что печатаем</a></li>
-          <li><a href="#model-help">Где взять 3D</a></li>
-          <li><a href="#materials">Материалы</a></li>
-          <li><a href="#photo-order">Заказ по фото</a></li>
-          <li><a href="#faq">Вопросы</a></li>
-        </ul>
+  <!-- Floating Capsule Navbar (Magic UI Dock Style) -->
+  <header class="floating-nav-wrap">
+    <div class="floating-nav-pill">
+      <a class="wordmark-pill" href="/" aria-label="3D KHUJAND, главная">
+        <span class="logo-symbol" aria-hidden="true">❖</span>
+        <span class="logo-text">3D<b>KHUJAND</b></span>
+        <span class="live-pill-dot" title="Онлайн в Худжанде" aria-hidden="true"></span>
+      </a>
+      <nav class="pill-nav-links" aria-label="Разделы сайта">
+        <a href="#bento-overview">Обзор</a>
+        <a href="#catalog">Каталог</a>
+        <a href="#model-help">Где взять 3D</a>
+        <a href="#materials">Материалы</a>
+        <a href="#photo-order">По фото</a>
+        <a href="#faq">FAQ</a>
       </nav>
-      <div class="nav-actions">
-        <a class="button button-primary nav-calc-btn" href="/calculator.html">3D-Калькулятор →</a>
+      <div class="pill-nav-cta">
+        <a class="button button-primary button-pill-sm" href="/calculator.html">
+          <span>3D-Калькулятор</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
       </div>
     </div>
   </header>
@@ -36,12 +41,19 @@
   <main id="content">
     <!-- Hero Bento Section -->
     <section class="section-bento-hero" id="bento-overview" aria-labelledby="bento-hero-title">
-      <div class="container">
+      <!-- Magic UI Grid Pattern Background with Radial Mask -->
+      <div class="magic-grid-pattern" aria-hidden="true"></div>
+      
+      <div class="container" style="position: relative; z-index: 1;">
         <div class="bento-grid-hero">
           
           <!-- Bento 1: Hero Lead Card (span 8) -->
           <article class="bento-card bento-card-main">
             <div class="bento-card-glow" aria-hidden="true"></div>
+            <div class="card-crosshair ch-tl" aria-hidden="true">+</div>
+            <div class="card-crosshair ch-tr" aria-hidden="true">+</div>
+            <div class="card-crosshair ch-bl" aria-hidden="true">+</div>
+            <div class="card-crosshair ch-br" aria-hidden="true">+</div>
             <div class="badge-pill">
               <span class="pulse-dot" aria-hidden="true"></span>
               Студия 3D-печати · Худжанд · Доставка по Таджикистану
@@ -78,6 +90,8 @@
 
           <!-- Bento 2: 3D Calculator Trigger Card (span 4) -->
           <article class="bento-card bento-card-calc">
+            <div class="card-crosshair ch-tl" aria-hidden="true">+</div>
+            <div class="card-crosshair ch-tr" aria-hidden="true">+</div>
             <div class="bento-header">
               <span class="section-tag section-tag-accent">Интерактивный стол</span>
               <span class="badge-mono">256 × 256 × 256</span>
@@ -98,7 +112,7 @@
             </a>
           </article>
 
-          <!-- Bento 3: Interactive Lithophane Lamp (span 4) -->
+          <!-- Bento 3: Interactive Lithophane Lamp with Magic UI Ripple (span 4) -->
           <article class="bento-card bento-card-litho" id="litho-card">
             <div class="bento-header">
               <span class="section-tag section-tag-accent">Хит подарков</span>
@@ -111,6 +125,12 @@
             <p class="hint">Днём это стильный белый барельеф. При включении подсветки свет проявляет чёткую фотографию вашей семьи или близких.</p>
             
             <div class="litho-lamp-stage" id="lamp-stage" title="Кликните, чтобы включить/выключить свет">
+              <!-- Magic UI Ripple Effect -->
+              <div class="magic-ripple" id="lamp-ripple" aria-hidden="true">
+                <span class="ripple-ring"></span>
+                <span class="ripple-ring"></span>
+                <span class="ripple-ring"></span>
+              </div>
               <div class="lamp-glow-effect" aria-hidden="true"></div>
               <div class="lamp-frame">
                 <div class="lamp-photo-layer" aria-hidden="true"></div>
@@ -198,7 +218,39 @@
       </div>
     </section>
 
-    <!-- Catalog Section -->
+    <!-- Segmented Proof Grid Bar (Access Grid Style) -->
+    <section class="section-segmented-bar" aria-label="Параметры и гарантии">
+      <div class="container">
+        <div class="segmented-grid-strip">
+          <div class="seg-item seg-item-lead">
+            <span class="seg-label">ПРОИЗВОДСТВО В ХУДЖАНДЕ</span>
+            <span class="seg-title">Bambu Lab X1-Carbon</span>
+          </div>
+          <div class="seg-item">
+            <span class="seg-num">0.12 мм</span>
+            <span class="seg-sub">Точность слоя</span>
+          </div>
+          <div class="seg-item">
+            <span class="seg-num">256³ мм</span>
+            <span class="seg-sub">Рабочий стол</span>
+          </div>
+          <div class="seg-item">
+            <span class="seg-num">от 2 часов</span>
+            <span class="seg-sub">Экспресс-выдача</span>
+          </div>
+          <div class="seg-item">
+            <span class="seg-num">4 полимера</span>
+            <span class="seg-sub">PLA · PETG · TPU · Silk</span>
+          </div>
+          <div class="seg-item">
+            <span class="seg-num">100%</span>
+            <span class="seg-sub">Гарантия качества</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Catalog Section with Interactive Filter Bar -->
     <section class="section" id="catalog" aria-labelledby="catalog-title">
       <div class="container">
         <div class="section-head">
@@ -207,8 +259,26 @@
           <p class="lead">От единичных авторских подарков до функциональных деталей для техники и авто.</p>
         </div>
 
-        <div class="feature-grid">
-          <article class="feature-card">
+        <!-- Interactive Search & Chips Filter Bar (Access Grid Style) -->
+        <div class="catalog-filter-bar">
+          <div class="catalog-search-wrap">
+            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <input type="text" id="catalog-search-input" placeholder="Быстрый поиск деталей: шестерня, ночник, подставка, клипса..." aria-label="Поиск по каталогу">
+            <button type="button" id="catalog-search-clear" class="search-clear-btn" aria-label="Очистить поиск" hidden>×</button>
+          </div>
+          <div class="catalog-tags-strip" role="group" aria-label="Фильтр по категориям">
+            <button type="button" class="tag-chip active" data-filter="all">Все решения</button>
+            <button type="button" class="tag-chip" data-filter="desk">Для сетапов</button>
+            <button type="button" class="tag-chip" data-filter="litho">Ночники и подарки</button>
+            <button type="button" class="tag-chip" data-filter="repair">Запчасти и ремонт</button>
+            <button type="button" class="tag-chip" data-filter="art">Арт и сувениры</button>
+          </div>
+        </div>
+
+        <div class="feature-grid" id="catalog-grid">
+          <article class="feature-card" data-category="desk" data-keywords="подставка телефон смартфон планшет наушники органайзер кабель сетап nurwink стол подставки">
+            <div class="card-crosshair ch-tl" aria-hidden="true">+</div>
+            <div class="card-crosshair ch-tr" aria-hidden="true">+</div>
             <div class="feature-icon" aria-hidden="true">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
             </div>
@@ -217,7 +287,9 @@
             <span class="feature-meta">Идеальная кросс-пара для NURWINK</span>
           </article>
 
-          <article class="feature-card highlight-card">
+          <article class="feature-card highlight-card" data-category="litho" data-keywords="ночник лампа литофания подарок фото портрет светильник ваза кашпо семья декор подсветка">
+            <div class="card-crosshair ch-tl" aria-hidden="true">+</div>
+            <div class="card-crosshair ch-tr" aria-hidden="true">+</div>
             <div class="feature-icon feature-icon-accent" aria-hidden="true">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
             </div>
@@ -227,7 +299,9 @@
             <span class="feature-meta">Эффектный подарок на день рождения и свадьбу</span>
           </article>
 
-          <article class="feature-card">
+          <article class="feature-card" data-category="repair" data-keywords="запчасть ремонт шестерня авто крепление мясорубка блендер клипса заглушка petg ручка адаптер кухонный комбайн автомобиль">
+            <div class="card-crosshair ch-tl" aria-hidden="true">+</div>
+            <div class="card-crosshair ch-tr" aria-hidden="true">+</div>
             <div class="feature-icon" aria-hidden="true">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
             </div>
@@ -236,7 +310,9 @@
             <span class="feature-meta">Шестерни, клипсы, заглушки, ручки, адаптеры</span>
           </article>
 
-          <article class="feature-card">
+          <article class="feature-card" data-category="art" data-keywords="арт сувенир дракон брелок макет золото серебро silk pla логотип статуэтка фигурка интерьер">
+            <div class="card-crosshair ch-tl" aria-hidden="true">+</div>
+            <div class="card-crosshair ch-tr" aria-hidden="true">+</div>
             <div class="feature-icon" aria-hidden="true">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
             </div>
@@ -245,6 +321,7 @@
             <span class="feature-meta">Шёлковый пластик Silk PLA под золото и серебро</span>
           </article>
         </div>
+        <p id="catalog-no-results" class="catalog-empty-msg" hidden>Ничего не найдено по вашему запросу. Напишите мастеру в Telegram — напечатаем любую модель!</p>
       </div>
     </section>
 

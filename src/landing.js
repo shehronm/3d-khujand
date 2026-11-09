@@ -198,3 +198,68 @@ if (photoForm) {
     }
   });
 }
+
+// 5. Interactive Catalog Search & Category Filter (Access Grid Style)
+const catalogSearchInput = document.getElementById('catalog-search-input');
+const catalogSearchClear = document.getElementById('catalog-search-clear');
+const filterChips = document.querySelectorAll('.tag-chip');
+const catalogCards = document.querySelectorAll('#catalog-grid .feature-card');
+const catalogEmptyMsg = document.getElementById('catalog-no-results');
+
+let activeCategory = 'all';
+let searchQuery = '';
+
+function filterCatalog() {
+  let visibleCount = 0;
+  const q = searchQuery.toLowerCase().trim();
+
+  catalogCards.forEach(card => {
+    const cat = card.dataset.category || '';
+    const keywords = (card.dataset.keywords || '').toLowerCase();
+    const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
+    const desc = card.querySelector('p')?.textContent.toLowerCase() || '';
+
+    const matchesCat = (activeCategory === 'all' || cat === activeCategory);
+    const matchesSearch = !q || keywords.includes(q) || title.includes(q) || desc.includes(q);
+
+    if (matchesCat && matchesSearch) {
+      card.style.display = '';
+      visibleCount++;
+    } else {
+      card.style.display = 'none';
+    }
+  });
+
+  if (catalogEmptyMsg) {
+    catalogEmptyMsg.hidden = (visibleCount > 0);
+  }
+}
+
+if (catalogSearchInput) {
+  catalogSearchInput.addEventListener('input', (e) => {
+    searchQuery = e.target.value;
+    if (catalogSearchClear) {
+      catalogSearchClear.hidden = !searchQuery;
+    }
+    filterCatalog();
+  });
+}
+
+if (catalogSearchClear) {
+  catalogSearchClear.addEventListener('click', () => {
+    if (catalogSearchInput) catalogSearchInput.value = '';
+    searchQuery = '';
+    catalogSearchClear.hidden = true;
+    filterCatalog();
+    if (catalogSearchInput) catalogSearchInput.focus();
+  });
+}
+
+filterChips.forEach(chip => {
+  chip.addEventListener('click', () => {
+    filterChips.forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    activeCategory = chip.dataset.filter || 'all';
+    filterCatalog();
+  });
+});
