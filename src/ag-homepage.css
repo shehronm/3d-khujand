@@ -118,7 +118,6 @@
   ry: 2;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.4s ease-out;
 }
 
 /* Waking cell: 3D lifted perimeter */
@@ -132,7 +131,6 @@
   ry: 2;
   transform-origin: center;
   filter: drop-shadow(0 6px 12px rgba(12, 14, 22, 0.16));
-  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease;
 }
 
 /* Traveling dashed line */

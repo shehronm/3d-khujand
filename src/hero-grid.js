@@ -90,7 +90,7 @@
   // 2. A dashed line starts traveling along the grid
   // 3. As the line moves away, the dark cavity fades out ("черное место исчезает") and cell lowers
   function spawnAwakening() {
-    if (!isRunning || document.hidden || cols < 3 || rows < 3 || reduce.matches) return;
+    if (!isRunning || document.hidden || cols < 3 || rows < 3 || reduce.matches || activeCells.size >= 3) return;
 
     // Pick random cell across the hero (avoid window edges)
     const c = Math.floor(1 + Math.random() * (cols - 3));
@@ -127,23 +127,23 @@
     // Animate 3D lift & dark shadow appearance, then dissolve ("черное место исчезает")
     shadow.animate([
       { opacity: 0 },
-      { opacity: 0.32, offset: 0.22 },
-      { opacity: 0.32, offset: 0.45 },
-      { opacity: 0 }
+      { opacity: 0.35, offset: 0.28 },
+      { opacity: 0.35, offset: 0.55 },
+      { opacity: 0, offset: 1.0 }
     ], {
-      duration: 1850,
-      easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
+      duration: 3600,
+      easing: 'cubic-bezier(0.25, 0.1, 0.25, 1.0)',
       fill: 'forwards'
     });
 
     lift.animate([
-      { transform: 'translate(0, 0) scale(1)', stroke: '#989dae' },
-      { transform: 'translate(-5px, -9px) scale(1.025)', stroke: '#10131a', offset: 0.2 },
-      { transform: 'translate(-5px, -9px) scale(1.025)', stroke: '#10131a', offset: 0.55 },
-      { transform: 'translate(0, 0) scale(1)', stroke: '#989dae', offset: 1 }
+      { transform: 'translate(0, 0) scale(1)', stroke: '#989dae', fillOpacity: 0 },
+      { transform: 'translate(-6px, -10px) scale(1.02)', stroke: '#10131a', fillOpacity: 0.85, offset: 0.30 },
+      { transform: 'translate(-6px, -10px) scale(1.02)', stroke: '#10131a', fillOpacity: 0.85, offset: 0.60 },
+      { transform: 'translate(0, 0) scale(1)', stroke: '#989dae', fillOpacity: 0, offset: 1.0 }
     ], {
-      duration: 1850,
-      easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
+      duration: 3600,
+      easing: 'cubic-bezier(0.25, 0.1, 0.25, 1.0)',
       fill: 'forwards'
     });
 
@@ -193,18 +193,18 @@
     // Line drawing animation (starts 220ms after lift begins)
     flowLine.animate([
       { strokeDashoffset: totalLen, opacity: 0 },
-      { strokeDashoffset: totalLen, opacity: 1, offset: 0.1 },
-      { strokeDashoffset: 0, opacity: 1, offset: 0.75 },
-      { strokeDashoffset: -20, opacity: 0, offset: 1 }
+      { strokeDashoffset: totalLen, opacity: 1, offset: 0.12 },
+      { strokeDashoffset: 0, opacity: 1, offset: 0.80 },
+      { strokeDashoffset: -25, opacity: 0, offset: 1.0 }
     ], {
-      delay: 220,
-      duration: 1550,
-      easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+      delay: 450,
+      duration: 2900,
+      easing: 'cubic-bezier(0.25, 0.1, 0.25, 1.0)',
       fill: 'forwards'
     });
 
-    const startTime = performance.now() + 220;
-    const dur = 1550 * 0.75;
+    const startTime = performance.now() + 450;
+    const dur = 2900 * 0.80;
     function trackHead(t) {
       const elapsed = t - startTime;
       if (elapsed >= 0 && elapsed <= dur) {
@@ -218,25 +218,25 @@
       } else {
         head.style.opacity = '0';
       }
-      if (elapsed < 1650) requestAnimationFrame(trackHead);
+      if (elapsed < 3100) requestAnimationFrame(trackHead);
     }
     requestAnimationFrame(trackHead);
 
-    // Cleanup after animation completes
+    // Cleanup after animation completes smoothly
     setTimeout(() => {
       shadow.remove();
       lift.remove();
       flowLine.remove();
       head.remove();
       activeCells.delete(cellKey);
-    }, 2100);
+    }, 3800);
   }
 
   function schedule() {
     clearTimeout(spawnTimer);
     if (!isRunning) return;
     spawnAwakening();
-    const wait = 550 + Math.random() * 500;
+    const wait = 1600 + Math.random() * 1000;
     spawnTimer = setTimeout(schedule, wait);
   }
 
