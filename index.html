@@ -102,10 +102,10 @@
       <div class="w-full max-w-[var(--page-max)] ml-[var(--page-left)] mr-auto px-[var(--page-gutter)] flex h-[260px] items-start pr-[var(--rule-x)] max-lg:h-auto max-lg:flex-col max-lg:pr-[var(--page-gutter)]">
         <div class="flex h-full w-[280px] flex-none flex-col justify-between pt-10 max-lg:h-auto max-lg:w-full max-lg:flex-row max-lg:items-center max-lg:gap-6 max-lg:pb-8 md:max-lg:pt-20 max-md:flex-col max-md:items-start max-md:gap-4 max-md:pb-6 max-md:pt-8">
           <p class="max-w-[220px] text-[15px]/6 font-medium tracking-[-0.0015em] text-ag-gray-600 max-md:max-w-none max-md:text-balance" id="proof-title">
-            <strong class="font-medium text-ag-gray-950">Промышленный парк <br class="max-md:hidden" />и гарантия допусков</strong> для ваших задач.
+            <strong class="font-medium text-ag-gray-950">Промышленный парк <br class="max-md:hidden" />и материалы</strong> для ваших задач.
           </p>
-          <a class="btn-secondary flex-none gap-2 self-start pl-3 pr-2" href="#materials">
-            Параметры оборудования
+          <a class="btn-secondary flex-none gap-2 self-start pl-3 pr-2" href="#catalog">
+            Оборудование и бренды
             <svg class="icon-arrow flex-none" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <g class="icon-arrow__head">
                 <path class="icon-arrow__stem" d="M8 8.5H2.5" pathLength="1" stroke="#B8B9C1" stroke-width="1.5" stroke-linecap="round" />
@@ -115,38 +115,58 @@
           </a>
         </div>
 
-        <ul class="proof__grid relative grid h-full min-w-0 flex-auto auto-rows-[var(--logo-cell)] grid-cols-[repeat(4,round(down,20%,1px))_1fr] before:pointer-events-none before:absolute before:inset-x-0 before:top-1/2 before:h-px before:bg-[repeating-linear-gradient(to_right,rgba(38,38,43,0.1)_0_3px,transparent_3px_7px)] before:content-[''] max-xl:grid-cols-[repeat(3,round(down,25%,1px))_1fr] max-lg:mx-[calc(var(--rule-x)-var(--page-gutter))] max-lg:h-auto max-lg:w-auto max-lg:self-stretch max-lg:after:pointer-events-none max-lg:after:absolute max-lg:after:inset-x-px max-lg:after:top-0 max-lg:after:h-px max-lg:after:bg-[repeating-linear-gradient(to_right,rgba(38,38,43,0.1)_0_3px,transparent_3px_7px)] max-lg:after:content-[''] max-md:grid-cols-2" aria-label="Технические стандарты">
-          <li class="proof__cell relative flex flex-col items-center justify-center p-4 text-center before:absolute before:left-0 before:top-0 before:h-[200%] before:w-px before:bg-[linear-gradient(to_bottom,rgba(38,38,43,0.1)_69%,transparent_100%)] before:content-[''] max-lg:before:hidden">
-            <span class="font-display font-medium text-base text-ag-gray-950">Bambu Lab X1C</span>
-            <span class="text-xs text-ag-gray-500 mt-1">Флагманский 3D-принтер</span>
+        <ul class="proof__grid relative grid h-full min-w-0 flex-auto auto-rows-[var(--logo-cell)] grid-cols-[repeat(4,round(down,20%,1px))_1fr] before:pointer-events-none before:absolute before:inset-x-0 before:top-1/2 before:h-px before:bg-[repeating-linear-gradient(to_right,rgba(38,38,43,0.1)_0_3px,transparent_3px_7px)] before:content-[''] max-xl:grid-cols-[repeat(3,round(down,25%,1px))_1fr] max-lg:mx-[calc(var(--rule-x)-var(--page-gutter))] max-lg:h-auto max-lg:w-auto max-lg:self-stretch max-lg:after:pointer-events-none max-lg:after:absolute max-lg:after:inset-x-px max-lg:after:top-0 max-lg:after:h-px max-lg:after:bg-[repeating-linear-gradient(to_right,rgba(38,38,43,0.1)_0_3px,transparent_3px_7px)] max-lg:after:content-[''] max-md:grid-cols-2"
+            aria-label="Бренды и компоненты"
+            data-logos='[{"key":"bambulab","name":"Bambu Lab","src":"/assets/brands/bambulab.svg","w":110,"h":28},{"key":"e3d","name":"E3D Online","src":"/assets/brands/e3d.svg","w":110,"h":28},{"key":"polymaker","name":"Polymaker","src":"/assets/brands/polymaker.svg","w":110,"h":28},{"key":"prusa","name":"PRUSA","src":"/assets/brands/prusa.svg","w":95,"h":28},{"key":"creality","name":"Creality","src":"/assets/brands/creality.svg","w":100,"h":28},{"key":"formfutura","name":"FormFutura","src":"/assets/brands/formfutura.svg","w":115,"h":28},{"key":"voron","name":"Voron V2","src":"/assets/brands/voron.svg","w":105,"h":28},{"key":"sunlu","name":"SUNLU","src":"/assets/brands/sunlu.svg","w":95,"h":28},{"key":"esun","name":"eSUN 3D","src":"/assets/brands/esun.svg","w":95,"h":28},{"key":"anycubic","name":"Anycubic","src":"/assets/brands/anycubic.svg","w":105,"h":28},{"key":"phaetus","name":"Phaetus","src":"/assets/brands/phaetus.svg","w":100,"h":28},{"key":"slice","name":"Slice Eng","src":"/assets/brands/slice.svg","w":105,"h":28}]'>
+          <li class="proof__cell relative flex items-center justify-center before:absolute before:left-0 before:top-0 before:h-[200%] before:w-px before:bg-[linear-gradient(to_bottom,rgba(38,38,43,0.1)_69%,transparent_100%)] before:content-[''] max-lg:before:hidden" aria-label="Bambu Lab">
+            <span class="proof__logo-wrap">
+              <img class="proof__logo proof__logo--bambulab" width="110" height="28" alt="Bambu Lab" src="/assets/brands/bambulab.svg" />
+            </span>
           </li>
-          <li class="proof__cell relative flex flex-col items-center justify-center p-4 text-center before:absolute before:left-0 before:top-0 before:h-[200%] before:w-px before:bg-[linear-gradient(to_bottom,rgba(38,38,43,0.1)_69%,transparent_100%)] before:content-['']">
-            <span class="font-display font-medium text-base text-ag-gray-950">0.12 – 0.28 мм</span>
-            <span class="text-xs text-ag-gray-500 mt-1">Точность высоты слоя</span>
+          <li class="proof__cell relative flex items-center justify-center before:absolute before:left-0 before:top-0 before:h-[200%] before:w-px before:bg-[linear-gradient(to_bottom,rgba(38,38,43,0.1)_69%,transparent_100%)] before:content-['']" aria-label="E3D Online">
+            <span class="proof__logo-wrap">
+              <img class="proof__logo proof__logo--e3d" width="110" height="28" alt="E3D Online" src="/assets/brands/e3d.svg" />
+            </span>
           </li>
-          <li class="proof__cell relative flex flex-col items-center justify-center p-4 text-center before:absolute before:left-0 before:top-0 before:h-[200%] before:w-px before:bg-[linear-gradient(to_bottom,rgba(38,38,43,0.1)_69%,transparent_100%)] before:content-[''] max-md:before:hidden">
-            <span class="font-display font-medium text-base text-ag-gray-950">256 × 256 × 256</span>
-            <span class="text-xs text-ag-gray-500 mt-1">Максимальный объём (мм)</span>
+          <li class="proof__cell relative flex items-center justify-center before:absolute before:left-0 before:top-0 before:h-[200%] before:w-px before:bg-[linear-gradient(to_bottom,rgba(38,38,43,0.1)_69%,transparent_100%)] before:content-[''] max-md:before:hidden" aria-label="Polymaker">
+            <span class="proof__logo-wrap">
+              <img class="proof__logo proof__logo--polymaker" width="110" height="28" alt="Polymaker" src="/assets/brands/polymaker.svg" />
+            </span>
           </li>
-          <li class="proof__cell relative flex flex-col items-center justify-center p-4 text-center before:absolute before:left-0 before:top-0 before:h-[200%] before:w-px before:bg-[linear-gradient(to_bottom,rgba(38,38,43,0.1)_69%,transparent_100%)] before:content-[''] max-md:before:hidden">
-            <span class="font-display font-medium text-base text-ag-gray-950">от 2 часов</span>
-            <span class="text-xs text-ag-gray-500 mt-1">Срочная печать в день заказа</span>
+          <li class="proof__cell relative flex items-center justify-center before:absolute before:left-0 before:top-0 before:h-[200%] before:w-px before:bg-[linear-gradient(to_bottom,rgba(38,38,43,0.1)_69%,transparent_100%)] before:content-[''] max-md:before:hidden" aria-label="PRUSA">
+            <span class="proof__logo-wrap">
+              <img class="proof__logo proof__logo--prusa" width="95" height="28" alt="PRUSA" src="/assets/brands/prusa.svg" />
+            </span>
           </li>
-          <li class="proof__cell relative flex flex-col items-center justify-center p-4 text-center before:absolute before:left-0 before:top-0 before:h-[200%] before:w-px before:bg-[linear-gradient(to_bottom,rgba(38,38,43,0.1)_69%,transparent_100%)] before:content-[''] max-xl:before:hidden max-md:hidden">
-            <span class="font-display font-medium text-base text-ag-gray-950">Bambu AMS 4x</span>
-            <span class="text-xs text-ag-gray-500 mt-1">Четырёхцветная печать</span>
+          <li class="proof__cell relative flex items-center justify-center before:absolute before:left-0 before:top-0 before:h-[200%] before:w-px before:bg-[linear-gradient(to_bottom,rgba(38,38,43,0.1)_69%,transparent_100%)] before:content-[''] max-xl:before:hidden max-md:hidden" aria-label="Creality">
+            <span class="proof__logo-wrap">
+              <img class="proof__logo proof__logo--creality" width="100" height="28" alt="Creality" src="/assets/brands/creality.svg" />
+            </span>
           </li>
-          <li class="proof__cell relative flex flex-col items-center justify-center p-4 text-center max-md:hidden">
-            <span class="font-display font-medium text-base text-ag-gray-950">PLA · PETG · TPU</span>
-            <span class="text-xs text-ag-gray-500 mt-1">Оригинальные полимеры</span>
+          <li class="proof__cell relative flex items-center justify-center max-md:hidden" aria-label="FormFutura">
+            <span class="proof__logo-wrap">
+              <img class="proof__logo proof__logo--formfutura" width="115" height="28" alt="FormFutura" src="/assets/brands/formfutura.svg" />
+            </span>
           </li>
-          <li class="proof__cell relative flex flex-col items-center justify-center p-4 text-center max-md:hidden">
-            <span class="font-display font-medium text-base text-ag-gray-950">Доставка по РТ</span>
-            <span class="text-xs text-ag-gray-500 mt-1">Худжанд, Душанбе, Бохтар</span>
+          <li class="proof__cell relative flex items-center justify-center max-md:hidden" aria-label="Voron V2">
+            <span class="proof__logo-wrap">
+              <img class="proof__logo proof__logo--voron" width="105" height="28" alt="Voron V2" src="/assets/brands/voron.svg" />
+            </span>
           </li>
-          <li class="proof__cell relative flex flex-col items-center justify-center p-4 text-center max-md:hidden">
-            <span class="font-display font-medium text-base text-ag-gray-950">100% Повторимость</span>
-            <span class="text-xs text-ag-gray-500 mt-1">Лазерная калибровка стола</span>
+          <li class="proof__cell relative flex items-center justify-center max-md:hidden" aria-label="SUNLU">
+            <span class="proof__logo-wrap">
+              <img class="proof__logo proof__logo--sunlu" width="95" height="28" alt="SUNLU" src="/assets/brands/sunlu.svg" />
+            </span>
+          </li>
+          <li class="proof__cell relative flex items-center justify-center max-md:hidden" aria-label="eSUN 3D">
+            <span class="proof__logo-wrap">
+              <img class="proof__logo proof__logo--esun" width="95" height="28" alt="eSUN 3D" src="/assets/brands/esun.svg" />
+            </span>
+          </li>
+          <li class="proof__cell relative flex items-center justify-center max-md:hidden" aria-label="Anycubic">
+            <span class="proof__logo-wrap">
+              <img class="proof__logo proof__logo--anycubic" width="105" height="28" alt="Anycubic" src="/assets/brands/anycubic.svg" />
+            </span>
           </li>
         </ul>
       </div>
@@ -163,128 +183,157 @@
 
         <ul class="features relative grid grid-cols-[repeat(2,round(down,33.333%,1px))_1fr] mx-[calc(var(--rule-x)-var(--page-gutter))] lg:max-[1439px]:[--feature-pad:clamp(24px,calc(15vw-168px),48px)] md:max-lg:mx-auto md:max-lg:max-w-[640px] md:max-lg:grid-cols-[minmax(0,1fr)] md:max-lg:gap-y-16 max-md:mx-0 max-md:grid-cols-1">
           
-          <!-- Column 1: Каталог решений с живым поиском -->
+          <!-- Column 1: Каталог готовых решений (readers.js infinite drift + search + hover card) -->
           <li class="relative h-[var(--features-h)] overflow-hidden px-12 pt-3 lg:max-[1439px]:px-[var(--feature-pad)] max-lg:h-auto max-lg:overflow-visible md:max-lg:p-0 max-md:px-0 max-md:pb-10 max-md:pt-8">
-            <div class="size-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-brand-600 mb-6">
-              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-              </svg>
-            </div>
-            <h3 class="font-display text-[15px]/6 font-medium text-ag-gray-950">Каталог готовых решений</h3>
-            <p class="feature__copy mt-2 max-w-[352px] text-sm/6 tracking-[-0.14px] text-ag-gray-700">
-              Популярные категории и готовые детали с проверенными допусками.
+            <svg class="block size-10 overflow-visible" width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <path d="M24.2498 31.25L25.1257 31.4842C26.1926 31.7701 27.2893 31.137 27.5752 30.07L32.3633 12.2004C32.6492 11.1335 32.0161 10.0368 30.9491 9.7509L18.8751 6.51567C17.8081 6.22978 16.7114 6.86295 16.4256 7.92988L15.6699 10.75" stroke="#BCD7FF" />
+              <path d="M7.75 12.75C7.75 11.6454 8.64543 10.75 9.75 10.75H15.6701H22.25C23.3546 10.75 24.25 11.6454 24.25 12.75V31.25C24.25 32.3546 23.3546 33.25 22.25 33.25H9.75C8.64543 33.25 7.75 32.3546 7.75 31.25V12.75Z" fill="#D9E8FF" stroke="#285DF5" />
+              <path d="M19.0052 15.9948C18.2361 15.2257 17.1736 14.75 16 14.75C14.829 14.75 13.7687 15.2236 13 15.9896" stroke="#285DF5" stroke-linecap="round" />
+              <path d="M16.8839 18.1161C16.6577 17.8899 16.3452 17.75 16 17.75C15.6548 17.75 15.3423 17.8899 15.1161 18.1161" stroke="#285DF5" stroke-linecap="round" />
+            </svg>
+            <h3 class="mt-8 font-display text-[15px]/6 font-medium text-ag-gray-950 md:max-lg:max-w-[576px] max-md:mt-4">Каталог готовых решений</h3>
+            <p class="feature__copy mt-2 max-w-[352px] text-sm/6 tracking-[-0.14px] text-ag-gray-700 md:max-lg:max-w-[576px] max-md:max-w-none">
+              Проверенные модели, посадки под подшипники и допуски для сотен изделий.
+              <a class="whitespace-nowrap font-medium text-ag-gray-950 focus-visible:rounded-[2px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600" href="/calculator.html">3D-калькулятор<svg class="icon-arrow ml-1 inline-block align-[-3px]" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><g class="icon-arrow__head"><path class="icon-arrow__stem" d="M8 8.5H2.5" pathLength="1" stroke="#B8B9C1" stroke-width="1.5" stroke-linecap="round" /><path d="M6.5 11.5L9.5 8.5L6.5 5.5" stroke="#B8B9C1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></g></svg></a>
             </p>
 
-            <!-- Search input with Access Grid styling -->
-            <div class="mt-6 relative flex items-center gap-2 px-3 py-2 rounded-lg bg-ag-gray-100/80 border border-ag-gray-200 focus-within:border-brand-600 focus-within:bg-white transition-all">
-              <svg class="size-4 text-ag-gray-400 flex-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-              </svg>
-              <input id="catalog-search" class="readers__input w-full bg-transparent border-0 p-0 text-sm text-ag-gray-900 outline-none placeholder:text-ag-gray-400" type="text" placeholder="Поиск деталей и изделий..." autocomplete="off" />
-            </div>
+            <div class="readers readers--v2 relative z-[2] mt-6 h-[384px] w-full [--inset:32px] lg:-ml-8 lg:w-[calc(100%+64px)] max-lg:[--inset:0px] max-md:h-[344px]">
+              <div class="readers__search group/search absolute left-1/2 top-0 z-[2] flex h-8 w-[176px] -translate-x-1/2 cursor-text items-center gap-2 whitespace-nowrap rounded-3xl border-[0.5px] border-ag-gray-100 bg-ag-gray-50 px-1.5 font-display text-sm/6 text-ag-gray-400 [transition:width_460ms_cubic-bezier(0.23,1,0.32,1),border-color_220ms_ease,box-shadow_220ms_ease,background-color_220ms_ease] focus-within:w-[calc(100%-2*var(--inset))] focus-within:border-transparent focus-within:bg-white focus-within:shadow-[0_0_1px_0_rgba(38,38,43,0.12),0_0_0_1px_rgba(38,38,43,0.06),0_3px_8px_-4px_rgba(38,38,43,0.16)] motion-reduce:transition-none">
+                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" aria-hidden="true" class="size-6 shrink-0 text-ag-gray-400">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.25 19.25L15.5 15.5M4.75 11C4.75 7.54822 7.54822 4.75 11 4.75C14.4518 4.75 17.25 7.54822 17.25 11C17.25 14.4518 14.4518 17.25 11 17.25C7.54822 17.25 4.75 14.4518 4.75 11Z"></path>
+                </svg>
+                <input class="readers__input min-w-0 flex-auto border-0 bg-transparent p-0 text-ag-gray-900 outline-none [font:inherit] tracking-[inherit] placeholder:text-ag-gray-400 placeholder:opacity-100 placeholder:[transition:opacity_160ms_ease] focus:outline-none focus:ring-0 group-focus-within/search:placeholder:opacity-20" type="text" placeholder="Поиск решений..." aria-label="Поиск решений" autocomplete="off" spellcheck="false" />
+              </div>
 
-            <!-- Filterable Solutions List -->
-            <ul id="catalog-list" class="mt-4 space-y-1.5 overflow-y-auto max-h-[300px] pr-1">
-              <li class="readers__line flex items-center justify-between p-2 rounded-md hover:bg-ag-gray-100 transition-colors text-sm text-ag-gray-800" data-name="шестерни втулки редуктор зубчатые">
-                <span class="font-medium text-ag-gray-900">Шестерни и втулки редукторов</span>
-                <span class="text-xs bg-ag-gray-200/70 text-ag-gray-700 px-2 py-0.5 rounded">PETG / Nylon</span>
-              </li>
-              <li class="readers__line flex items-center justify-between p-2 rounded-md hover:bg-ag-gray-100 transition-colors text-sm text-ag-gray-800" data-name="литофания ночник фото подарок свет">
-                <span class="font-medium text-ag-gray-900">Литофания: ночник с фото</span>
-                <span class="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded">PLA White</span>
-              </li>
-              <li class="readers__line flex items-center justify-between p-2 rounded-md hover:bg-ag-gray-100 transition-colors text-sm text-ag-gray-800" data-name="авто автокрепления клипсы держатели заглушки">
-                <span class="font-medium text-ag-gray-900">Авто-крепления и клипсы</span>
-                <span class="text-xs bg-ag-gray-200/70 text-ag-gray-700 px-2 py-0.5 rounded">Термо-PETG</span>
-              </li>
-              <li class="readers__line flex items-center justify-between p-2 rounded-md hover:bg-ag-gray-100 transition-colors text-sm text-ag-gray-800" data-name="органайзеры подставки холдеры кабель стол">
-                <span class="font-medium text-ag-gray-900">Настольные органайзеры и холдеры</span>
-                <span class="text-xs bg-ag-gray-200/70 text-ag-gray-700 px-2 py-0.5 rounded">PLA Tough</span>
-              </li>
-              <li class="readers__line flex items-center justify-between p-2 rounded-md hover:bg-ag-gray-100 transition-colors text-sm text-ag-gray-800" data-name="макеты архитектура диорамы фигурки">
-                <span class="font-medium text-ag-gray-900">Архитектурные макеты и диорамы</span>
-                <span class="text-xs bg-ag-gray-200/70 text-ag-gray-700 px-2 py-0.5 rounded">0.12 мм</span>
-              </li>
-              <li class="readers__line flex items-center justify-between p-2 rounded-md hover:bg-ag-gray-100 transition-colors text-sm text-ag-gray-800" data-name="бамперы ножки приборов амортизаторы резина гибкий">
-                <span class="font-medium text-ag-gray-900">Защитные бамперы и ножки</span>
-                <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">TPU Flex</span>
-              </li>
-            </ul>
+              <div class="readers__lines-window absolute inset-x-0 bottom-0 top-1.5 overflow-hidden">
+                <ul class="readers__lines" style="--drift: 48s" aria-label="Готовые детали">
+                  <li class="readers__line mx-[var(--inset)] mb-1 flex h-[26px] cursor-default select-none items-center justify-between gap-3 overflow-hidden text-ellipsis whitespace-nowrap rounded-lg py-px pl-2 pr-1 font-display text-sm/6 text-ag-gray-800 [transition:color_240ms_ease,opacity_240ms_ease,background-color_240ms_ease]"
+                      data-name="Планетарный редуктор шестерни втулки" data-tag="PETG/Nylon" data-photo="/assets/catalog/gearbox.svg">
+                    <span class="readers__name min-w-0 overflow-hidden text-ellipsis">Планетарный редуктор и шестерни</span>
+                    <span class="readers__tag flex-none rounded bg-ag-gray-950/[0.04] px-1.5 font-sans text-[11px]/[18px] font-medium tracking-[0.02em] text-ag-gray-400 [transition:color_240ms_ease,background-color_240ms_ease]">PETG</span>
+                  </li>
+                  <li class="readers__line mx-[var(--inset)] mb-1 flex h-[26px] cursor-default select-none items-center justify-between gap-3 overflow-hidden text-ellipsis whitespace-nowrap rounded-lg py-px pl-2 pr-1 font-display text-sm/6 text-ag-gray-800 [transition:color_240ms_ease,opacity_240ms_ease,background-color_240ms_ease]"
+                      data-name="Литофания Ночник по фото свет подарок" data-tag="PLA White" data-photo="/assets/catalog/lithophane.svg">
+                    <span class="readers__name min-w-0 overflow-hidden text-ellipsis">Литофания: ночник по фото</span>
+                    <span class="readers__tag flex-none rounded bg-ag-gray-950/[0.04] px-1.5 font-sans text-[11px]/[18px] font-medium tracking-[0.02em] text-ag-gray-400 [transition:color_240ms_ease,background-color_240ms_ease]">PLA</span>
+                  </li>
+                  <li class="readers__line mx-[var(--inset)] mb-1 flex h-[26px] cursor-default select-none items-center justify-between gap-3 overflow-hidden text-ellipsis whitespace-nowrap rounded-lg py-px pl-2 pr-1 font-display text-sm/6 text-ag-gray-800 [transition:color_240ms_ease,opacity_240ms_ease,background-color_240ms_ease]"
+                      data-name="Авто-клипса защёлка крепление держатель" data-tag="Термо-PETG" data-photo="/assets/catalog/autoclip.svg">
+                    <span class="readers__name min-w-0 overflow-hidden text-ellipsis">Авто-крепления и клипсы</span>
+                    <span class="readers__tag flex-none rounded bg-ag-gray-950/[0.04] px-1.5 font-sans text-[11px]/[18px] font-medium tracking-[0.02em] text-ag-gray-400 [transition:color_240ms_ease,background-color_240ms_ease]">PETG</span>
+                  </li>
+                  <li class="readers__line mx-[var(--inset)] mb-1 flex h-[26px] cursor-default select-none items-center justify-between gap-3 overflow-hidden text-ellipsis whitespace-nowrap rounded-lg py-px pl-2 pr-1 font-display text-sm/6 text-ag-gray-800 [transition:color_240ms_ease,opacity_240ms_ease,background-color_240ms_ease]"
+                      data-name="Настольный органайзер холдер подставка" data-tag="PLA Tough" data-photo="/assets/catalog/organizer.svg">
+                    <span class="readers__name min-w-0 overflow-hidden text-ellipsis">Органайзеры и холдеры</span>
+                    <span class="readers__tag flex-none rounded bg-ag-gray-950/[0.04] px-1.5 font-sans text-[11px]/[18px] font-medium tracking-[0.02em] text-ag-gray-400 [transition:color_240ms_ease,background-color_240ms_ease]">PLA</span>
+                  </li>
+                  <li class="readers__line mx-[var(--inset)] mb-1 flex h-[26px] cursor-default select-none items-center justify-between gap-3 overflow-hidden text-ellipsis whitespace-nowrap rounded-lg py-px pl-2 pr-1 font-display text-sm/6 text-ag-gray-800 [transition:color_240ms_ease,opacity_240ms_ease,background-color_240ms_ease]"
+                      data-name="Архитектурный макет диорама фигурки" data-tag="0.12 мм" data-photo="/assets/catalog/archmockup.svg">
+                    <span class="readers__name min-w-0 overflow-hidden text-ellipsis">Архитектурные макеты</span>
+                    <span class="readers__tag flex-none rounded bg-ag-gray-950/[0.04] px-1.5 font-sans text-[11px]/[18px] font-medium tracking-[0.02em] text-ag-gray-400 [transition:color_240ms_ease,background-color_240ms_ease]">0.12mm</span>
+                  </li>
+                  <li class="readers__line mx-[var(--inset)] mb-1 flex h-[26px] cursor-default select-none items-center justify-between gap-3 overflow-hidden text-ellipsis whitespace-nowrap rounded-lg py-px pl-2 pr-1 font-display text-sm/6 text-ag-gray-800 [transition:color_240ms_ease,opacity_240ms_ease,background-color_240ms_ease]"
+                      data-name="Виброопора ножка резина демпфер" data-tag="TPU Flex" data-photo="/assets/catalog/damper.svg">
+                    <span class="readers__name min-w-0 overflow-hidden text-ellipsis">Виброопоры и ножки</span>
+                    <span class="readers__tag flex-none rounded bg-ag-gray-950/[0.04] px-1.5 font-sans text-[11px]/[18px] font-medium tracking-[0.02em] text-ag-gray-400 [transition:color_240ms_ease,background-color_240ms_ease]">TPU</span>
+                  </li>
+                  <li class="readers__line mx-[var(--inset)] mb-1 flex h-[26px] cursor-default select-none items-center justify-between gap-3 overflow-hidden text-ellipsis whitespace-nowrap rounded-lg py-px pl-2 pr-1 font-display text-sm/6 text-ag-gray-800 [transition:color_240ms_ease,opacity_240ms_ease,background-color_240ms_ease]"
+                      data-name="Кронштейн дрона квадрокоптер рама" data-tag="Carbon PA-CF" data-photo="/assets/catalog/dronearm.svg">
+                    <span class="readers__name min-w-0 overflow-hidden text-ellipsis">Кронштейн дрона усиленный</span>
+                    <span class="readers__tag flex-none rounded bg-ag-gray-950/[0.04] px-1.5 font-sans text-[11px]/[18px] font-medium tracking-[0.02em] text-ag-gray-400 [transition:color_240ms_ease,background-color_240ms_ease]">PA-CF</span>
+                  </li>
+                  <li class="readers__line mx-[var(--inset)] mb-1 flex h-[26px] cursor-default select-none items-center justify-between gap-3 overflow-hidden text-ellipsis whitespace-nowrap rounded-lg py-px pl-2 pr-1 font-display text-sm/6 text-ag-gray-800 [transition:color_240ms_ease,opacity_240ms_ease,background-color_240ms_ease]"
+                      data-name="Корпус прибора IP54 электроника бокс" data-tag="PETG Tough" data-photo="/assets/catalog/enclosure.svg">
+                    <span class="readers__name min-w-0 overflow-hidden text-ellipsis">Корпус РЭА с латунью</span>
+                    <span class="readers__tag flex-none rounded bg-ag-gray-950/[0.04] px-1.5 font-sans text-[11px]/[18px] font-medium tracking-[0.02em] text-ag-gray-400 [transition:color_240ms_ease,background-color_240ms_ease]">PETG</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Hover Preview Card: 2 stacked crossfading images -->
+              <div class="readers__card">
+                <img src="/assets/catalog/gearbox.svg" alt="" class="is-on" />
+                <img src="/assets/catalog/lithophane.svg" alt="" />
+              </div>
+            </div>
           </li>
 
-          <!-- Column 2: Лаборатория полимеров -->
+          <!-- Column 2: Совместимость с САПР и слайсерами (integration-logos.js dual counter-sliding tracks) -->
           <li class="relative h-[var(--features-h)] overflow-hidden px-12 pt-3 lg:max-[1439px]:px-[var(--feature-pad)] max-lg:h-auto max-lg:overflow-visible md:max-lg:p-0 max-md:px-0 max-md:pb-10 max-md:pt-8 border-l border-ag-gray-100 max-lg:border-l-0" id="materials">
-            <div class="size-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-brand-600 mb-6">
-              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-              </svg>
-            </div>
-            <h3 class="font-display text-[15px]/6 font-medium text-ag-gray-950">Лаборатория полимеров</h3>
-            <p class="feature__copy mt-2 max-w-[352px] text-sm/6 tracking-[-0.14px] text-ag-gray-700">
-              Выбирайте пластик под температурные нагрузки и механические свойства.
+            <svg class="block size-10 overflow-visible" width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <path d="M29.5 9.75H10.5C9.5335 9.75 8.75 10.5335 8.75 11.5V28.5C8.75 29.4665 9.5335 30.25 10.5 30.25H29.5C30.4665 30.25 31.25 29.4665 31.25 28.5V11.5C31.25 10.5335 30.4665 9.75 29.5 9.75Z" stroke="#BCD7FF" />
+              <path d="M12.75 16.75H27.25M12.75 23.25H21.25" stroke="#285DF5" stroke-linecap="round" />
+            </svg>
+            <h3 class="mt-8 font-display text-[15px]/6 font-medium text-ag-gray-950 md:max-lg:max-w-[576px] max-md:mt-4">Совместимость с любыми САПР</h3>
+            <p class="feature__copy mt-2 max-w-[352px] text-sm/6 tracking-[-0.14px] text-ag-gray-700 md:max-lg:max-w-[576px] max-md:max-w-none">
+              Принимаем файлы из любых инженерных пакетов: STEP, STL, 3MF, OBJ без потери точности.
+              <a class="whitespace-nowrap font-medium text-ag-gray-950 focus-visible:rounded-[2px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600" href="/calculator.html">Требования к файлам<svg class="icon-arrow ml-1 inline-block align-[-3px]" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><g class="icon-arrow__head"><path class="icon-arrow__stem" d="M8 8.5H2.5" pathLength="1" stroke="#B8B9C1" stroke-width="1.5" stroke-linecap="round" /><path d="M6.5 11.5L9.5 8.5L6.5 5.5" stroke="#B8B9C1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></g></svg></a>
             </p>
 
-            <!-- Material Tabs -->
-            <div class="mt-6 flex flex-wrap gap-2">
-              <button class="mat-tab mat-pill active" data-mat="PLA">PLA</button>
-              <button class="mat-tab mat-pill" data-mat="PETG">PETG</button>
-              <button class="mat-tab mat-pill" data-mat="TPU">TPU (Flex)</button>
-              <button class="mat-tab mat-pill" data-mat="Silk">Silk Gold</button>
-            </div>
-
-            <!-- Material Card Info -->
-            <div class="mt-6 p-4 rounded-xl bg-ag-gray-50 border border-ag-gray-200">
-              <div class="flex justify-between items-center mb-2">
-                <span id="active-mat-title" class="font-display font-medium text-sm text-ag-gray-950">PLA</span>
-                <span id="active-mat-temp" class="text-xs font-mono text-brand-600 font-semibold bg-blue-50 px-2 py-0.5 rounded">до 55 °C</span>
-              </div>
-              <p id="active-mat-desc" class="text-xs/5 text-ag-gray-600">
-                Жёсткий и экологичный полимер. Идеален для органайзеров, подставок, ночников-литофаний и точных макетов.
-              </p>
-              <div class="mt-4 pt-3 border-t border-ag-gray-200/80 flex items-center justify-between">
-                <span class="text-xs text-ag-gray-500">Доступные цвета:</span>
-                <div id="active-mat-colors" class="flex gap-1.5">
-                  <span class="color-dot" style="background:#26262B;" title="Чёрный"></span>
-                  <span class="color-dot" style="background:#FFFFFF;" title="Белый"></span>
-                  <span class="color-dot" style="background:#3275FF;" title="Синий"></span>
-                  <span class="color-dot" style="background:#FC7343;" title="Оранжевый"></span>
-                </div>
-              </div>
-            </div>
-
-            <div class="mt-6">
-              <a href="/calculator.html" class="inline-flex items-center text-sm font-medium text-brand-600 hover:text-brand-700">
-                Открыть формулу плотности в калькуляторе →
-              </a>
+            <div class="intlogos absolute inset-x-0 bottom-0 top-[var(--intlogos-top,188px)] overflow-hidden after:pointer-events-none after:absolute after:inset-y-0 after:left-1/2 after:w-px after:bg-ag-gray-950/10 after:content-[''] max-lg:relative max-lg:inset-auto max-lg:mt-6 max-lg:h-[432px]"
+                 aria-hidden="true"
+                 data-logo-columns='{"left":[{"name":"Fusion 360","h":24,"src":"/assets/cad/fusion360.svg"},{"name":"Blender 3D","h":24,"src":"/assets/cad/blender.svg"},{"name":"SolidWorks","h":24,"src":"/assets/cad/solidworks.svg"},{"name":"Bambu Studio","h":24,"src":"/assets/cad/bambustudio.svg"},{"name":"OrcaSlicer","h":24,"src":"/assets/cad/orcaslicer.svg"}],"right":[{"name":"Onshape CAD","h":24,"src":"/assets/cad/onshape.svg"},{"name":"FreeCAD","h":24,"src":"/assets/cad/freecad.svg"},{"name":"PrusaSlicer","h":24,"src":"/assets/cad/prusaslicer.svg"},{"name":"UltiMaker Cura","h":24,"src":"/assets/cad/cura.svg"},{"name":"Shapr3D","h":24,"src":"/assets/cad/shapr3d.svg"}]}'>
+              <div class="intlogos__col intlogos__col--left absolute inset-y-0 left-0 w-1/2"><div class="intlogos__track absolute inset-x-0 top-0"></div></div>
+              <div class="intlogos__col intlogos__col--right absolute inset-y-0 left-1/2 w-1/2"><div class="intlogos__track absolute inset-x-0 top-0"></div></div>
             </div>
           </li>
 
-          <!-- Column 3: Прямая связь и консультация инженера -->
+          <!-- Column 3: Прямой чат с инженером (support.js animated chat sequence) -->
           <li class="relative h-[var(--features-h)] overflow-hidden px-12 pt-3 lg:max-[1439px]:px-[var(--feature-pad)] max-lg:h-auto max-lg:overflow-visible md:max-lg:p-0 max-md:px-0 max-md:pb-10 max-md:pt-8 border-l border-ag-gray-100 max-lg:border-l-0">
-            <div class="size-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-brand-600 mb-6">
-              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-              </svg>
-            </div>
-            <h3 class="font-display text-[15px]/6 font-medium text-ag-gray-950">Прямой чат с мастером</h3>
-            <p class="feature__copy mt-2 max-w-[352px] text-sm/6 tracking-[-0.14px] text-ag-gray-700">
-              Отвечаем за 10–15 минут. Проверим вашу модель, толщину стенок и свесы перед печатью.
+            <svg class="block size-10 overflow-visible" width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <path d="M25 17.75C19.8914 17.75 15.75 21.2591 15.75 25.5876C15.7501 29.9161 19.8914 33.4252 25 33.4252C25.9335 33.4252 26.8342 33.3062 27.6835 33.0875C28.0845 32.9842 28.5072 33.1196 28.8344 33.3734C29.7266 34.0657 30.9138 34.2113 31.8677 34.2419C32.1026 34.2494 32.2749 33.8891 32.1728 33.6774C31.9616 33.24 31.748 32.5596 31.6372 31.5843C31.6016 31.2708 31.7354 30.9661 31.9621 30.7467C33.3864 29.3682 34.25 27.5636 34.25 25.5876C34.25 21.2591 30.1086 17.75 25 17.75Z" stroke="#BCD7FF" />
+              <path d="M8.75 21.25C8.75 16.9214 12.8914 13.4124 18 13.4124C23.1086 13.4124 27.25 16.9214 27.25 21.25C27.25 25.5786 23.1086 29.0876 18 29.0876C17.0665 29.0876 16.1658 28.9685 15.3165 28.7498C14.9155 28.6466 14.4928 28.782 14.1656 29.0358C13.2734 29.7281 12.0862 29.8737 11.1323 29.9043C10.8974 29.9118 10.7251 29.5515 10.8272 29.3398C11.0384 28.9024 11.252 28.222 11.3628 27.2467C11.3984 26.9332 11.2646 26.6285 11.0379 26.4091C9.61358 25.0306 8.75 23.226 8.75 21.25Z" fill="#D9E8FF" stroke="#285DF5" />
+            </svg>
+            <h3 class="mt-8 font-display text-[15px]/6 font-medium text-ag-gray-950 md:max-lg:max-w-[576px] max-md:mt-4">Прямой чат с инженером</h3>
+            <p class="feature__copy mt-2 max-w-[352px] text-sm/6 tracking-[-0.14px] text-ag-gray-700 md:max-lg:max-w-[576px] max-md:max-w-none">
+              Бесплатная проверка моделей перед запуском. Реальный мастер на связи за 10–15 минут.
             </p>
 
-            <div class="mt-6 space-y-3">
-              <div class="chat-bubble text-ag-gray-700">
-                «Здравствуйте! У меня сломалась шестерня в блендере, остался только обломок. Сможете напечатать?»
-              </div>
-              <div class="chat-bubble chat-bubble-reply">
-                «Добрый день! Да, пришлите фото с приложенной линейкой или передайте обломок в мастерскую в Худжанде — снимем размеры и изготовим из прочного PETG за 3 часа.»
-              </div>
-            </div>
+            <div class="chat absolute bottom-0 left-[calc(50%-192px)] h-[424px] w-[384px] lg:max-[1439px]:left-[calc(var(--feature-pad)-24px)] lg:max-[1439px]:right-[calc(var(--feature-pad)-16px)] lg:max-[1439px]:w-auto md:max-lg:relative md:max-lg:inset-auto md:max-lg:-mx-2 md:max-lg:mt-2 md:max-lg:w-auto max-md:relative max-md:inset-auto max-md:ml-[round(calc((100%-384px)/2),1px)] max-md:mt-2 max-md:h-auto max-md:pb-10 max-md:pt-8" aria-hidden="true">
+              <div class="chat__thread absolute bottom-10 left-6 right-4 flex flex-col md:max-lg:left-2 md:max-lg:right-2 max-md:relative max-md:inset-auto max-md:ml-6 max-md:mr-4 max-md:block">
+                
+                <!-- Step 0: Customer question -->
+                <div class="chat__row chat__row--them flex items-center justify-start gap-2" data-step="0">
+                  <p class="chat__bubble chat__bubble--grey m-0 origin-bottom-left bg-ag-gray-50 px-3 py-2 text-xs/5 font-medium tracking-[-0.018px] text-ag-gray-800 shadow-[0_0_1px_0_rgba(38,38,43,0.12),0_0_0_1px_rgba(38,38,43,0.06),0_3px_8px_-4px_rgba(38,38,43,0.16)] rounded-2xl" style="width: 240px">
+                    Здравствуйте! Нужно напечатать шестерню и корпус по STL. Успеем до завтра?
+                  </p>
+                </div>
 
-            <div class="mt-6">
-              <a href="https://t.me/khujand3d" target="_blank" rel="noopener" class="button-accent w-full text-center">
-                Написать мастеру в Telegram
-              </a>
+                <!-- Step 1: Typing dots -->
+                <div class="chat__row chat__row--us chat__row--typing relative z-[1] mt-4 flex items-center justify-end gap-2 pr-2 max-md:absolute max-md:inset-x-0" data-step="1" data-until="2">
+                  <div class="chat__bubble chat__typing flex h-9 w-[49px] origin-bottom-right items-center justify-center gap-1 rounded-[18px] bg-ag-gray-50 p-0 shadow-[0_0_1px_0_rgba(38,38,43,0.12),0_0_0_1px_rgba(38,38,43,0.06),0_3px_8px_-4px_rgba(38,38,43,0.16)]">
+                    <i class="size-[5px] rounded-full bg-ag-gray-500"></i><i class="size-[5px] rounded-full bg-ag-gray-500"></i><i class="size-[5px] rounded-full bg-ag-gray-500"></i>
+                  </div>
+                </div>
+
+                <!-- Step 2: Engineer reply 1 -->
+                <div class="chat__row chat__row--us relative z-[1] mt-4 flex items-center justify-end gap-2" data-step="2">
+                  <div class="chat__bubble chat__bubble--blue relative flex-none px-4 py-2 text-xs/5 font-medium tracking-[-0.018px] text-white chat__bubble--b1 w-[264px] origin-bottom-right">
+                    <img class="chat__bubble-bg pointer-events-none absolute -left-1 -top-[3px] max-w-none" width="272" height="84" alt="" src="/assets/bubble-1.svg" />
+                    <p class="relative m-0">Да, принтеры Bambu X1C свободны. Отправьте файл — поставим в печать через 20 минут.</p>
+                  </div>
+                </div>
+
+                <!-- Step 3: Engineer reply 2 with avatar -->
+                <div class="chat__row chat__row--us chat__row--same relative z-[1] mt-2 flex items-center justify-end gap-2" data-step="3">
+                  <div class="chat__bubble chat__bubble--blue relative flex-none px-4 py-2 text-xs/5 font-medium tracking-[-0.018px] text-white chat__bubble--b2 w-[214px] origin-[82%_100%]">
+                    <img class="chat__bubble-bg pointer-events-none absolute -left-1 -top-[3px] max-w-none" width="222" height="72" alt="" src="/assets/bubble-2.svg" />
+                    <p class="relative m-0">В Худжанде курьер доставит к 10:00 утра. Нужен PETG или Carbon?</p>
+                  </div>
+                </div>
+                <div class="chat__row chat__row--us chat__row--name relative z-0 mt-3 flex items-center justify-end gap-2" data-step="3">
+                  <span class="text-[11px]/5 font-medium tracking-[-0.0165px] text-ag-gray-950">Алишер · Инженер</span>
+                  <img class="block size-7 flex-none rounded-full object-cover" width="28" height="28" alt="Алишер" src="/assets/avatar-engineer.svg" />
+                </div>
+
+                <!-- Step 4: Customer acceptance -->
+                <div class="chat__row chat__row--them mt-4 flex items-center justify-start gap-2" data-step="4">
+                  <p class="chat__bubble chat__bubble--grey m-0 origin-bottom-left bg-ag-gray-50 px-3 py-2 text-xs/5 font-medium tracking-[-0.018px] text-ag-gray-800 shadow-[0_0_1px_0_rgba(38,38,43,0.12),0_0_0_1px_rgba(38,38,43,0.06),0_3px_8px_-4px_rgba(38,38,43,0.16)] chat__bubble--pill whitespace-nowrap rounded-[32px]">
+                    Отлично, давайте из Carbon! Файл уже в Telegram.
+                  </p>
+                </div>
+
+              </div>
             </div>
           </li>
         </ul>

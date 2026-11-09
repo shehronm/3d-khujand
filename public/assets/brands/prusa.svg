@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 95 28" width="95" height="28">
+  <g fill="#18181b">
+    <polygon points="6,6 18,6 22,14 18,22 6,22 10,14"/>
+    <text x="28" y="19" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" letter-spacing="-0.02em">PRUSA</text>
+  </g>
+</svg>

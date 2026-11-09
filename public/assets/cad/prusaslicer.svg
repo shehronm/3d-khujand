@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 26" width="130" height="26">
+  <g>
+    <g transform="translate(6, 4)">
+      <polygon points="4,4 16,4 20,12 16,20 4,20 8,12" fill="#FA6831"/>
+    </g>
+    <text x="38" y="21" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#FA6831" letter-spacing="-0.01em">PrusaSlicer</text>
+  </g>
+</svg>
