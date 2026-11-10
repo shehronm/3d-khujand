@@ -74,6 +74,18 @@ export const MATERIALS = {
       { id: 'silver', label: 'Серебро', hex: '#B8BEC6' },
       { id: 'copper', label: 'Медь', hex: '#B8693F' }
     ]
+  },
+  CARBON: {
+    label: 'Carbon PA-CF',
+    note: 'Углеволокно, замена металлу до 150°C',
+    density: 1.34,
+    pricePerGram: 1.4,
+    speedFactor: 0.7,
+    finish: { roughness: 0.88, metalness: 0.1 },
+    colors: [
+      { id: 'carbon-black', label: 'Matte Carbon', hex: '#22252B' },
+      { id: 'carbon-grey', label: 'Темно-серый', hex: '#3B4048' }
+    ]
   }
 };
 
